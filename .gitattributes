@@ -1,0 +1,6 @@
+# Los datos no se tratan como texto: evita que Git convierta saltos de línea (CRLF/LF)
+# y altere los bytes de los originales (rompería la verificación por SHA256).
+*.csv  -text
+*.gz   binary
+*.joblib binary
+*.npz  binary

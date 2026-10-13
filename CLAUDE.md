@@ -68,16 +68,24 @@ streamlit run src/app.py          # aplicación (cuando exista)
 - **Catálogo SGC** (`sgc.gov.co/catalogo`): aplicación React sobre `apicatalogador.sgc.gov.co`.
   `GET /api/events/search/` responde 403 y la exportación oficial llega **por correo**
   (`POST /api/events/download/`). Ruta adoptada: descarga manual a `data/raw/`.
-  Las columnas reales del catálogo aún no están verificadas.
+  **Descargado y perfilado**: 184 725 eventos, 2006-01-01 a 2026-10-13, 18 columnas. El detalle,
+  las advertencias de calidad y el SHA256 están en [docs/fuentes_datos.md](docs/fuentes_datos.md).
+  Usar siempre `utc_time` (`local_time` está mal etiquetada) y normalizar el municipio.
 - **Amenaza sísmica SGC**: `amenazasismica.sgc.gov.co` dio error SSL desde este equipo; pendiente
   de confirmar. Candidato adicional: `srvags.sgc.gov.co/jsviewer/Amenaza_Sismica_2020`.
 - **DANE** (población municipal): no verificado.
 
 ## Decisiones pendientes
 
-1. **Construcción de etiquetas**: (A) amenaza oficial como etiqueta, o (B) actividad del periodo
-   siguiente como etiqueta con la amenaza oficial como entrada. Recomendación actual: B.
-2. Unidad de análisis (municipio vs. agregación mayor) y granularidad temporal: depende de los datos.
+1. ~~Construcción de etiquetas~~ **Decidido (2026-10-13): opción B.** La etiqueta es la categoría de
+   actividad sísmica del periodo *siguiente*; las variables de entrada usan solo información del
+   periodo actual y anteriores; la amenaza oficial entra como variable, no como etiqueta. Los
+   umbrales de categoría se ajustan solo con los periodos de entrenamiento. Obligatorio reportar
+   una línea base de persistencia ("misma categoría que el periodo actual") junto al clasificador.
+   Redacción: se clasifica actividad sísmica histórica evaluada fuera de muestra; no se predicen
+   terremotos concretos.
+2. Unidad de análisis (87 municipios tras normalizar; ≈57 con ≥100 eventos, cifra preliminar) y granularidad temporal
+   (año vs. semestre) y umbral de magnitud Mc: por decidir con los datos.
 3. Rúbrica completa y fecha de entrega del reto.
 
 ## Notas de dominio (por confirmar con los datos)
