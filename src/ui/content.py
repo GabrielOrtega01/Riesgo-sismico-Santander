@@ -16,6 +16,40 @@ PAGES = [PAGE_HOME, PAGE_ZONE, PAGE_MAP, PAGE_COMPARE, PAGE_GROUPS, PAGE_CLASS, 
          PAGE_CATALOG, PAGE_SOURCES, PAGE_GLOSSARY]
 
 TEAM = ["Gabriel Augusto Ortega Martínez", "Juan Jose Perucho Quintero"]
+
+# Nombres técnicos de las variables del panel → texto en español para mostrar al usuario.
+VARIABLE_LABELS = {
+    "n_m25_anio": "Sismos M ≥ 2,5 del año",
+    "n_m25_hist_prom": "Promedio anual previo (M ≥ 2,5)",
+    "n_m25_cambio_1a": "Cambio respecto al año anterior",
+    "n_m25_vecinos_anio": "Sismos en municipios vecinos",
+    "magnitud_max_anio": "Magnitud máxima del año",
+    "magnitud_media_m25_anio": "Magnitud media (M ≥ 2,5)",
+    "magnitud_max_hist": "Magnitud máxima histórica",
+    "pct_m30_sobre_m25": "% de sismos M ≥ 3 entre los M ≥ 2,5",
+    "profundidad_mediana_anio": "Profundidad típica",
+    "pct_superficial_anio": "% de sismos superficiales",
+    "profundidad_iqr_anio": "Dispersión de la profundidad",
+    "nst_mediano_anio": "Estaciones por evento",
+    "gap_mediano_anio": "Hueco azimutal",
+    "error_horizontal_mediano_anio": "Error horizontal de localización",
+    "rms_mediano_anio": "Residuo RMS",
+    "error_profundidad_mediano_anio": "Error de profundidad",
+    "pga_tr475": "Amenaza oficial (PGA)",
+    "intensidad_esperada": "Intensidad esperada",
+    "sa10_sobre_pga": "Forma del espectro (Sa 1,0 s / PGA)",
+    "distancia_los_santos_km": "Distancia a Los Santos",
+    "poblacion_log10": "Población (logaritmo)",
+    "pct_poblacion_cabecera": "% de población en la cabecera",
+    "crecimiento_poblacion_pct": "Crecimiento de la población",
+}
+
+
+def variable_label(name: str) -> str:
+    """Texto legible para una variable; «faltante:x» indica que el dato no estaba disponible."""
+    if name.startswith("faltante:"):
+        return "Dato ausente: " + VARIABLE_LABELS.get(name.split(":", 1)[1], name.split(":", 1)[1])
+    return VARIABLE_LABELS.get(name, name.replace("_", " "))
 MAG_OPTIONS = [2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0]
 
 PAGE_HINTS = {

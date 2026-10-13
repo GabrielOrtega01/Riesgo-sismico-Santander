@@ -244,11 +244,11 @@ def page_zone() -> None:
 
     one = yearly[yearly["municipio_key"] == muni["municipio_key"]].assign(
         anio=lambda d: d["anio"].astype(str)
-    ).set_index("anio")
+    ).set_index("anio").rename_axis("Año")
     left, right = st.columns(2)
     with left, st.container(border=True):
         st.markdown(f"**Sismos por año** (magnitud ≥ {min_mag:g})")
-        st.bar_chart(one["n_sobre_umbral"], color=T.SERIES)
+        st.bar_chart(one["n_sobre_umbral"].rename("Sismos"), color=T.SERIES)
         last = events["utc_time"].max()
         st.caption(f"{last.year} es un año parcial: llega hasta {last:%d/%m/%Y}.")
     with right, st.container(border=True):
@@ -257,7 +257,8 @@ def page_zone() -> None:
         if hist.empty:
             st.info("Este municipio no tiene sismos registrados.")
         else:
-            st.bar_chart(hist.set_index("rango_km")["eventos"], color=T.SERIES)
+            st.bar_chart(hist.rename(columns={"rango_km": "Rango (km)", "eventos": "Sismos"})
+                         .set_index("Rango (km)")["Sismos"], color=T.SERIES)
             st.caption("Rango en km, de «000-010» (cerca de la superficie) hacia abajo.")
 
     with st.container(border=True):
@@ -470,7 +471,9 @@ def page_class() -> None:
         st.dataframe(per)
     with b, st.container(border=True):
         st.markdown("**Variables que más pesan**")
-        imp = pd.Series(cm["importancias"]).sort_values()
+        imp = pd.Series(cm["importancias"])
+        imp.index = [C.variable_label(n) for n in imp.index]
+        imp = imp.sort_values()
         st.bar_chart(imp, horizontal=True, color=T.SERIES)
     with st.expander("Cómo se definen las categorías y cómo se validó"):
         th = cm["umbrales"]
@@ -553,7 +556,9 @@ def page_prio() -> None:
     curve = pd.DataFrame(ar["curva_de_aprendizaje"])
     with st.container(border=True):
         st.markdown("**Curva de aprendizaje** (recompensa media por episodio durante el entrenamiento)")
-        st.line_chart(curve.set_index("episodio")["recompensa_media"], color=T.SERIES)
+        st.line_chart(
+            curve.rename(columns={"episodio": "Episodio", "recompensa_media": "Recompensa media"})
+            .set_index("Episodio")["Recompensa media"], color=T.SERIES)
         st.caption(
             f"Parte de {curve['recompensa_media'].iloc[0]:.2f} (alta exploración) y llega a "
             f"{curve['recompensa_media'].iloc[-1]:.2f}. Un agente sin entrenar obtiene 0 en el "
@@ -591,13 +596,16 @@ def page_catalog() -> None:
     a, b = st.columns(2)
     with a, st.container(border=True):
         st.markdown("**Sismos registrados por año (todo Santander)**")
-        per_year = events.groupby(events["utc_time"].dt.year).size().rename("sismos")
+        per_year = events.groupby(events["utc_time"].dt.year).size().rename("Sismos")
         per_year.index = per_year.index.astype(str)
+        per_year.index.name = "Año"
         st.bar_chart(per_year, color=T.SERIES)
         st.caption("El aumento no significa que haya más sismos: se detectan más eventos pequeños.")
     with b, st.container(border=True):
         st.markdown("**Magnitud mínima que el catálogo registra completa (Mc)**")
-        st.line_chart(mc.assign(anio=mc["anio"].astype(str)).set_index("anio")["mc_maxc"], color=T.SERIES)
+        st.line_chart(
+            mc.assign(anio=mc["anio"].astype(str)).rename(columns={"anio": "Año", "mc_maxc": "Mc"})
+            .set_index("Año")["Mc"], color=T.SERIES)
         st.caption("Por debajo de esa magnitud faltan eventos. Más bajo = mejor detección.")
     st.warning(
         "**El catálogo no es homogéneo.** Hacia 2018 cambian el tipo de magnitud dominante, el "
