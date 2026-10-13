@@ -1,0 +1,412 @@
+{
+  "filas_originales": 184725,
+  "errores_de_formato_convertidos_a_nulo": {},
+  "ids_descartados_por_invalidez": [],
+  "ids_eventos_duplicados_eliminados": [
+    "SGC2026lpjrpw",
+    "SGC2026ohnsbr",
+    "SGC2026sbueng"
+  ],
+  "filas_sin_municipio_interpretable": 0,
+  "municipios_variantes_por_clave": {
+    "aguada": [
+      "Aguada"
+    ],
+    "albania": [
+      "Albania"
+    ],
+    "aratoca": [
+      "Aratoca"
+    ],
+    "barbosa": [
+      "Barbosa"
+    ],
+    "barichara": [
+      "Barichara"
+    ],
+    "barrancabermeja": [
+      "Barrancabermeja"
+    ],
+    "betulia": [
+      "Betulia"
+    ],
+    "bolivar": [
+      "Bolivar",
+      "Bolívar"
+    ],
+    "bucaramanga": [
+      "Bucaramanga"
+    ],
+    "cabrera": [
+      "Cabrera"
+    ],
+    "california": [
+      "California"
+    ],
+    "capitanejo": [
+      "Capitanejo"
+    ],
+    "carcasi": [
+      "Carcasí"
+    ],
+    "cepita": [
+      "Cepitá"
+    ],
+    "cerrito": [
+      "Cerrito"
+    ],
+    "charala": [
+      "Charalá"
+    ],
+    "charta": [
+      "Charta"
+    ],
+    "chima": [
+      "Chima"
+    ],
+    "chipata": [
+      "Chipatá"
+    ],
+    "cimitarra": [
+      "Cimitarra"
+    ],
+    "concepcion": [
+      "Concepción"
+    ],
+    "confines": [
+      "Confines"
+    ],
+    "contratacion": [
+      "Contratación"
+    ],
+    "coromoro": [
+      "Coromoro"
+    ],
+    "curiti": [
+      "CuritÃ­",
+      "Curití"
+    ],
+    "el carmen de chucuri": [
+      "El Carmen",
+      "El Carmen De Chucurí"
+    ],
+    "el guacamayo": [
+      "El Guacamayo"
+    ],
+    "el penon": [
+      "El PeÃ±Ã³n",
+      "El Peñón"
+    ],
+    "el playon": [
+      "El PlayÃ³n",
+      "El Playón"
+    ],
+    "encino": [
+      "Encino"
+    ],
+    "enciso": [
+      "Enciso"
+    ],
+    "florian": [
+      "FloriÃ¡n",
+      "Florián"
+    ],
+    "floridablanca": [
+      "Floridablanca"
+    ],
+    "galan": [
+      "GalÃ¡n",
+      "Galán"
+    ],
+    "gambita": [
+      "Gámbita"
+    ],
+    "giron": [
+      "GirÃ³n",
+      "Girón"
+    ],
+    "guaca": [
+      "Guaca"
+    ],
+    "guadalupe": [
+      "Guadalupe"
+    ],
+    "guapota": [
+      "GuapotÃ¡",
+      "Guapotá"
+    ],
+    "guavata": [
+      "GuavatÃ¡",
+      "Guavatá"
+    ],
+    "guepsa": [
+      "Güepsa"
+    ],
+    "hato": [
+      "Hato"
+    ],
+    "jesus maria": [
+      "Jesús María"
+    ],
+    "jordan": [
+      "JordÃ¡n",
+      "Jordán",
+      "Jordán Sube"
+    ],
+    "la belleza": [
+      "La Belleza"
+    ],
+    "la paz": [
+      "La Paz"
+    ],
+    "landazuri": [
+      "LandÃ¡zuri",
+      "Landázuri"
+    ],
+    "lebrija": [
+      "Lebrija"
+    ],
+    "los santos": [
+      "Los Santos"
+    ],
+    "macaravita": [
+      "Macaravita"
+    ],
+    "malaga": [
+      "Málaga"
+    ],
+    "matanza": [
+      "Matanza"
+    ],
+    "mogotes": [
+      "Mogotes"
+    ],
+    "molagavita": [
+      "Molagavita"
+    ],
+    "ocamonte": [
+      "Ocamonte"
+    ],
+    "oiba": [
+      "Oiba"
+    ],
+    "onzaga": [
+      "Onzaga"
+    ],
+    "palmar": [
+      "Palmar"
+    ],
+    "palmas del socorro": [
+      "Palmas Del Socorro",
+      "Palmas del Socorro"
+    ],
+    "paramo": [
+      "Páramo"
+    ],
+    "piedecuesta": [
+      "Piedecuesta"
+    ],
+    "pinchote": [
+      "Pinchote"
+    ],
+    "puente nacional": [
+      "Puente Nacional"
+    ],
+    "puerto parra": [
+      "Puerto Parra"
+    ],
+    "puerto wilches": [
+      "Puerto Wilches"
+    ],
+    "rionegro": [
+      "Rionegro"
+    ],
+    "sabana de torres": [
+      "Sabana De Torres",
+      "Sabana de Torres"
+    ],
+    "san andres": [
+      "San Andrés"
+    ],
+    "san benito": [
+      "San Benito"
+    ],
+    "san gil": [
+      "San Gil"
+    ],
+    "san joaquin": [
+      "San Joaquín"
+    ],
+    "san jose de miranda": [
+      "San José De Miranda",
+      "San José de Miranda"
+    ],
+    "san miguel": [
+      "San Miguel"
+    ],
+    "san vicente de chucuri": [
+      "San Vicente De Chucurí",
+      "San Vicente de ChucurÃ­",
+      "San Vicente de Chucurí"
+    ],
+    "santa barbara": [
+      "Santa BÃ¡rbara",
+      "Santa Bárbara"
+    ],
+    "santa helena del opon": [
+      "Santa Helena Del Opón",
+      "Santa Helena del OpÃ³n",
+      "Santa Helena del Opón"
+    ],
+    "simacota": [
+      "Simacota"
+    ],
+    "socorro": [
+      "Socorro"
+    ],
+    "suaita": [
+      "Suaita"
+    ],
+    "sucre": [
+      "Sucre"
+    ],
+    "surata": [
+      "SuratÃ¡",
+      "Suratá"
+    ],
+    "tona": [
+      "Tona"
+    ],
+    "valle de san jose": [
+      "Valle De San José",
+      "Valle de San José"
+    ],
+    "velez": [
+      "VÃ©lez",
+      "Vélez"
+    ],
+    "vetas": [
+      "Vetas"
+    ],
+    "villanueva": [
+      "Villanueva"
+    ],
+    "zapatoca": [
+      "Zapatoca"
+    ]
+  },
+  "formas_de_municipio_crudas": 111,
+  "municipios_tras_normalizar": 87,
+  "filas_descartadas_por_motivo": {
+    "campos_obligatorios_vacios": 0,
+    "coordenadas_fuera_de_rango": 0,
+    "magnitud_fuera_de_rango": 0,
+    "profundidad_fuera_de_rango": 0,
+    "id_duplicado": 0,
+    "evento_duplicado_mismo_instante_posicion_magnitud_profundidad": 3,
+    "fuera_de_santander": 0
+  },
+  "filas_limpias": 184722,
+  "periodo_utc": [
+    "2006-01-01T05:53:16+00:00",
+    "2026-10-13T12:53:10+00:00"
+  ],
+  "nulos_por_columna": {
+    "magnitude_error": 79091,
+    "latitude_error": 4,
+    "longitude_error": 4,
+    "depth_error": 263,
+    "gap": 1
+  },
+  "marcas": {
+    "flag_profundidad_negativa": 56,
+    "flag_error_profundidad_extremo": 23
+  },
+  "atipicos_conservados": {
+    "magnitude": {
+      "q1": 1.6,
+      "q3": 2.1,
+      "limite_inferior": 0.8500000000000001,
+      "limite_superior": 2.85,
+      "n_atipicos": 9905,
+      "minimo": -1.3,
+      "maximo": 6.4
+    },
+    "depth": {
+      "q1": 134.0,
+      "q3": 147.0,
+      "limite_inferior": 114.5,
+      "limite_superior": 166.5,
+      "n_atipicos": 20270,
+      "minimo": -5.0,
+      "maximo": 436.0
+    },
+    "rms": {
+      "q1": 0.3,
+      "q3": 0.6,
+      "limite_inferior": -0.14999999999999997,
+      "limite_superior": 1.0499999999999998,
+      "n_atipicos": 11152,
+      "minimo": 0.0,
+      "maximo": 9.4
+    },
+    "gap": {
+      "q1": 110.0,
+      "q3": 173.0,
+      "limite_inferior": 15.5,
+      "limite_superior": 267.5,
+      "n_atipicos": 4519,
+      "minimo": 24.0,
+      "maximo": 352.0
+    },
+    "nst": {
+      "q1": 7.0,
+      "q3": 16.0,
+      "limite_inferior": -6.5,
+      "limite_superior": 29.5,
+      "n_atipicos": 17903,
+      "minimo": 3.0,
+      "maximo": 121.0
+    },
+    "magnitude_error": {
+      "q1": 0.2,
+      "q3": 0.3,
+      "limite_inferior": 0.050000000000000044,
+      "limite_superior": 0.44999999999999996,
+      "n_atipicos": 6796,
+      "minimo": 0.0,
+      "maximo": 4.9
+    },
+    "latitude_error": {
+      "q1": 0.0,
+      "q3": 3.0,
+      "limite_inferior": -4.5,
+      "limite_superior": 7.5,
+      "n_atipicos": 4550,
+      "minimo": 0.0,
+      "maximo": 32.5
+    },
+    "longitude_error": {
+      "q1": 0.1,
+      "q3": 3.4,
+      "limite_inferior": -4.85,
+      "limite_superior": 8.35,
+      "n_atipicos": 5862,
+      "minimo": 0.0,
+      "maximo": 32.5
+    },
+    "depth_error": {
+      "q1": 3.0,
+      "q3": 8.0,
+      "limite_inferior": -4.5,
+      "limite_superior": 15.5,
+      "n_atipicos": 2025,
+      "minimo": 0.0,
+      "maximo": 1000.0
+    }
+  },
+  "columnas_descartadas": {
+    "local_time": "etiquetada +00:00 pero equivale a UTC-5; se usa utc_time"
+  },
+  "archivo_origen": "sgc_catalogo_santander_20060101_20261013.csv"
+}

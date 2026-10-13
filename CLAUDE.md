@@ -60,6 +60,8 @@ Los módulos `.py` concretos se crean cuando se implementan; no hay stubs.
 .\.venv\Scripts\Activate.ps1      # activar el entorno (Python 3.14)
 pip install -r requirements.txt   # reinstalar dependencias
 pytest                            # ejecutar pruebas
+python -m src.data.preprocessing  # limpieza -> data/processed/eventos_santander_limpio.csv.gz
+python -m src.data.completeness   # Mc por año -> data/processed/mc_por_anio.csv
 streamlit run src/app.py          # aplicación (cuando exista)
 ```
 
@@ -84,8 +86,10 @@ streamlit run src/app.py          # aplicación (cuando exista)
    una línea base de persistencia ("misma categoría que el periodo actual") junto al clasificador.
    Redacción: se clasifica actividad sísmica histórica evaluada fuera de muestra; no se predicen
    terremotos concretos.
-2. Unidad de análisis (87 municipios tras normalizar; ≈57 con ≥100 eventos, cifra preliminar) y granularidad temporal
-   (año vs. semestre) y umbral de magnitud Mc: por decidir con los datos.
+2. Unidad de análisis (87 municipios tras normalizar) y granularidad temporal (año vs. semestre):
+   por decidir. Umbral de magnitud: propuesta M ≥ 2,5 (completo en todos los años; ver
+   `docs/fuentes_datos.md`). **El catálogo cambia de régimen en 2018** (tipo de magnitud, `nst`,
+   valor b): la división temporal debe incluir ambos regímenes en entrenamiento.
 3. Rúbrica completa y fecha de entrega del reto.
 
 ## Notas de dominio (por confirmar con los datos)

@@ -68,6 +68,57 @@ está marcado como **pendiente**.
 7. **Escasez por municipio**: tras normalizar, la mayoría de municipios tiene pocos eventos por año;
    la agregación temporal y el umbral de magnitud condicionan cuántos ejemplos útiles hay.
 
+### Resultado de la limpieza (`python -m src.data.preprocessing`)
+
+Salida: `data/processed/eventos_santander_limpio.csv.gz` (determinista) y
+`data/processed/limpieza_reporte.json` (todos los conteos).
+
+| Concepto | Resultado real |
+|---|---|
+| Filas originales → limpias | 184 725 → **184 722** |
+| Descartes por invalidez (campos vacíos, coordenadas, magnitud, profundidad) | 0 |
+| Duplicados por `id` | 0 |
+| Duplicados de evento (mismo instante, posición, magnitud y profundidad) | 3 eliminados: `SGC2026lpjrpw`, `SGC2026ohnsbr`, `SGC2026sbueng` (se conserva el menor `id`) |
+| Eventos fuera de Santander | 0 |
+| Municipios | 111 formas → **87** tras reparar mojibake, normalizar y unir 2 alias |
+| Nulos conservados (no se imputan aquí) | `magnitude_error` 79 091 · `depth_error` 263 · `latitude_error` 4 · `longitude_error` 4 · `gap` 1 |
+| Valores extremos conservados y marcados | `flag_profundidad_negativa` 56 · `flag_error_profundidad_extremo` (> 100 km) 23 |
+| Columna descartada | `local_time` (mal etiquetada) |
+
+Los valores atípicos por la regla de Tukey (p. ej. 9 905 en magnitud, 20 270 en profundidad) son
+**descriptivos**: se conservan porque son eventos sísmicos válidos.
+
+## Completitud y ruptura estructural del catálogo (`python -m src.data.completeness`)
+
+Magnitud de completitud por año (MAXC + 0,2) en `data/processed/mc_por_anio.csv`:
+
+| Periodo | Mc (rango anual) | `nst` mediano | Tipo de magnitud dominante | Valor b |
+|---|---|---|---|---|
+| 2006–2008 | 2,2 – 2,5 | 5–6 | ML | ≈ 0,78–0,89 |
+| 2009–2017 | 1,6 – 2,0 | 6–8 | ML (y MW en 2012–2017, ≈ 230–860/año) | ≈ 0,80–0,91 |
+| 2018–2026 | 1,8 – 2,0 | 10–16 | MLr_3 y MLr_vmm | ≈ 1,06–1,24 |
+
+Hechos verificados en los datos:
+
+1. **2018 es una ruptura**: el tipo de magnitud pasa de ML (hasta 2017) a MLr_3/MLr_vmm; la mediana
+   de `nst` se duplica (7 → 14); el valor b sube de ≈ 0,85 a ≈ 1,15.
+2. **Antes de 2009 el catálogo es menos completo** (Mc hasta 2,5). Un umbral de M ≥ 2,0 no es
+   válido para 2006–2008.
+3. **M ≥ 2,5 es completo en todos los años** (Mc máx. anual 2,5) y deja 84 de 87 municipios con
+   al menos un evento; M ≥ 3,0 deja 67.
+4. Mc global: 1,9; b global: 0,97.
+
+Interpretaciones **no verificadas con documentación del SGC**: que el cambio de 2018 corresponda a
+un cambio de método o de red. Los datos solo muestran que el catálogo no es homogéneo.
+
+Consecuencias para el diseño (propuestas, por confirmar):
+- Variables de frecuencia con umbral **M ≥ 2,5** (sensibilidad con M ≥ 2,0 desde 2009).
+- Preferir variables relativas (proporciones, rangos) a conteos brutos de eventos pequeños.
+- División temporal con datos de **ambos regímenes** en entrenamiento (no entrenar solo con
+  2006–2017 y evaluar en 2018+, porque cambia la distribución de entrada).
+- `nst` y `mag_type` son indicadores de régimen de la red; si se usan como variables, hay que
+  justificar que no codifican simplemente el año.
+
 ## 2. Amenaza sísmica oficial (segunda fuente candidata)
 
 **Pendiente.** `amenazasismica.sgc.gov.co` dio error SSL desde este equipo (2026-10-13). Otros
