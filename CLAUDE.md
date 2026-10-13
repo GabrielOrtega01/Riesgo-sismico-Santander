@@ -46,7 +46,7 @@ src/models/      clasificador y evaluación
 src/reinforcement_learning/  entorno, agente, recompensa
 src/services/    flujo de análisis que une clasificador y agente
 src/patterns/    factories, adapters, facade, strategies
-src/app.py       aplicación Streamlit (aún no creada)
+src/app.py       aplicación Streamlit (creada; clasificación y priorización pendientes de modelos)
 models/          artefactos entrenados (modelo, política Q)
 config/          parámetros de experimento (periodos, semillas, umbrales)
 tests/  docs/
@@ -64,7 +64,7 @@ python -m src.data.preprocessing  # limpieza -> data/processed/eventos_santander
 python -m src.data.completeness   # Mc por año -> data/processed/mc_por_anio.csv
 python -m src.data.integration    # une catálogo + DIVIPOLA + amenaza -> municipios_santander.csv
 python -m src.data.acquisition    # (una vez, con internet) descarga DIVIPOLA y amenaza a data/raw
-streamlit run src/app.py          # aplicación (cuando exista)
+streamlit run src/app.py          # aplicación (los datos procesados deben existir)
 ```
 
 ## Estado de las fuentes de datos (verificado 2026-10-13)
@@ -93,8 +93,8 @@ streamlit run src/app.py          # aplicación (cuando exista)
    una línea base de persistencia ("misma categoría que el periodo actual") junto al clasificador.
    Redacción: se clasifica actividad sísmica histórica evaluada fuera de muestra; no se predicen
    terremotos concretos.
-2. Unidad de análisis (87 municipios tras normalizar) y granularidad temporal (año vs. semestre):
-   por decidir. Umbral de magnitud: propuesta M ≥ 2,5 (completo en todos los años; ver
+2. ~~Unidad de análisis~~ **Decidido (2026-10-13): municipio × año** (87 municipios, 2006–2025 como
+   años completos; 2026 es parcial y se trata aparte). Umbral de magnitud: propuesta M ≥ 2,5 (completo en todos los años; ver
    `docs/fuentes_datos.md`). **El catálogo cambia de régimen en 2018** (tipo de magnitud, `nst`,
    valor b): la división temporal debe incluir ambos regímenes en entrenamiento.
 3. Rúbrica completa y fecha de entrega del reto.
