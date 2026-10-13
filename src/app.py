@@ -59,6 +59,15 @@ def get_yearly(min_magnitude: float) -> pd.DataFrame:
     )
 
 
+@st.cache_resource(show_spinner="Cargando modelos…")
+def get_service():
+    from src.services.risk_analysis import RiskAnalysisService
+    try:
+        return RiskAnalysisService()
+    except (FileNotFoundError, OSError):
+        return None
+
+
 try:
     events = get_events()
     municipalities = get_municipalities()
@@ -71,6 +80,7 @@ except FileNotFoundError as exc:
     )
     st.stop()
 
+service = get_service()
 summary = da.catalog_summary(events)
 status = {s["componente"].split(" ")[0]: s["disponible"] for s in da.model_status()}
 
@@ -92,9 +102,10 @@ with st.sidebar:
     with st.expander("⚙️ Opciones de visualización"):
         min_mag = st.select_slider(
             "Magnitud mínima para contar sismos",
-            options=[2.0, 2.5, 3.0], value=da.DEFAULT_MIN_MAGNITUDE, key="min_mag",
-            help="2,5 es la más segura para comparar años: el catálogo es completo desde 2006. "
-                 "Con 2,0 los años 2006–2008 no son comparables.",
+            options=C.MAG_OPTIONS, value=da.DEFAULT_MIN_MAGNITUDE, key="min_mag",
+            help="2,5 es la más segura para comparar años. Con 2,0 los años 2006–2008 no son "
+                 "comparables. El mayor sismo del catálogo es de magnitud 6,4: con umbrales mayores "
+                 "solo se cuentan los eventos más fuertes (pocos o ninguno).",
         )
     st.caption("Proyecto académico · UTS\n\nDatos: SGC y DANE\n\nNo es una evaluación oficial del riesgo.")
 
@@ -145,7 +156,7 @@ def page_home() -> None:
     )
     c2.markdown(
         T.card("Clasificación", "<p>Un modelo de aprendizaje automático asigna a cada municipio una "
-               "categoría de actividad sísmica: <b>Básico, Medio o Avanzado</b>.</p>"
+               "categoría de actividad sísmica para el año siguiente: <b>Bajo, Medio o Alto</b>.</p>"
                "<p style='margin-top:.6rem'>"
                + T.badge("Disponible" if cls_ok else "En desarrollo", "ok" if cls_ok else "wip")
                + "</p>", number=2),
@@ -173,6 +184,15 @@ def page_home() -> None:
         "**No es una evaluación oficial del riesgo:** es un análisis académico y exploratorio.  \n"
         "**No mide vulnerabilidad:** no sabe qué tan resistentes son las construcciones.  \n"
         "Más detalle en «Fuentes y límites» y en el «Glosario»."
+    )
+    st.markdown("### Equipo")
+    people = "".join(f"<li>{name}</li>" for name in C.TEAM)
+    st.markdown(
+        T.card("Hackathon CIAI UTSmart 2026 · Universitaria Tecnológica de Santander",
+               f"<ul>{people}</ul><p style='margin-top:.5rem'>Datos oficiales: Servicio Geológico "
+               "Colombiano y DANE · Nivel Avanzado: clasificación, grupos territoriales y "
+               "priorización con aprendizaje por refuerzo.</p>"),
+        unsafe_allow_html=True,
     )
     footer()
 
@@ -332,65 +352,231 @@ def page_compare() -> None:
     footer()
 
 
-# ============================================================================ CLASIFICACIÓN / PRIORIZACIÓN
-def _artifact_notice(prefix: str, text: str) -> None:
-    item = [s for s in da.model_status() if s["componente"].startswith(prefix)][0]
-    if item["disponible"]:
-        st.success(f"Modelo disponible (`{item['archivo']}`). La integración con esta pantalla está en curso.")
-    else:
-        st.info(
-            f"**Aún no disponible.** {text}\n\nArchivo requerido: `{item['archivo']}`. "
-            "Mientras no exista, esta pantalla no muestra resultados de ejemplo."
-        )
-
-
-def page_class() -> None:
-    st.title("🧠 Clasificación")
+# ============================================================================ GRUPOS (no supervisado)
+def page_groups() -> None:
+    st.title("🧩 Grupos territoriales")
     st.markdown(
-        '<p class="lede">Aquí se mostrará, para cada municipio, su categoría de actividad sísmica '
-        "—<b>Básico</b>, <b>Medio</b> o <b>Avanzado</b>— y qué tan seguro está el modelo.</p>",
-        unsafe_allow_html=True,
+        '<p class="lede">Sin usar etiquetas, un algoritmo de agrupamiento (K-means) reúne los '
+        "municipios que se parecen en actividad sísmica, amenaza y exposición. Sirve para "
+        "interpretar el territorio, no para clasificar riesgo.</p>", unsafe_allow_html=True,
     )
-    _artifact_notice("Clasificador", "El clasificador supervisado aún no está entrenado.")
-    c1, c2 = st.columns(2)
-    c1.markdown(
-        T.card("Cómo se construirá", "<ul><li>La categoría de un año se define con la actividad del "
-               "<b>año siguiente</b>.</li><li>El modelo solo usa información hasta el año actual.</li>"
-               "<li>Los umbrales se ajustan solo con años de entrenamiento.</li>"
-               "<li>Se prueba con años que el modelo no vio.</li></ul>"),
-        unsafe_allow_html=True,
+    if service is None:
+        st.info("Aún no hay resultados de agrupamiento. Ejecute `python -m src.models.clustering`.")
+        return
+    gm, profiles, groups = service.group_metrics(), service.group_profiles(), service.groups
+    k = gm["k"]
+    a, b, c = st.columns(3)
+    a.metric("Grupos encontrados", k, help="k elegido con el mejor índice de silueta entre 3 y 6.")
+    b.metric("Variables usadas", gm["n_variables"],
+             help="Promedio 2009–2025 de las variables del panel que no dependen del año.")
+    c.metric("Índice de silueta", f"{gm['silhouette']:.2f}",
+             help="De −1 a 1. Valores bajos (< 0,25) indican grupos poco separados.")
+    st.caption(
+        "El índice de silueta es bajo: los grupos son una **simplificación útil**, no fronteras "
+        "nítidas. Un municipio (Los Santos) forma su propio grupo por concentrar la sismicidad."
     )
-    c2.markdown(
-        T.card("Cómo se evaluará", "<ul><li>Exactitud, precisión y recall por categoría.</li>"
-               "<li>Matriz de confusión.</li><li>Comparación contra la estrategia «el año que viene "
-               "será igual que este».</li><li>Si no la supera, se reportará tal cual.</li></ul>"),
-        unsafe_allow_html=True,
-    )
-    st.caption("Las categorías son una clasificación exploratoria propia del proyecto, no categorías oficiales.")
+
+    merged = groups.merge(municipalities[["cod_mpio", "lat_cabecera", "lon_cabecera"]], on="cod_mpio")
+    merged["color"] = merged["grupo"].map(lambda g: T.CATEGORICAL[(int(g) - 1) % len(T.CATEGORICAL)])
+    merged["size_m"] = 9000
+    left, right = st.columns([3, 2])
+    with left, st.container(border=True):
+        st.markdown("**Mapa por grupo** (cada color es un grupo)")
+        st.map(merged.rename(columns={"lat_cabecera": "lat", "lon_cabecera": "lon"}),
+               latitude="lat", longitude="lon", size="size_m", color="color", zoom=7)
+        leg = " · ".join(
+            f'<span style="color:{T.CATEGORICAL[(g - 1) % 6]}">■</span> Grupo {g} ({gm["tamanos"][str(g)]})'
+            for g in range(1, k + 1))
+        st.markdown(f'<p class="footnote">{leg}</p>', unsafe_allow_html=True)
+    with right, st.container(border=True):
+        st.markdown("**Cómo son los grupos** (promedio 2009–2025)")
+        view = profiles[["n_m25_anio", "magnitud_max_hist", "pct_superficial_anio", "pga_tr475",
+                         "poblacion_log10"]].rename(columns={
+            "n_m25_anio": "Sismos M≥2,5/año", "magnitud_max_hist": "Magnitud máx.",
+            "pct_superficial_anio": "% superficiales", "pga_tr475": "PGA (g)",
+            "poblacion_log10": "log10 población"})
+        view.index.name = "Grupo"
+        st.dataframe(view.round(2))
+    pick = st.selectbox("Ver los municipios de un grupo", list(range(1, k + 1)), key="grupo_sel",
+                        format_func=lambda g: f"Grupo {g} ({gm['tamanos'][str(g)]} municipios)")
+    members = groups[groups["grupo"] == pick].merge(
+        municipalities[["cod_mpio", "nombre", "n_eventos_catalogo"]], on="cod_mpio")
+    st.dataframe(members[["nombre", "cod_mpio", "n_eventos_catalogo"]].rename(
+        columns={"nombre": "Municipio", "cod_mpio": "Código DANE", "n_eventos_catalogo": "Sismos (total)"}
+    ).sort_values("Municipio"), hide_index=True)
     footer()
 
 
-def page_prio() -> None:
-    st.title("🎯 Priorización")
+# ============================================================================ CLASIFICACIÓN
+def page_class() -> None:
+    st.title("🧠 Clasificación de actividad sísmica")
     st.markdown(
-        '<p class="lede">Aquí se mostrará el orden en que un agente de aprendizaje por refuerzo '
-        "propone revisar las zonas, y cómo se compara con una regla simple.</p>",
-        unsafe_allow_html=True,
+        '<p class="lede">Un modelo supervisado asigna a cada municipio una categoría de actividad '
+        "para el <b>año siguiente</b> — <b>Bajo</b>, <b>Medio</b> o <b>Alto</b> — con la "
+        "probabilidad de cada una.</p>", unsafe_allow_html=True,
     )
-    _artifact_notice("Política", "El agente de aprendizaje por refuerzo aún no está entrenado.")
-    c1, c2 = st.columns(2)
-    c1.markdown(
-        T.card("Qué decide el agente", "<p>Dado un conjunto de zonas candidatas, elige cuál revisar "
-               "primero. Aprende de miles de episodios simulados con datos históricos reales.</p>"),
-        unsafe_allow_html=True,
+    if service is None:
+        st.info("Aún no hay modelo entrenado. Ejecute `python -m src.models.classifier`.")
+        return
+    cm = service.classifier_metrics()
+    st.info(
+        "**Qué es y qué no es:** clasifica la *actividad sísmica histórica esperada* de cada "
+        "municipio (cuántos sismos M ≥ 2,5 y qué tan fuerte el mayor). **No predice terremotos "
+        "concretos** ni es una evaluación oficial del riesgo."
     )
-    c2.markdown(
-        T.card("Cómo sabremos que aprendió", "<ul><li>Curva de recompensa a lo largo del "
-               "entrenamiento.</li><li>Evaluación en años que no usó para aprender.</li>"
-               "<li>Comparación con una estrategia de referencia sencilla.</li></ul>"),
-        unsafe_allow_html=True,
+
+    years = service.years
+    year = st.selectbox("Año con información disponible (la categoría es para el año siguiente)",
+                        years, index=len(years) - 1, key="clase_anio")
+    table = service.classify(year)
+    counts = table["categoria"].value_counts().reindex(["Bajo", "Medio", "Alto"], fill_value=0)
+    c1, c2, c3 = st.columns(3)
+    c1.metric("Municipios en categoría Alto", int(counts["Alto"]))
+    c2.metric("Medio", int(counts["Medio"]))
+    c3.metric("Bajo", int(counts["Bajo"]))
+    with st.container(border=True):
+        st.markdown(f"**Categoría esperada en {year + 1} para cada municipio** (con datos hasta {year})")
+        show = table.assign(zona=table["zona"].map(da.pretty_name))[
+            ["zona", "categoria", "p_Alto", "p_Medio", "p_Bajo"]]
+        st.dataframe(
+            show.rename(columns={"zona": "Municipio", "categoria": "Categoría", "p_Alto": "P(Alto)",
+                                 "p_Medio": "P(Medio)", "p_Bajo": "P(Bajo)"}),
+            hide_index=True, column_config={
+                "P(Alto)": st.column_config.ProgressColumn(format="%.2f", min_value=0.0, max_value=1.0),
+                "P(Medio)": st.column_config.ProgressColumn(format="%.2f", min_value=0.0, max_value=1.0),
+                "P(Bajo)": st.column_config.ProgressColumn(format="%.2f", min_value=0.0, max_value=1.0)})
+
+    st.markdown("### ¿Qué tan bien funciona?")
+    test, base = cm["prueba"], cm["linea_base"]["prueba"]
+    m1, m2, m3 = st.columns(3)
+    m1.metric("Exactitud en prueba", f"{test['exactitud']:.1%}",
+              delta=f"{(test['exactitud'] - base['persistencia']['exactitud']) * 100:+.1f} pts vs. persistencia")
+    m2.metric("F1 macro en prueba", f"{test['f1_macro']:.3f}",
+              delta=f"{test['f1_macro'] - base['persistencia']['f1_macro']:+.3f} vs. persistencia")
+    m3.metric("Municipios-año evaluados", test["n"])
+    st.caption(
+        f"Evaluado con años que el modelo nunca vio (2023–2024). Línea base «persistencia»: suponer "
+        f"que el año siguiente será igual que este (exactitud {base['persistencia']['exactitud']:.1%}). "
+        "La mejora es **modesta**: la actividad sísmica de un municipio es muy persistente."
     )
-    st.caption("La priorización es exploratoria: ordena zonas para revisarlas, no estima daños ni predice sismos.")
+    a, b = st.columns(2)
+    with a, st.container(border=True):
+        st.markdown("**Matriz de confusión (prueba)**  \nFilas = real; columnas = predicho")
+        mat = pd.DataFrame(test["matriz_confusion"], index=[f"Real {c}" for c in test["orden_clases"]],
+                           columns=[f"Pred. {c}" for c in test["orden_clases"]])
+        st.dataframe(mat)
+        per = pd.DataFrame(test["por_clase"]).T.rename(
+            columns={"precision": "Precisión", "recall": "Recall", "f1": "F1", "soporte": "Casos"})
+        st.dataframe(per)
+    with b, st.container(border=True):
+        st.markdown("**Variables que más pesan**")
+        imp = pd.Series(cm["importancias"]).sort_values()
+        st.bar_chart(imp, horizontal=True, color=T.SERIES)
+    with st.expander("Cómo se definen las categorías y cómo se validó"):
+        th = cm["umbrales"]
+        st.markdown(
+            f"- **Actividad del año siguiente:** conteo de sismos M ≥ 2,5. **Bajo** si es "
+            f"≤ {th['count_low']:.0f}; **Medio** si es ≤ {th['count_high']:.0f}; **Alto** si es mayor. "
+            f"Si el mayor sismo del año es ≥ {th['strong_magnitude']:.1f}, la categoría sube un nivel.\n"
+            "- **Umbrales ajustados solo con años de entrenamiento** (2009–2020) y luego congelados.\n"
+            "- **División temporal:** entrenamiento ≤ 2020; validación 2021–2022; prueba 2023–2024. "
+            "Nunca aleatoria.\n"
+            f"- **Modelo elegido:** {cm['modelo_elegido']['modelo']} con variables "
+            f"«{cm['modelo_elegido']['variables']}» ({cm['modelo_elegido']['criterio']}).\n"
+            "- Comparado contra regresión logística y contra las líneas base (persistencia y clase "
+            "mayoritaria)."
+        )
+    footer()
+
+
+# ============================================================================ PRIORIZACIÓN
+def page_prio() -> None:
+    st.title("🎯 Priorización de zonas")
+    st.markdown(
+        '<p class="lede">Un agente de aprendizaje por refuerzo ordena las zonas según cuáles '
+        "conviene revisar primero, combinando la categoría esperada, la actividad reciente, la "
+        "amenaza oficial y la población.</p>", unsafe_allow_html=True,
+    )
+    if service is None:
+        st.info("Aún no hay agente entrenado. Ejecute `python -m src.reinforcement_learning.training`.")
+        return
+    ar = service.agent_results()
+    years = service.years
+    c1, c2 = st.columns([2, 1])
+    year = c1.selectbox("Año con información disponible", years, index=len(years) - 1, key="prio_anio")
+    k = c2.slider("Zonas a priorizar (K)", 3, 20, service.budget, key="prio_k",
+                  help="El agente se entrenó con K = 10; otros valores solo cambian el corte de la lista.")
+    ranking = service.prioritize(year, k=k)
+    top = ranking.head(k).assign(municipio=lambda d: d["municipio"].map(da.pretty_name))
+    with st.container(border=True):
+        st.markdown(f"**Las {k} zonas que el agente propone revisar primero** (información hasta {year})")
+        st.dataframe(
+            top[["prioridad", "municipio", "prediccion", "p_Alto", "n_m25_anio", "pga_tr475", "grupo"]]
+            .rename(columns={"prioridad": "Puesto", "municipio": "Municipio", "prediccion": "Categoría esperada",
+                             "p_Alto": "P(Alto)", "n_m25_anio": f"Sismos M≥2,5 en {year}",
+                             "pga_tr475": "PGA (g)", "grupo": "Grupo"}),
+            hide_index=True)
+    st.caption(
+        "El puntaje del agente es el valor aprendido de priorizar una zona en su estado (categoría, "
+        "actividad, amenaza, exposición). Los empates se resuelven con P(Alto) del clasificador."
+    )
+
+    st.markdown("### ¿Aprendió? ¿Es mejor que una regla sencilla?")
+    ev = ar["evaluacion"]["validacion_y_prueba"]
+    names = ["Agente de refuerzo (Q-learning)", "Persistencia (actividad del año)",
+             "Solo clasificador (categoría esperada)", "Historia (promedio anual previo)", "Aleatoria"]
+    comp = pd.DataFrame({
+        "Estrategia": names,
+        "Utilidad capturada": [ev[n]["utilidad_media"] for n in names],
+        "Cobertura de sismos": [ev[n].get("cobertura_eventos_media") for n in names],
+    })
+    cc1, cc2 = st.columns([3, 2])
+    with cc1, st.container(border=True):
+        st.markdown(f"**Comparación en años no vistos (2021–2024), con K = {ar['configuracion']['presupuesto_K']}**")
+        st.bar_chart(comp.set_index("Estrategia")["Utilidad capturada"], horizontal=True, color=T.SERIES)
+        st.caption(
+            f"Cota superior (conociendo el futuro): {ev['Óptimo (conoce el futuro; cota superior)']['utilidad_media']:.3f}. "
+            "Utilidad = parte de la actividad y de la exposición del año siguiente que queda en las zonas elegidas."
+        )
+    with cc2, st.container(border=True):
+        online = ar["evaluacion_en_linea"]["prueba"]
+        st.markdown("**Protocolo secuencial (prueba)**")
+        st.dataframe(pd.DataFrame({"Política": list(online), "Utilidad": list(online.values())}),
+                     hide_index=True)
+    st.warning(
+        "**Lectura honesta:** el agente supera con claridad a la selección aleatoria y a las reglas "
+        "fijas simples en el protocolo secuencial, y queda **a la par** de las mejores estrategias de "
+        "referencia en el ranking, **sin superar de forma consistente** a la persistencia. Con solo 4 "
+        "años de evaluación, esas diferencias no son concluyentes."
+    )
+
+    curve = pd.DataFrame(ar["curva_de_aprendizaje"])
+    with st.container(border=True):
+        st.markdown("**Curva de aprendizaje** (recompensa media por episodio durante el entrenamiento)")
+        st.line_chart(curve.set_index("episodio")["recompensa_media"], color=T.SERIES)
+        st.caption(
+            f"Parte de {curve['recompensa_media'].iloc[0]:.2f} (alta exploración) y llega a "
+            f"{curve['recompensa_media'].iloc[-1]:.2f}. Un agente sin entrenar obtiene 0 en el "
+            "protocolo secuencial."
+        )
+    with st.expander("Cómo funciona el agente: estados, acciones y recompensa"):
+        cfg = ar["configuracion"]
+        st.markdown(
+            "- **Problema:** cada año las zonas se presentan una a una y el agente decide "
+            "*priorizar* o *saltar*, con un presupuesto de K revisiones.\n"
+            "- **Estado:** categoría esperada (Bajo/Medio/Alto) × actividad del año (3 niveles) × "
+            "amenaza (3 niveles) × exposición (3 niveles) × presupuesto restante × mitad del episodio.\n"
+            "- **Acciones:** saltar o priorizar la zona presentada.\n"
+            "- **Recompensa:** al priorizar, la utilidad real de la zona en el año siguiente "
+            "(mitad parte de los sismos, mitad parte de la exposición afectada) menos un costo de "
+            f"revisión de {cfg['costo_revision']}.\n"
+            f"- **Algoritmo:** Q-learning tabular, {cfg['episodios']:,} episodios, α = {cfg['alpha']}, "
+            f"γ = {cfg['gamma']}, ε decreciente. Entrenado con {cfg['anios_entrenamiento'][0]}–"
+            f"{cfg['anios_entrenamiento'][1]}; validación {cfg['anios_validacion']}; prueba "
+            f"{cfg['anios_prueba']}.\n"
+            "- **Sesgos:** la actividad está muy concentrada (Los Santos); la recompensa no mide "
+            "vulnerabilidad de las construcciones."
+        )
     footer()
 
 
@@ -472,7 +658,7 @@ def page_glossary() -> None:
 # ---- enrutador -------------------------------------------------------------------------------
 ROUTES = {
     C.PAGE_HOME: page_home, C.PAGE_ZONE: page_zone, C.PAGE_MAP: page_map,
-    C.PAGE_COMPARE: page_compare, C.PAGE_CLASS: page_class, C.PAGE_PRIO: page_prio,
+    C.PAGE_COMPARE: page_compare, C.PAGE_GROUPS: page_groups, C.PAGE_CLASS: page_class, C.PAGE_PRIO: page_prio,
     C.PAGE_CATALOG: page_catalog, C.PAGE_SOURCES: page_sources, C.PAGE_GLOSSARY: page_glossary,
 }
 ROUTES[st.session_state["nav"]]()

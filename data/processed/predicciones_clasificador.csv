@@ -1,0 +1,1219 @@
+cod_mpio,municipio_key,anio,p_Bajo,p_Medio,p_Alto,prediccion,origen
+68001,bucaramanga,2012,0.20490,0.73060,0.06450,Medio,origen_movil
+68013,aguada,2012,0.91192,0.08514,0.00293,Bajo,origen_movil
+68020,albania,2012,0.42710,0.49445,0.07845,Medio,origen_movil
+68051,aratoca,2012,0.35527,0.39851,0.24623,Medio,origen_movil
+68077,barbosa,2012,0.29964,0.57385,0.12650,Medio,origen_movil
+68079,barichara,2012,0.63232,0.30810,0.05959,Bajo,origen_movil
+68081,barrancabermeja,2012,0.21691,0.61005,0.17304,Medio,origen_movil
+68092,betulia,2012,0.04364,0.12079,0.83557,Alto,origen_movil
+68101,bolivar,2012,0.35763,0.52900,0.11337,Medio,origen_movil
+68121,cabrera,2012,0.82203,0.13428,0.04370,Bajo,origen_movil
+68132,california,2012,0.83708,0.15275,0.01017,Bajo,origen_movil
+68147,capitanejo,2012,0.84551,0.15114,0.00336,Bajo,origen_movil
+68152,carcasi,2012,0.64744,0.32471,0.02785,Bajo,origen_movil
+68160,cepita,2012,0.21675,0.29669,0.48656,Alto,origen_movil
+68162,cerrito,2012,0.76353,0.21846,0.01802,Bajo,origen_movil
+68167,charala,2012,0.30186,0.64068,0.05746,Medio,origen_movil
+68169,charta,2012,0.79801,0.18528,0.01672,Bajo,origen_movil
+68176,chima,2012,0.78899,0.19755,0.01346,Bajo,origen_movil
+68179,chipata,2012,0.52954,0.35595,0.11451,Bajo,origen_movil
+68190,cimitarra,2012,0.22137,0.40798,0.37065,Medio,origen_movil
+68207,concepcion,2012,0.76101,0.21214,0.02685,Bajo,origen_movil
+68209,confines,2012,0.68579,0.27205,0.04216,Bajo,origen_movil
+68211,contratacion,2012,0.27320,0.59078,0.13601,Medio,origen_movil
+68217,coromoro,2012,0.69650,0.28281,0.02069,Bajo,origen_movil
+68229,curiti,2012,0.32187,0.54609,0.13204,Medio,origen_movil
+68235,el carmen de chucuri,2012,0.01872,0.04953,0.93175,Alto,origen_movil
+68245,el guacamayo,2012,0.82926,0.16200,0.00874,Bajo,origen_movil
+68250,el penon,2012,0.56734,0.39400,0.03866,Bajo,origen_movil
+68255,el playon,2012,0.03218,0.09069,0.87713,Alto,origen_movil
+68264,encino,2012,0.82802,0.16716,0.00482,Bajo,origen_movil
+68266,enciso,2012,0.88377,0.11497,0.00126,Bajo,origen_movil
+68271,florian,2012,0.64017,0.35167,0.00816,Bajo,origen_movil
+68276,floridablanca,2012,0.22084,0.69475,0.08441,Medio,origen_movil
+68296,galan,2012,0.25615,0.59030,0.15354,Medio,origen_movil
+68298,gambita,2012,0.52879,0.42215,0.04906,Bajo,origen_movil
+68307,giron,2012,0.18287,0.66789,0.14923,Medio,origen_movil
+68318,guaca,2012,0.31236,0.47002,0.21762,Medio,origen_movil
+68320,guadalupe,2012,0.86859,0.12749,0.00392,Bajo,origen_movil
+68322,guapota,2012,0.83198,0.16249,0.00553,Bajo,origen_movil
+68324,guavata,2012,0.56440,0.42473,0.01087,Bajo,origen_movil
+68327,guepsa,2012,0.66375,0.29918,0.03707,Bajo,origen_movil
+68344,hato,2012,0.35890,0.41878,0.22232,Medio,origen_movil
+68368,jesus maria,2012,0.49747,0.46946,0.03308,Bajo,origen_movil
+68370,jordan,2012,0.09751,0.18001,0.72248,Alto,origen_movil
+68377,la belleza,2012,0.43709,0.42517,0.13773,Bajo,origen_movil
+68385,landazuri,2012,0.27134,0.47026,0.25840,Medio,origen_movil
+68397,la paz,2012,0.32607,0.56481,0.10912,Medio,origen_movil
+68406,lebrija,2012,0.13881,0.61585,0.24535,Medio,origen_movil
+68418,los santos,2012,0.01117,0.03527,0.95356,Alto,origen_movil
+68425,macaravita,2012,0.89533,0.10284,0.00183,Bajo,origen_movil
+68432,malaga,2012,0.46324,0.47514,0.06161,Medio,origen_movil
+68444,matanza,2012,0.42021,0.34412,0.23567,Bajo,origen_movil
+68464,mogotes,2012,0.38728,0.42349,0.18923,Medio,origen_movil
+68468,molagavita,2012,0.66565,0.30099,0.03336,Bajo,origen_movil
+68498,ocamonte,2012,0.47449,0.47738,0.04813,Medio,origen_movil
+68500,oiba,2012,0.43690,0.48928,0.07382,Medio,origen_movil
+68502,onzaga,2012,0.90693,0.09189,0.00118,Bajo,origen_movil
+68522,palmar,2012,0.84727,0.12981,0.02292,Bajo,origen_movil
+68524,palmas del socorro,2012,0.88909,0.10151,0.00940,Bajo,origen_movil
+68533,paramo,2012,0.58507,0.36913,0.04580,Bajo,origen_movil
+68547,piedecuesta,2012,0.11980,0.36275,0.51745,Alto,origen_movil
+68549,pinchote,2012,0.74053,0.23604,0.02342,Bajo,origen_movil
+68572,puente nacional,2012,0.31056,0.61304,0.07640,Medio,origen_movil
+68573,puerto parra,2012,0.18215,0.37011,0.44774,Alto,origen_movil
+68575,puerto wilches,2012,0.23674,0.40551,0.35775,Medio,origen_movil
+68615,rionegro,2012,0.15829,0.30570,0.53601,Alto,origen_movil
+68655,sabana de torres,2012,0.13382,0.34985,0.51633,Alto,origen_movil
+68669,san andres,2012,0.52488,0.29368,0.18144,Bajo,origen_movil
+68673,san benito,2012,0.80486,0.18263,0.01251,Bajo,origen_movil
+68679,san gil,2012,0.24804,0.66214,0.08983,Medio,origen_movil
+68682,san joaquin,2012,0.94074,0.05782,0.00144,Bajo,origen_movil
+68684,san jose de miranda,2012,0.91121,0.08753,0.00126,Bajo,origen_movil
+68686,san miguel,2012,0.89844,0.10061,0.00095,Bajo,origen_movil
+68689,san vicente de chucuri,2012,0.08119,0.25403,0.66478,Alto,origen_movil
+68705,santa barbara,2012,0.42341,0.26798,0.30860,Bajo,origen_movil
+68720,santa helena del opon,2012,0.05610,0.13644,0.80746,Alto,origen_movil
+68745,simacota,2012,0.26847,0.62390,0.10763,Medio,origen_movil
+68755,socorro,2012,0.56466,0.38491,0.05042,Bajo,origen_movil
+68770,suaita,2012,0.35885,0.51601,0.12513,Medio,origen_movil
+68773,sucre,2012,0.43427,0.54706,0.01867,Medio,origen_movil
+68780,surata,2012,0.48325,0.34265,0.17410,Bajo,origen_movil
+68820,tona,2012,0.40409,0.48829,0.10762,Medio,origen_movil
+68855,valle de san jose,2012,0.60498,0.35388,0.04115,Bajo,origen_movil
+68861,velez,2012,0.19345,0.41767,0.38888,Medio,origen_movil
+68867,vetas,2012,0.84776,0.13335,0.01889,Bajo,origen_movil
+68872,villanueva,2012,0.16525,0.48396,0.35078,Medio,origen_movil
+68895,zapatoca,2012,0.01196,0.05303,0.93501,Alto,origen_movil
+68001,bucaramanga,2013,0.27783,0.64758,0.07459,Medio,origen_movil
+68013,aguada,2013,0.90824,0.09025,0.00151,Bajo,origen_movil
+68020,albania,2013,0.42948,0.47377,0.09676,Medio,origen_movil
+68051,aratoca,2013,0.25107,0.56737,0.18156,Medio,origen_movil
+68077,barbosa,2013,0.25089,0.65388,0.09523,Medio,origen_movil
+68079,barichara,2013,0.70571,0.24535,0.04893,Bajo,origen_movil
+68081,barrancabermeja,2013,0.18411,0.63951,0.17637,Medio,origen_movil
+68092,betulia,2013,0.01614,0.10203,0.88183,Alto,origen_movil
+68101,bolivar,2013,0.35451,0.55692,0.08857,Medio,origen_movil
+68121,cabrera,2013,0.85213,0.12090,0.02697,Bajo,origen_movil
+68132,california,2013,0.87851,0.11303,0.00847,Bajo,origen_movil
+68147,capitanejo,2013,0.85210,0.14425,0.00365,Bajo,origen_movil
+68152,carcasi,2013,0.83307,0.15843,0.00850,Bajo,origen_movil
+68160,cepita,2013,0.33167,0.38999,0.27834,Medio,origen_movil
+68162,cerrito,2013,0.78719,0.20276,0.01005,Bajo,origen_movil
+68167,charala,2013,0.38820,0.55854,0.05327,Medio,origen_movil
+68169,charta,2013,0.84081,0.14767,0.01152,Bajo,origen_movil
+68176,chima,2013,0.86682,0.12641,0.00677,Bajo,origen_movil
+68179,chipata,2013,0.32213,0.55546,0.12241,Medio,origen_movil
+68190,cimitarra,2013,0.15867,0.41066,0.43067,Alto,origen_movil
+68207,concepcion,2013,0.78428,0.18877,0.02696,Bajo,origen_movil
+68209,confines,2013,0.66369,0.31228,0.02403,Bajo,origen_movil
+68211,contratacion,2013,0.18183,0.50297,0.31520,Medio,origen_movil
+68217,coromoro,2013,0.50799,0.47150,0.02051,Bajo,origen_movil
+68229,curiti,2013,0.43160,0.49987,0.06853,Medio,origen_movil
+68235,el carmen de chucuri,2013,0.01235,0.06510,0.92255,Alto,origen_movil
+68245,el guacamayo,2013,0.80184,0.17592,0.02224,Bajo,origen_movil
+68250,el penon,2013,0.27245,0.62383,0.10373,Medio,origen_movil
+68255,el playon,2013,0.01080,0.04454,0.94466,Alto,origen_movil
+68264,encino,2013,0.53056,0.45557,0.01386,Bajo,origen_movil
+68266,enciso,2013,0.90835,0.08677,0.00487,Bajo,origen_movil
+68271,florian,2013,0.61903,0.36931,0.01166,Bajo,origen_movil
+68276,floridablanca,2013,0.33570,0.58552,0.07878,Medio,origen_movil
+68296,galan,2013,0.21489,0.57029,0.21482,Medio,origen_movil
+68298,gambita,2013,0.60325,0.37984,0.01691,Bajo,origen_movil
+68307,giron,2013,0.26189,0.55522,0.18289,Medio,origen_movil
+68318,guaca,2013,0.53937,0.31073,0.14990,Bajo,origen_movil
+68320,guadalupe,2013,0.88358,0.10112,0.01530,Bajo,origen_movil
+68322,guapota,2013,0.87308,0.12417,0.00275,Bajo,origen_movil
+68324,guavata,2013,0.67319,0.31142,0.01540,Bajo,origen_movil
+68327,guepsa,2013,0.65385,0.32734,0.01881,Bajo,origen_movil
+68344,hato,2013,0.12797,0.50057,0.37146,Medio,origen_movil
+68368,jesus maria,2013,0.41427,0.55952,0.02621,Medio,origen_movil
+68370,jordan,2013,0.11980,0.37240,0.50780,Alto,origen_movil
+68377,la belleza,2013,0.34711,0.54104,0.11184,Medio,origen_movil
+68385,landazuri,2013,0.17026,0.60965,0.22008,Medio,origen_movil
+68397,la paz,2013,0.19310,0.61634,0.19056,Medio,origen_movil
+68406,lebrija,2013,0.16061,0.56509,0.27430,Medio,origen_movil
+68418,los santos,2013,0.01852,0.06329,0.91819,Alto,origen_movil
+68425,macaravita,2013,0.87644,0.11305,0.01052,Bajo,origen_movil
+68432,malaga,2013,0.60983,0.36989,0.02028,Bajo,origen_movil
+68444,matanza,2013,0.50912,0.36479,0.12610,Bajo,origen_movil
+68464,mogotes,2013,0.30006,0.60092,0.09902,Medio,origen_movil
+68468,molagavita,2013,0.71464,0.24128,0.04408,Bajo,origen_movil
+68498,ocamonte,2013,0.41382,0.51894,0.06724,Medio,origen_movil
+68500,oiba,2013,0.29709,0.60302,0.09990,Medio,origen_movil
+68502,onzaga,2013,0.88126,0.11800,0.00074,Bajo,origen_movil
+68522,palmar,2013,0.88337,0.10546,0.01117,Bajo,origen_movil
+68524,palmas del socorro,2013,0.88253,0.10943,0.00805,Bajo,origen_movil
+68533,paramo,2013,0.73998,0.24671,0.01331,Bajo,origen_movil
+68547,piedecuesta,2013,0.13539,0.46363,0.40099,Medio,origen_movil
+68549,pinchote,2013,0.81282,0.17762,0.00956,Bajo,origen_movil
+68572,puente nacional,2013,0.22967,0.68403,0.08629,Medio,origen_movil
+68573,puerto parra,2013,0.10648,0.47347,0.42005,Medio,origen_movil
+68575,puerto wilches,2013,0.12054,0.38331,0.49615,Alto,origen_movil
+68615,rionegro,2013,0.17073,0.41517,0.41409,Medio,origen_movil
+68655,sabana de torres,2013,0.06184,0.26779,0.67036,Alto,origen_movil
+68669,san andres,2013,0.55231,0.30299,0.14470,Bajo,origen_movil
+68673,san benito,2013,0.86254,0.11620,0.02126,Bajo,origen_movil
+68679,san gil,2013,0.34686,0.57737,0.07576,Medio,origen_movil
+68682,san joaquin,2013,0.61049,0.36107,0.02844,Bajo,origen_movil
+68684,san jose de miranda,2013,0.91906,0.07768,0.00326,Bajo,origen_movil
+68686,san miguel,2013,0.92451,0.07488,0.00061,Bajo,origen_movil
+68689,san vicente de chucuri,2013,0.04412,0.18263,0.77325,Alto,origen_movil
+68705,santa barbara,2013,0.43845,0.31372,0.24783,Bajo,origen_movil
+68720,santa helena del opon,2013,0.02077,0.04275,0.93648,Alto,origen_movil
+68745,simacota,2013,0.24150,0.63849,0.12001,Medio,origen_movil
+68755,socorro,2013,0.38750,0.55168,0.06081,Medio,origen_movil
+68770,suaita,2013,0.31943,0.53597,0.14460,Medio,origen_movil
+68773,sucre,2013,0.45480,0.51838,0.02682,Medio,origen_movil
+68780,surata,2013,0.54150,0.31596,0.14254,Bajo,origen_movil
+68820,tona,2013,0.45765,0.40621,0.13615,Bajo,origen_movil
+68855,valle de san jose,2013,0.61107,0.35310,0.03583,Bajo,origen_movil
+68861,velez,2013,0.18671,0.55964,0.25365,Medio,origen_movil
+68867,vetas,2013,0.86251,0.11203,0.02547,Bajo,origen_movil
+68872,villanueva,2013,0.17009,0.51458,0.31533,Medio,origen_movil
+68895,zapatoca,2013,0.01196,0.08561,0.90243,Alto,origen_movil
+68001,bucaramanga,2014,0.27229,0.68016,0.04755,Medio,origen_movil
+68013,aguada,2014,0.84540,0.14021,0.01439,Bajo,origen_movil
+68020,albania,2014,0.34571,0.59531,0.05898,Medio,origen_movil
+68051,aratoca,2014,0.24881,0.62588,0.12531,Medio,origen_movil
+68077,barbosa,2014,0.32851,0.60930,0.06219,Medio,origen_movil
+68079,barichara,2014,0.70154,0.27378,0.02468,Bajo,origen_movil
+68081,barrancabermeja,2014,0.26402,0.50036,0.23562,Medio,origen_movil
+68092,betulia,2014,0.02041,0.07610,0.90349,Alto,origen_movil
+68101,bolivar,2014,0.26859,0.67459,0.05682,Medio,origen_movil
+68121,cabrera,2014,0.85178,0.12290,0.02532,Bajo,origen_movil
+68132,california,2014,0.89028,0.10407,0.00565,Bajo,origen_movil
+68147,capitanejo,2014,0.90704,0.08893,0.00403,Bajo,origen_movil
+68152,carcasi,2014,0.89186,0.10227,0.00588,Bajo,origen_movil
+68160,cepita,2014,0.44214,0.30909,0.24877,Bajo,origen_movil
+68162,cerrito,2014,0.81401,0.17325,0.01274,Bajo,origen_movil
+68167,charala,2014,0.53273,0.44021,0.02706,Bajo,origen_movil
+68169,charta,2014,0.81281,0.17310,0.01409,Bajo,origen_movil
+68176,chima,2014,0.90726,0.07692,0.01582,Bajo,origen_movil
+68179,chipata,2014,0.25340,0.66690,0.07970,Medio,origen_movil
+68190,cimitarra,2014,0.11182,0.36426,0.52392,Alto,origen_movil
+68207,concepcion,2014,0.86273,0.13158,0.00569,Bajo,origen_movil
+68209,confines,2014,0.71880,0.26508,0.01612,Bajo,origen_movil
+68211,contratacion,2014,0.47133,0.37355,0.15511,Bajo,origen_movil
+68217,coromoro,2014,0.74502,0.24090,0.01408,Bajo,origen_movil
+68229,curiti,2014,0.50176,0.44847,0.04976,Bajo,origen_movil
+68235,el carmen de chucuri,2014,0.00623,0.03685,0.95693,Alto,origen_movil
+68245,el guacamayo,2014,0.85042,0.11964,0.02994,Bajo,origen_movil
+68250,el penon,2014,0.44049,0.46578,0.09373,Medio,origen_movil
+68255,el playon,2014,0.00809,0.03849,0.95342,Alto,origen_movil
+68264,encino,2014,0.77891,0.20583,0.01527,Bajo,origen_movil
+68266,enciso,2014,0.88730,0.10880,0.00390,Bajo,origen_movil
+68271,florian,2014,0.71459,0.27812,0.00729,Bajo,origen_movil
+68276,floridablanca,2014,0.44155,0.49079,0.06766,Medio,origen_movil
+68296,galan,2014,0.20534,0.61315,0.18152,Medio,origen_movil
+68298,gambita,2014,0.67577,0.29161,0.03263,Bajo,origen_movil
+68307,giron,2014,0.36713,0.52105,0.11182,Medio,origen_movil
+68318,guaca,2014,0.61725,0.30372,0.07903,Bajo,origen_movil
+68320,guadalupe,2014,0.91620,0.08211,0.00169,Bajo,origen_movil
+68322,guapota,2014,0.89280,0.09840,0.00880,Bajo,origen_movil
+68324,guavata,2014,0.70304,0.28406,0.01290,Bajo,origen_movil
+68327,guepsa,2014,0.68730,0.29383,0.01887,Bajo,origen_movil
+68344,hato,2014,0.31048,0.29631,0.39321,Alto,origen_movil
+68368,jesus maria,2014,0.51043,0.46793,0.02163,Bajo,origen_movil
+68370,jordan,2014,0.11881,0.41625,0.46494,Alto,origen_movil
+68377,la belleza,2014,0.25063,0.66453,0.08483,Medio,origen_movil
+68385,landazuri,2014,0.16719,0.63220,0.20061,Medio,origen_movil
+68397,la paz,2014,0.21086,0.67046,0.11868,Medio,origen_movil
+68406,lebrija,2014,0.17878,0.62978,0.19144,Medio,origen_movil
+68418,los santos,2014,0.01548,0.07337,0.91116,Alto,origen_movil
+68425,macaravita,2014,0.93016,0.06581,0.00403,Bajo,origen_movil
+68432,malaga,2014,0.64687,0.33244,0.02069,Bajo,origen_movil
+68444,matanza,2014,0.55347,0.28633,0.16020,Bajo,origen_movil
+68464,mogotes,2014,0.47977,0.44793,0.07230,Bajo,origen_movil
+68468,molagavita,2014,0.77663,0.20012,0.02325,Bajo,origen_movil
+68498,ocamonte,2014,0.55849,0.38148,0.06003,Bajo,origen_movil
+68500,oiba,2014,0.39649,0.53561,0.06791,Medio,origen_movil
+68502,onzaga,2014,0.85094,0.14428,0.00478,Bajo,origen_movil
+68522,palmar,2014,0.88231,0.10029,0.01739,Bajo,origen_movil
+68524,palmas del socorro,2014,0.90514,0.08809,0.00676,Bajo,origen_movil
+68533,paramo,2014,0.80854,0.18352,0.00794,Bajo,origen_movil
+68547,piedecuesta,2014,0.26616,0.37499,0.35885,Medio,origen_movil
+68549,pinchote,2014,0.77842,0.20414,0.01745,Bajo,origen_movil
+68572,puente nacional,2014,0.27637,0.66050,0.06312,Medio,origen_movil
+68573,puerto parra,2014,0.13187,0.44320,0.42493,Medio,origen_movil
+68575,puerto wilches,2014,0.18241,0.42816,0.38942,Medio,origen_movil
+68615,rionegro,2014,0.14898,0.42351,0.42751,Alto,origen_movil
+68655,sabana de torres,2014,0.11349,0.46305,0.42346,Medio,origen_movil
+68669,san andres,2014,0.60056,0.28978,0.10966,Bajo,origen_movil
+68673,san benito,2014,0.91115,0.08273,0.00612,Bajo,origen_movil
+68679,san gil,2014,0.43943,0.48973,0.07084,Medio,origen_movil
+68682,san joaquin,2014,0.82058,0.16915,0.01027,Bajo,origen_movil
+68684,san jose de miranda,2014,0.84574,0.15237,0.00189,Bajo,origen_movil
+68686,san miguel,2014,0.87593,0.10686,0.01721,Bajo,origen_movil
+68689,san vicente de chucuri,2014,0.04714,0.13941,0.81345,Alto,origen_movil
+68705,santa barbara,2014,0.50102,0.28709,0.21189,Bajo,origen_movil
+68720,santa helena del opon,2014,0.02690,0.09114,0.88196,Alto,origen_movil
+68745,simacota,2014,0.36939,0.51582,0.11479,Medio,origen_movil
+68755,socorro,2014,0.49576,0.44008,0.06417,Bajo,origen_movil
+68770,suaita,2014,0.37775,0.52933,0.09292,Medio,origen_movil
+68773,sucre,2014,0.51815,0.46176,0.02009,Bajo,origen_movil
+68780,surata,2014,0.60350,0.27286,0.12364,Bajo,origen_movil
+68820,tona,2014,0.58040,0.35620,0.06340,Bajo,origen_movil
+68855,valle de san jose,2014,0.74199,0.24452,0.01349,Bajo,origen_movil
+68861,velez,2014,0.20720,0.59533,0.19748,Medio,origen_movil
+68867,vetas,2014,0.91532,0.07360,0.01109,Bajo,origen_movil
+68872,villanueva,2014,0.15675,0.61715,0.22610,Medio,origen_movil
+68895,zapatoca,2014,0.01630,0.07248,0.91122,Alto,origen_movil
+68001,bucaramanga,2015,0.34575,0.53292,0.12134,Medio,origen_movil
+68013,aguada,2015,0.89368,0.08756,0.01877,Bajo,origen_movil
+68020,albania,2015,0.48221,0.47003,0.04776,Bajo,origen_movil
+68051,aratoca,2015,0.26188,0.66832,0.06979,Medio,origen_movil
+68077,barbosa,2015,0.38370,0.56085,0.05545,Medio,origen_movil
+68079,barichara,2015,0.68915,0.27704,0.03381,Bajo,origen_movil
+68081,barrancabermeja,2015,0.20700,0.66023,0.13277,Medio,origen_movil
+68092,betulia,2015,0.01620,0.06806,0.91574,Alto,origen_movil
+68101,bolivar,2015,0.35085,0.60436,0.04479,Medio,origen_movil
+68121,cabrera,2015,0.89659,0.08628,0.01712,Bajo,origen_movil
+68132,california,2015,0.90689,0.07465,0.01846,Bajo,origen_movil
+68147,capitanejo,2015,0.88182,0.09155,0.02662,Bajo,origen_movil
+68152,carcasi,2015,0.91744,0.06758,0.01499,Bajo,origen_movil
+68160,cepita,2015,0.23914,0.41401,0.34685,Medio,origen_movil
+68162,cerrito,2015,0.80850,0.14525,0.04625,Bajo,origen_movil
+68167,charala,2015,0.34104,0.60627,0.05268,Medio,origen_movil
+68169,charta,2015,0.86345,0.12225,0.01430,Bajo,origen_movil
+68176,chima,2015,0.87658,0.10095,0.02247,Bajo,origen_movil
+68179,chipata,2015,0.48419,0.41936,0.09644,Bajo,origen_movil
+68190,cimitarra,2015,0.12669,0.56396,0.30935,Medio,origen_movil
+68207,concepcion,2015,0.86532,0.11127,0.02341,Bajo,origen_movil
+68209,confines,2015,0.74760,0.21425,0.03816,Bajo,origen_movil
+68211,contratacion,2015,0.34548,0.48795,0.16657,Medio,origen_movil
+68217,coromoro,2015,0.75790,0.22769,0.01441,Bajo,origen_movil
+68229,curiti,2015,0.53975,0.42016,0.04009,Bajo,origen_movil
+68235,el carmen de chucuri,2015,0.00577,0.04617,0.94806,Alto,origen_movil
+68245,el guacamayo,2015,0.85804,0.11583,0.02613,Bajo,origen_movil
+68250,el penon,2015,0.53062,0.44417,0.02521,Bajo,origen_movil
+68255,el playon,2015,0.01676,0.03909,0.94415,Alto,origen_movil
+68264,encino,2015,0.71419,0.27334,0.01246,Bajo,origen_movil
+68266,enciso,2015,0.90067,0.09140,0.00793,Bajo,origen_movil
+68271,florian,2015,0.53339,0.42854,0.03808,Bajo,origen_movil
+68276,floridablanca,2015,0.54591,0.41314,0.04095,Bajo,origen_movil
+68296,galan,2015,0.22051,0.57659,0.20290,Medio,origen_movil
+68298,gambita,2015,0.71612,0.27315,0.01072,Bajo,origen_movil
+68307,giron,2015,0.44580,0.49236,0.06185,Medio,origen_movil
+68318,guaca,2015,0.61661,0.32017,0.06323,Bajo,origen_movil
+68320,guadalupe,2015,0.81288,0.11952,0.06759,Bajo,origen_movil
+68322,guapota,2015,0.52070,0.40754,0.07176,Bajo,origen_movil
+68324,guavata,2015,0.70570,0.28202,0.01228,Bajo,origen_movil
+68327,guepsa,2015,0.71874,0.25861,0.02265,Bajo,origen_movil
+68344,hato,2015,0.19640,0.54842,0.25518,Medio,origen_movil
+68368,jesus maria,2015,0.57302,0.41290,0.01408,Bajo,origen_movil
+68370,jordan,2015,0.30351,0.30069,0.39580,Alto,origen_movil
+68377,la belleza,2015,0.28809,0.61321,0.09869,Medio,origen_movil
+68385,landazuri,2015,0.25627,0.56360,0.18014,Medio,origen_movil
+68397,la paz,2015,0.44812,0.45217,0.09970,Medio,origen_movil
+68406,lebrija,2015,0.17278,0.70105,0.12616,Medio,origen_movil
+68418,los santos,2015,0.00781,0.05342,0.93877,Alto,origen_movil
+68425,macaravita,2015,0.89952,0.07021,0.03027,Bajo,origen_movil
+68432,malaga,2015,0.65453,0.31424,0.03122,Bajo,origen_movil
+68444,matanza,2015,0.66032,0.26893,0.07075,Bajo,origen_movil
+68464,mogotes,2015,0.50353,0.43971,0.05675,Bajo,origen_movil
+68468,molagavita,2015,0.77687,0.20028,0.02285,Bajo,origen_movil
+68498,ocamonte,2015,0.44221,0.51389,0.04390,Medio,origen_movil
+68500,oiba,2015,0.51764,0.43806,0.04430,Bajo,origen_movil
+68502,onzaga,2015,0.86149,0.13528,0.00323,Bajo,origen_movil
+68522,palmar,2015,0.74538,0.12674,0.12788,Bajo,origen_movil
+68524,palmas del socorro,2015,0.46971,0.41459,0.11570,Bajo,origen_movil
+68533,paramo,2015,0.77847,0.19602,0.02551,Bajo,origen_movil
+68547,piedecuesta,2015,0.18593,0.43641,0.37766,Medio,origen_movil
+68549,pinchote,2015,0.80872,0.16975,0.02153,Bajo,origen_movil
+68572,puente nacional,2015,0.37295,0.58077,0.04628,Medio,origen_movil
+68573,puerto parra,2015,0.12718,0.55638,0.31644,Medio,origen_movil
+68575,puerto wilches,2015,0.15925,0.60139,0.23936,Medio,origen_movil
+68615,rionegro,2015,0.27469,0.40383,0.32148,Medio,origen_movil
+68655,sabana de torres,2015,0.14896,0.54472,0.30632,Medio,origen_movil
+68669,san andres,2015,0.63777,0.30638,0.05586,Bajo,origen_movil
+68673,san benito,2015,0.89604,0.08961,0.01435,Bajo,origen_movil
+68679,san gil,2015,0.53789,0.41873,0.04338,Bajo,origen_movil
+68682,san joaquin,2015,0.84639,0.11947,0.03414,Bajo,origen_movil
+68684,san jose de miranda,2015,0.91482,0.05475,0.03043,Bajo,origen_movil
+68686,san miguel,2015,0.91403,0.06432,0.02164,Bajo,origen_movil
+68689,san vicente de chucuri,2015,0.08006,0.19477,0.72517,Alto,origen_movil
+68705,santa barbara,2015,0.42027,0.40499,0.17473,Bajo,origen_movil
+68720,santa helena del opon,2015,0.01783,0.07214,0.91003,Alto,origen_movil
+68745,simacota,2015,0.27175,0.61494,0.11331,Medio,origen_movil
+68755,socorro,2015,0.29439,0.64270,0.06292,Medio,origen_movil
+68770,suaita,2015,0.49094,0.45723,0.05183,Bajo,origen_movil
+68773,sucre,2015,0.44159,0.50322,0.05519,Medio,origen_movil
+68780,surata,2015,0.64430,0.27993,0.07577,Bajo,origen_movil
+68820,tona,2015,0.63054,0.30865,0.06081,Bajo,origen_movil
+68855,valle de san jose,2015,0.67845,0.29092,0.03064,Bajo,origen_movil
+68861,velez,2015,0.16243,0.61400,0.22358,Medio,origen_movil
+68867,vetas,2015,0.84242,0.09949,0.05809,Bajo,origen_movil
+68872,villanueva,2015,0.38372,0.42801,0.18827,Medio,origen_movil
+68895,zapatoca,2015,0.00738,0.03668,0.95593,Alto,origen_movil
+68001,bucaramanga,2016,0.35535,0.53221,0.11245,Medio,origen_movil
+68013,aguada,2016,0.84442,0.14222,0.01336,Bajo,origen_movil
+68020,albania,2016,0.40518,0.51830,0.07653,Medio,origen_movil
+68051,aratoca,2016,0.27440,0.59302,0.13258,Medio,origen_movil
+68077,barbosa,2016,0.46792,0.48702,0.04507,Medio,origen_movil
+68079,barichara,2016,0.72768,0.23533,0.03699,Bajo,origen_movil
+68081,barrancabermeja,2016,0.26414,0.52663,0.20923,Medio,origen_movil
+68092,betulia,2016,0.00623,0.03773,0.95604,Alto,origen_movil
+68101,bolivar,2016,0.35478,0.56635,0.07887,Medio,origen_movil
+68121,cabrera,2016,0.82702,0.13127,0.04171,Bajo,origen_movil
+68132,california,2016,0.89749,0.09202,0.01049,Bajo,origen_movil
+68147,capitanejo,2016,0.88435,0.09757,0.01809,Bajo,origen_movil
+68152,carcasi,2016,0.86426,0.13133,0.00441,Bajo,origen_movil
+68160,cepita,2016,0.24127,0.37146,0.38727,Alto,origen_movil
+68162,cerrito,2016,0.83193,0.15335,0.01472,Bajo,origen_movil
+68167,charala,2016,0.48754,0.47379,0.03866,Bajo,origen_movil
+68169,charta,2016,0.82009,0.16305,0.01685,Bajo,origen_movil
+68176,chima,2016,0.47562,0.47669,0.04769,Medio,origen_movil
+68179,chipata,2016,0.33149,0.54602,0.12249,Medio,origen_movil
+68190,cimitarra,2016,0.19623,0.49985,0.30393,Medio,origen_movil
+68207,concepcion,2016,0.85206,0.12674,0.02120,Bajo,origen_movil
+68209,confines,2016,0.74770,0.21317,0.03912,Bajo,origen_movil
+68211,contratacion,2016,0.38605,0.46109,0.15286,Medio,origen_movil
+68217,coromoro,2016,0.79797,0.19157,0.01046,Bajo,origen_movil
+68229,curiti,2016,0.60519,0.35356,0.04126,Bajo,origen_movil
+68235,el carmen de chucuri,2016,0.00948,0.05810,0.93242,Alto,origen_movil
+68245,el guacamayo,2016,0.80480,0.15591,0.03929,Bajo,origen_movil
+68250,el penon,2016,0.33001,0.59380,0.07619,Medio,origen_movil
+68255,el playon,2016,0.01940,0.05636,0.92423,Alto,origen_movil
+68264,encino,2016,0.75544,0.21544,0.02911,Bajo,origen_movil
+68266,enciso,2016,0.88851,0.08991,0.02157,Bajo,origen_movil
+68271,florian,2016,0.49949,0.47218,0.02833,Bajo,origen_movil
+68276,floridablanca,2016,0.59390,0.37696,0.02914,Bajo,origen_movil
+68296,galan,2016,0.43832,0.42854,0.13314,Bajo,origen_movil
+68298,gambita,2016,0.66255,0.32372,0.01374,Bajo,origen_movil
+68307,giron,2016,0.29890,0.58871,0.11239,Medio,origen_movil
+68318,guaca,2016,0.54917,0.38880,0.06203,Bajo,origen_movil
+68320,guadalupe,2016,0.81853,0.16260,0.01886,Bajo,origen_movil
+68322,guapota,2016,0.44734,0.42452,0.12813,Bajo,origen_movil
+68324,guavata,2016,0.66819,0.32357,0.00824,Bajo,origen_movil
+68327,guepsa,2016,0.79297,0.18784,0.01919,Bajo,origen_movil
+68344,hato,2016,0.19181,0.58965,0.21854,Medio,origen_movil
+68368,jesus maria,2016,0.61397,0.37421,0.01182,Bajo,origen_movil
+68370,jordan,2016,0.37933,0.29884,0.32183,Bajo,origen_movil
+68377,la belleza,2016,0.33230,0.59138,0.07632,Medio,origen_movil
+68385,landazuri,2016,0.33216,0.57049,0.09734,Medio,origen_movil
+68397,la paz,2016,0.42779,0.48046,0.09175,Medio,origen_movil
+68406,lebrija,2016,0.19096,0.61880,0.19024,Medio,origen_movil
+68418,los santos,2016,0.00897,0.03931,0.95172,Alto,origen_movil
+68425,macaravita,2016,0.87935,0.08339,0.03726,Bajo,origen_movil
+68432,malaga,2016,0.73620,0.24273,0.02107,Bajo,origen_movil
+68444,matanza,2016,0.54262,0.36518,0.09220,Bajo,origen_movil
+68464,mogotes,2016,0.47787,0.44971,0.07241,Bajo,origen_movil
+68468,molagavita,2016,0.60791,0.35431,0.03777,Bajo,origen_movil
+68498,ocamonte,2016,0.64791,0.32195,0.03014,Bajo,origen_movil
+68500,oiba,2016,0.38012,0.55436,0.06552,Medio,origen_movil
+68502,onzaga,2016,0.84393,0.14428,0.01178,Bajo,origen_movil
+68522,palmar,2016,0.79140,0.13331,0.07529,Bajo,origen_movil
+68524,palmas del socorro,2016,0.48009,0.37825,0.14166,Bajo,origen_movil
+68533,paramo,2016,0.74489,0.22409,0.03102,Bajo,origen_movil
+68547,piedecuesta,2016,0.16474,0.49529,0.33997,Medio,origen_movil
+68549,pinchote,2016,0.78837,0.18640,0.02523,Bajo,origen_movil
+68572,puente nacional,2016,0.46013,0.51565,0.02422,Medio,origen_movil
+68573,puerto parra,2016,0.15539,0.54582,0.29879,Medio,origen_movil
+68575,puerto wilches,2016,0.15286,0.53886,0.30828,Medio,origen_movil
+68615,rionegro,2016,0.22259,0.41822,0.35919,Medio,origen_movil
+68655,sabana de torres,2016,0.12884,0.38435,0.48681,Alto,origen_movil
+68669,san andres,2016,0.44117,0.36800,0.19083,Bajo,origen_movil
+68673,san benito,2016,0.49678,0.43733,0.06589,Bajo,origen_movil
+68679,san gil,2016,0.58022,0.39121,0.02857,Bajo,origen_movil
+68682,san joaquin,2016,0.57659,0.32387,0.09954,Bajo,origen_movil
+68684,san jose de miranda,2016,0.89095,0.08404,0.02501,Bajo,origen_movil
+68686,san miguel,2016,0.87057,0.09941,0.03003,Bajo,origen_movil
+68689,san vicente de chucuri,2016,0.07440,0.28245,0.64315,Alto,origen_movil
+68705,santa barbara,2016,0.41872,0.36931,0.21197,Bajo,origen_movil
+68720,santa helena del opon,2016,0.02733,0.03557,0.93710,Alto,origen_movil
+68745,simacota,2016,0.27989,0.60375,0.11636,Medio,origen_movil
+68755,socorro,2016,0.52549,0.42851,0.04600,Bajo,origen_movil
+68770,suaita,2016,0.38601,0.52561,0.08838,Medio,origen_movil
+68773,sucre,2016,0.45944,0.51456,0.02600,Medio,origen_movil
+68780,surata,2016,0.59443,0.33202,0.07355,Bajo,origen_movil
+68820,tona,2016,0.65509,0.30185,0.04306,Bajo,origen_movil
+68855,valle de san jose,2016,0.68599,0.29271,0.02130,Bajo,origen_movil
+68861,velez,2016,0.21744,0.47311,0.30946,Medio,origen_movil
+68867,vetas,2016,0.87516,0.11225,0.01259,Bajo,origen_movil
+68872,villanueva,2016,0.50043,0.38896,0.11061,Bajo,origen_movil
+68895,zapatoca,2016,0.00597,0.04520,0.94883,Alto,origen_movil
+68001,bucaramanga,2017,0.48973,0.43739,0.07288,Bajo,origen_movil
+68013,aguada,2017,0.85194,0.13189,0.01617,Bajo,origen_movil
+68020,albania,2017,0.36610,0.56085,0.07305,Medio,origen_movil
+68051,aratoca,2017,0.41239,0.48571,0.10191,Medio,origen_movil
+68077,barbosa,2017,0.42250,0.44785,0.12965,Medio,origen_movil
+68079,barichara,2017,0.72690,0.23442,0.03869,Bajo,origen_movil
+68081,barrancabermeja,2017,0.23423,0.43471,0.33105,Medio,origen_movil
+68092,betulia,2017,0.00905,0.02919,0.96176,Alto,origen_movil
+68101,bolivar,2017,0.28178,0.67292,0.04530,Medio,origen_movil
+68121,cabrera,2017,0.80876,0.14359,0.04765,Bajo,origen_movil
+68132,california,2017,0.50588,0.42981,0.06431,Bajo,origen_movil
+68147,capitanejo,2017,0.88012,0.10617,0.01371,Bajo,origen_movil
+68152,carcasi,2017,0.78805,0.19806,0.01389,Bajo,origen_movil
+68160,cepita,2017,0.18285,0.48117,0.33598,Medio,origen_movil
+68162,cerrito,2017,0.79648,0.18255,0.02097,Bajo,origen_movil
+68167,charala,2017,0.34428,0.60066,0.05506,Medio,origen_movil
+68169,charta,2017,0.83695,0.13816,0.02489,Bajo,origen_movil
+68176,chima,2017,0.64955,0.29902,0.05144,Bajo,origen_movil
+68179,chipata,2017,0.32057,0.44385,0.23558,Medio,origen_movil
+68190,cimitarra,2017,0.15575,0.48409,0.36016,Medio,origen_movil
+68207,concepcion,2017,0.88143,0.10394,0.01463,Bajo,origen_movil
+68209,confines,2017,0.79439,0.17674,0.02887,Bajo,origen_movil
+68211,contratacion,2017,0.21195,0.53824,0.24981,Medio,origen_movil
+68217,coromoro,2017,0.76624,0.22349,0.01027,Bajo,origen_movil
+68229,curiti,2017,0.57991,0.35893,0.06116,Bajo,origen_movil
+68235,el carmen de chucuri,2017,0.00268,0.01755,0.97977,Alto,origen_movil
+68245,el guacamayo,2017,0.80505,0.16819,0.02676,Bajo,origen_movil
+68250,el penon,2017,0.34906,0.50288,0.14806,Medio,origen_movil
+68255,el playon,2017,0.01885,0.07618,0.90497,Alto,origen_movil
+68264,encino,2017,0.68821,0.29556,0.01623,Bajo,origen_movil
+68266,enciso,2017,0.86936,0.12396,0.00668,Bajo,origen_movil
+68271,florian,2017,0.57051,0.40709,0.02240,Bajo,origen_movil
+68276,floridablanca,2017,0.59332,0.35062,0.05606,Bajo,origen_movil
+68296,galan,2017,0.20951,0.64555,0.14494,Medio,origen_movil
+68298,gambita,2017,0.60380,0.37780,0.01840,Bajo,origen_movil
+68307,giron,2017,0.37698,0.48287,0.14015,Medio,origen_movil
+68318,guaca,2017,0.56363,0.35356,0.08281,Bajo,origen_movil
+68320,guadalupe,2017,0.85026,0.13555,0.01419,Bajo,origen_movil
+68322,guapota,2017,0.43888,0.40906,0.15206,Bajo,origen_movil
+68324,guavata,2017,0.71539,0.27316,0.01146,Bajo,origen_movil
+68327,guepsa,2017,0.76269,0.21904,0.01828,Bajo,origen_movil
+68344,hato,2017,0.16879,0.48008,0.35113,Medio,origen_movil
+68368,jesus maria,2017,0.43438,0.53574,0.02988,Medio,origen_movil
+68370,jordan,2017,0.42515,0.32819,0.24666,Bajo,origen_movil
+68377,la belleza,2017,0.42411,0.52455,0.05135,Medio,origen_movil
+68385,landazuri,2017,0.15733,0.48585,0.35681,Medio,origen_movil
+68397,la paz,2017,0.22819,0.58973,0.18208,Medio,origen_movil
+68406,lebrija,2017,0.11706,0.50745,0.37549,Medio,origen_movil
+68418,los santos,2017,0.00720,0.02453,0.96826,Alto,origen_movil
+68425,macaravita,2017,0.83202,0.15477,0.01321,Bajo,origen_movil
+68432,malaga,2017,0.74258,0.23009,0.02733,Bajo,origen_movil
+68444,matanza,2017,0.64692,0.27665,0.07643,Bajo,origen_movil
+68464,mogotes,2017,0.50907,0.40401,0.08692,Bajo,origen_movil
+68468,molagavita,2017,0.61009,0.34224,0.04767,Bajo,origen_movil
+68498,ocamonte,2017,0.66307,0.29481,0.04213,Bajo,origen_movil
+68500,oiba,2017,0.42164,0.49528,0.08308,Medio,origen_movil
+68502,onzaga,2017,0.67048,0.30784,0.02168,Bajo,origen_movil
+68522,palmar,2017,0.81919,0.14982,0.03100,Bajo,origen_movil
+68524,palmas del socorro,2017,0.66927,0.24200,0.08873,Bajo,origen_movil
+68533,paramo,2017,0.77704,0.18237,0.04059,Bajo,origen_movil
+68547,piedecuesta,2017,0.08021,0.41609,0.50371,Alto,origen_movil
+68549,pinchote,2017,0.80317,0.17155,0.02527,Bajo,origen_movil
+68572,puente nacional,2017,0.41067,0.47859,0.11074,Medio,origen_movil
+68573,puerto parra,2017,0.08838,0.36555,0.54607,Alto,origen_movil
+68575,puerto wilches,2017,0.15993,0.61642,0.22365,Medio,origen_movil
+68615,rionegro,2017,0.25324,0.38307,0.36369,Medio,origen_movil
+68655,sabana de torres,2017,0.14983,0.46745,0.38272,Medio,origen_movil
+68669,san andres,2017,0.52628,0.38600,0.08772,Bajo,origen_movil
+68673,san benito,2017,0.62968,0.32485,0.04546,Bajo,origen_movil
+68679,san gil,2017,0.58229,0.35859,0.05912,Bajo,origen_movil
+68682,san joaquin,2017,0.67484,0.28669,0.03847,Bajo,origen_movil
+68684,san jose de miranda,2017,0.89926,0.07742,0.02332,Bajo,origen_movil
+68686,san miguel,2017,0.89770,0.08511,0.01719,Bajo,origen_movil
+68689,san vicente de chucuri,2017,0.08309,0.32761,0.58931,Alto,origen_movil
+68705,santa barbara,2017,0.50648,0.31638,0.17714,Bajo,origen_movil
+68720,santa helena del opon,2017,0.00795,0.03420,0.95784,Alto,origen_movil
+68745,simacota,2017,0.16975,0.56735,0.26291,Medio,origen_movil
+68755,socorro,2017,0.52097,0.43261,0.04642,Bajo,origen_movil
+68770,suaita,2017,0.40899,0.49731,0.09370,Medio,origen_movil
+68773,sucre,2017,0.48611,0.47337,0.04052,Bajo,origen_movil
+68780,surata,2017,0.62924,0.30587,0.06489,Bajo,origen_movil
+68820,tona,2017,0.35772,0.41416,0.22812,Medio,origen_movil
+68855,valle de san jose,2017,0.73371,0.22743,0.03886,Bajo,origen_movil
+68861,velez,2017,0.19562,0.47540,0.32898,Medio,origen_movil
+68867,vetas,2017,0.83104,0.13819,0.03077,Bajo,origen_movil
+68872,villanueva,2017,0.22029,0.58788,0.19183,Medio,origen_movil
+68895,zapatoca,2017,0.00346,0.03003,0.96651,Alto,origen_movil
+68001,bucaramanga,2018,0.54038,0.37215,0.08747,Bajo,origen_movil
+68013,aguada,2018,0.37363,0.56621,0.06016,Medio,origen_movil
+68020,albania,2018,0.32486,0.61124,0.06390,Medio,origen_movil
+68051,aratoca,2018,0.50915,0.38690,0.10395,Bajo,origen_movil
+68077,barbosa,2018,0.37269,0.52915,0.09816,Medio,origen_movil
+68079,barichara,2018,0.32904,0.58283,0.08813,Medio,origen_movil
+68081,barrancabermeja,2018,0.16576,0.48589,0.34835,Medio,origen_movil
+68092,betulia,2018,0.07227,0.27489,0.65284,Alto,origen_movil
+68101,bolivar,2018,0.29472,0.60952,0.09575,Medio,origen_movil
+68121,cabrera,2018,0.80574,0.16176,0.03250,Bajo,origen_movil
+68132,california,2018,0.76924,0.18464,0.04612,Bajo,origen_movil
+68147,capitanejo,2018,0.84767,0.13907,0.01326,Bajo,origen_movil
+68152,carcasi,2018,0.82713,0.15509,0.01778,Bajo,origen_movil
+68160,cepita,2018,0.42450,0.38132,0.19418,Bajo,origen_movil
+68162,cerrito,2018,0.79609,0.17680,0.02711,Bajo,origen_movil
+68167,charala,2018,0.45378,0.47153,0.07469,Medio,origen_movil
+68169,charta,2018,0.80503,0.17494,0.02003,Bajo,origen_movil
+68176,chima,2018,0.72044,0.23308,0.04648,Bajo,origen_movil
+68179,chipata,2018,0.34397,0.57214,0.08390,Medio,origen_movil
+68190,cimitarra,2018,0.11065,0.52674,0.36261,Medio,origen_movil
+68207,concepcion,2018,0.80914,0.17181,0.01905,Bajo,origen_movil
+68209,confines,2018,0.79263,0.18964,0.01774,Bajo,origen_movil
+68211,contratacion,2018,0.20816,0.49449,0.29735,Medio,origen_movil
+68217,coromoro,2018,0.68763,0.29400,0.01837,Bajo,origen_movil
+68229,curiti,2018,0.56030,0.39338,0.04632,Bajo,origen_movil
+68235,el carmen de chucuri,2018,0.00683,0.04340,0.94977,Alto,origen_movil
+68245,el guacamayo,2018,0.80995,0.15903,0.03102,Bajo,origen_movil
+68250,el penon,2018,0.39444,0.55010,0.05546,Medio,origen_movil
+68255,el playon,2018,0.00472,0.03995,0.95533,Alto,origen_movil
+68264,encino,2018,0.76661,0.22243,0.01096,Bajo,origen_movil
+68266,enciso,2018,0.87686,0.11154,0.01160,Bajo,origen_movil
+68271,florian,2018,0.60887,0.37090,0.02023,Bajo,origen_movil
+68276,floridablanca,2018,0.62196,0.32754,0.05049,Bajo,origen_movil
+68296,galan,2018,0.36101,0.44636,0.19263,Medio,origen_movil
+68298,gambita,2018,0.69200,0.28937,0.01863,Bajo,origen_movil
+68307,giron,2018,0.25707,0.63844,0.10449,Medio,origen_movil
+68318,guaca,2018,0.67060,0.29337,0.03603,Bajo,origen_movil
+68320,guadalupe,2018,0.82666,0.16058,0.01277,Bajo,origen_movil
+68322,guapota,2018,0.65212,0.27837,0.06951,Bajo,origen_movil
+68324,guavata,2018,0.78038,0.20897,0.01066,Bajo,origen_movil
+68327,guepsa,2018,0.70642,0.26402,0.02956,Bajo,origen_movil
+68344,hato,2018,0.14737,0.45877,0.39385,Medio,origen_movil
+68368,jesus maria,2018,0.61136,0.36813,0.02051,Bajo,origen_movil
+68370,jordan,2018,0.50331,0.30941,0.18728,Bajo,origen_movil
+68377,la belleza,2018,0.47878,0.48031,0.04091,Medio,origen_movil
+68385,landazuri,2018,0.20541,0.61779,0.17680,Medio,origen_movil
+68397,la paz,2018,0.23041,0.62039,0.14920,Medio,origen_movil
+68406,lebrija,2018,0.18785,0.51815,0.29400,Medio,origen_movil
+68418,los santos,2018,0.00862,0.03910,0.95229,Alto,origen_movil
+68425,macaravita,2018,0.90378,0.07212,0.02410,Bajo,origen_movil
+68432,malaga,2018,0.67088,0.29829,0.03083,Bajo,origen_movil
+68444,matanza,2018,0.32909,0.53772,0.13318,Medio,origen_movil
+68464,mogotes,2018,0.60973,0.33252,0.05775,Bajo,origen_movil
+68468,molagavita,2018,0.71659,0.26155,0.02186,Bajo,origen_movil
+68498,ocamonte,2018,0.34712,0.56744,0.08543,Medio,origen_movil
+68500,oiba,2018,0.48648,0.42806,0.08546,Bajo,origen_movil
+68502,onzaga,2018,0.78227,0.20345,0.01428,Bajo,origen_movil
+68522,palmar,2018,0.79018,0.13940,0.07042,Bajo,origen_movil
+68524,palmas del socorro,2018,0.64060,0.28047,0.07893,Bajo,origen_movil
+68533,paramo,2018,0.80733,0.17646,0.01621,Bajo,origen_movil
+68547,piedecuesta,2018,0.14725,0.50170,0.35105,Medio,origen_movil
+68549,pinchote,2018,0.82619,0.15295,0.02086,Bajo,origen_movil
+68572,puente nacional,2018,0.36372,0.55699,0.07929,Medio,origen_movil
+68573,puerto parra,2018,0.11477,0.55534,0.32990,Medio,origen_movil
+68575,puerto wilches,2018,0.14785,0.62738,0.22477,Medio,origen_movil
+68615,rionegro,2018,0.13966,0.54567,0.31467,Medio,origen_movil
+68655,sabana de torres,2018,0.13584,0.47415,0.39001,Medio,origen_movil
+68669,san andres,2018,0.56066,0.37554,0.06380,Bajo,origen_movil
+68673,san benito,2018,0.65545,0.30470,0.03985,Bajo,origen_movil
+68679,san gil,2018,0.62272,0.33184,0.04544,Bajo,origen_movil
+68682,san joaquin,2018,0.50289,0.42137,0.07574,Bajo,origen_movil
+68684,san jose de miranda,2018,0.90689,0.07487,0.01824,Bajo,origen_movil
+68686,san miguel,2018,0.86593,0.10588,0.02819,Bajo,origen_movil
+68689,san vicente de chucuri,2018,0.10334,0.42315,0.47350,Alto,origen_movil
+68705,santa barbara,2018,0.58824,0.29499,0.11677,Bajo,origen_movil
+68720,santa helena del opon,2018,0.02315,0.09500,0.88185,Alto,origen_movil
+68745,simacota,2018,0.13736,0.47493,0.38771,Medio,origen_movil
+68755,socorro,2018,0.65224,0.29714,0.05062,Bajo,origen_movil
+68770,suaita,2018,0.27752,0.57483,0.14765,Medio,origen_movil
+68773,sucre,2018,0.47595,0.48545,0.03860,Medio,origen_movil
+68780,surata,2018,0.61361,0.29807,0.08832,Bajo,origen_movil
+68820,tona,2018,0.31440,0.50742,0.17818,Medio,origen_movil
+68855,valle de san jose,2018,0.78226,0.18900,0.02875,Bajo,origen_movil
+68861,velez,2018,0.12657,0.54909,0.32435,Medio,origen_movil
+68867,vetas,2018,0.81141,0.16637,0.02222,Bajo,origen_movil
+68872,villanueva,2018,0.38497,0.46692,0.14810,Medio,origen_movil
+68895,zapatoca,2018,0.00240,0.01599,0.98161,Alto,origen_movil
+68001,bucaramanga,2019,0.28540,0.60793,0.10666,Medio,origen_movil
+68013,aguada,2019,0.71494,0.22814,0.05692,Bajo,origen_movil
+68020,albania,2019,0.24998,0.58431,0.16570,Medio,origen_movil
+68051,aratoca,2019,0.25805,0.58631,0.15564,Medio,origen_movil
+68077,barbosa,2019,0.37237,0.58561,0.04203,Medio,origen_movil
+68079,barichara,2019,0.56447,0.34271,0.09282,Bajo,origen_movil
+68081,barrancabermeja,2019,0.26626,0.46801,0.26573,Medio,origen_movil
+68092,betulia,2019,0.09799,0.31276,0.58925,Alto,origen_movil
+68101,bolivar,2019,0.25063,0.57780,0.17156,Medio,origen_movil
+68121,cabrera,2019,0.80389,0.15676,0.03935,Bajo,origen_movil
+68132,california,2019,0.83250,0.13792,0.02958,Bajo,origen_movil
+68147,capitanejo,2019,0.87051,0.10822,0.02128,Bajo,origen_movil
+68152,carcasi,2019,0.88208,0.10516,0.01277,Bajo,origen_movil
+68160,cepita,2019,0.47917,0.33662,0.18421,Bajo,origen_movil
+68162,cerrito,2019,0.77173,0.20002,0.02825,Bajo,origen_movil
+68167,charala,2019,0.42875,0.43169,0.13956,Medio,origen_movil
+68169,charta,2019,0.79466,0.17293,0.03241,Bajo,origen_movil
+68176,chima,2019,0.73333,0.22672,0.03994,Bajo,origen_movil
+68179,chipata,2019,0.25677,0.57614,0.16709,Medio,origen_movil
+68190,cimitarra,2019,0.18659,0.60238,0.21103,Medio,origen_movil
+68207,concepcion,2019,0.84293,0.14231,0.01476,Bajo,origen_movil
+68209,confines,2019,0.81318,0.17083,0.01598,Bajo,origen_movil
+68211,contratacion,2019,0.35451,0.51520,0.13029,Medio,origen_movil
+68217,coromoro,2019,0.74651,0.23297,0.02052,Bajo,origen_movil
+68229,curiti,2019,0.55540,0.38615,0.05845,Bajo,origen_movil
+68235,el carmen de chucuri,2019,0.00759,0.04158,0.95083,Alto,origen_movil
+68245,el guacamayo,2019,0.83836,0.13238,0.02926,Bajo,origen_movil
+68250,el penon,2019,0.40820,0.52355,0.06825,Medio,origen_movil
+68255,el playon,2019,0.06680,0.24952,0.68368,Alto,origen_movil
+68264,encino,2019,0.77023,0.21159,0.01819,Bajo,origen_movil
+68266,enciso,2019,0.86423,0.12350,0.01227,Bajo,origen_movil
+68271,florian,2019,0.62532,0.35008,0.02460,Bajo,origen_movil
+68276,floridablanca,2019,0.55331,0.38734,0.05935,Bajo,origen_movil
+68296,galan,2019,0.41031,0.42551,0.16417,Medio,origen_movil
+68298,gambita,2019,0.67931,0.28591,0.03479,Bajo,origen_movil
+68307,giron,2019,0.26700,0.41424,0.31875,Medio,origen_movil
+68318,guaca,2019,0.65069,0.29290,0.05641,Bajo,origen_movil
+68320,guadalupe,2019,0.80357,0.17261,0.02382,Bajo,origen_movil
+68322,guapota,2019,0.58658,0.33590,0.07751,Bajo,origen_movil
+68324,guavata,2019,0.43125,0.52021,0.04855,Medio,origen_movil
+68327,guepsa,2019,0.75501,0.23148,0.01351,Bajo,origen_movil
+68344,hato,2019,0.18495,0.50316,0.31188,Medio,origen_movil
+68368,jesus maria,2019,0.58989,0.38790,0.02222,Bajo,origen_movil
+68370,jordan,2019,0.51220,0.31474,0.17306,Bajo,origen_movil
+68377,la belleza,2019,0.48747,0.44665,0.06588,Bajo,origen_movil
+68385,landazuri,2019,0.26954,0.58673,0.14374,Medio,origen_movil
+68397,la paz,2019,0.22724,0.54583,0.22693,Medio,origen_movil
+68406,lebrija,2019,0.16220,0.50925,0.32855,Medio,origen_movil
+68418,los santos,2019,0.02025,0.04785,0.93189,Alto,origen_movil
+68425,macaravita,2019,0.85956,0.13090,0.00955,Bajo,origen_movil
+68432,malaga,2019,0.75606,0.21387,0.03006,Bajo,origen_movil
+68444,matanza,2019,0.51952,0.36214,0.11834,Bajo,origen_movil
+68464,mogotes,2019,0.59659,0.32913,0.07427,Bajo,origen_movil
+68468,molagavita,2019,0.66659,0.29174,0.04167,Bajo,origen_movil
+68498,ocamonte,2019,0.37324,0.49181,0.13495,Medio,origen_movil
+68500,oiba,2019,0.51516,0.43424,0.05061,Bajo,origen_movil
+68502,onzaga,2019,0.83148,0.15654,0.01198,Bajo,origen_movil
+68522,palmar,2019,0.77680,0.15443,0.06877,Bajo,origen_movil
+68524,palmas del socorro,2019,0.60936,0.30083,0.08981,Bajo,origen_movil
+68533,paramo,2019,0.76090,0.21435,0.02475,Bajo,origen_movil
+68547,piedecuesta,2019,0.11114,0.43340,0.45546,Alto,origen_movil
+68549,pinchote,2019,0.78239,0.18900,0.02861,Bajo,origen_movil
+68572,puente nacional,2019,0.32070,0.58207,0.09723,Medio,origen_movil
+68573,puerto parra,2019,0.24676,0.49821,0.25503,Medio,origen_movil
+68575,puerto wilches,2019,0.18265,0.51678,0.30056,Medio,origen_movil
+68615,rionegro,2019,0.16140,0.52739,0.31121,Medio,origen_movil
+68655,sabana de torres,2019,0.18475,0.48840,0.32685,Medio,origen_movil
+68669,san andres,2019,0.57687,0.33735,0.08578,Bajo,origen_movil
+68673,san benito,2019,0.39945,0.46448,0.13607,Medio,origen_movil
+68679,san gil,2019,0.31634,0.53884,0.14481,Medio,origen_movil
+68682,san joaquin,2019,0.65904,0.30841,0.03254,Bajo,origen_movil
+68684,san jose de miranda,2019,0.86804,0.12136,0.01060,Bajo,origen_movil
+68686,san miguel,2019,0.89646,0.08072,0.02282,Bajo,origen_movil
+68689,san vicente de chucuri,2019,0.21642,0.42139,0.36219,Medio,origen_movil
+68705,santa barbara,2019,0.66017,0.25723,0.08260,Bajo,origen_movil
+68720,santa helena del opon,2019,0.01840,0.07898,0.90262,Alto,origen_movil
+68745,simacota,2019,0.29409,0.53622,0.16970,Medio,origen_movil
+68755,socorro,2019,0.36342,0.47228,0.16430,Medio,origen_movil
+68770,suaita,2019,0.29118,0.47289,0.23593,Medio,origen_movil
+68773,sucre,2019,0.37235,0.55150,0.07615,Medio,origen_movil
+68780,surata,2019,0.63160,0.27725,0.09114,Bajo,origen_movil
+68820,tona,2019,0.45562,0.38356,0.16081,Bajo,origen_movil
+68855,valle de san jose,2019,0.71490,0.24803,0.03707,Bajo,origen_movil
+68861,velez,2019,0.16080,0.53388,0.30532,Medio,origen_movil
+68867,vetas,2019,0.85953,0.12466,0.01581,Bajo,origen_movil
+68872,villanueva,2019,0.44803,0.43538,0.11660,Bajo,origen_movil
+68895,zapatoca,2019,0.00768,0.05761,0.93471,Alto,origen_movil
+68001,bucaramanga,2020,0.31309,0.47532,0.21159,Medio,origen_movil
+68013,aguada,2020,0.74318,0.22666,0.03015,Bajo,origen_movil
+68020,albania,2020,0.29880,0.60970,0.09150,Medio,origen_movil
+68051,aratoca,2020,0.41341,0.48436,0.10223,Medio,origen_movil
+68077,barbosa,2020,0.41315,0.52408,0.06277,Medio,origen_movil
+68079,barichara,2020,0.62991,0.29687,0.07322,Bajo,origen_movil
+68081,barrancabermeja,2020,0.19330,0.58110,0.22559,Medio,origen_movil
+68092,betulia,2020,0.06340,0.21954,0.71706,Alto,origen_movil
+68101,bolivar,2020,0.24380,0.64988,0.10632,Medio,origen_movil
+68121,cabrera,2020,0.79078,0.17383,0.03539,Bajo,origen_movil
+68132,california,2020,0.80660,0.17148,0.02192,Bajo,origen_movil
+68147,capitanejo,2020,0.89802,0.08789,0.01409,Bajo,origen_movil
+68152,carcasi,2020,0.86909,0.12144,0.00947,Bajo,origen_movil
+68160,cepita,2020,0.48094,0.33846,0.18059,Bajo,origen_movil
+68162,cerrito,2020,0.73335,0.21121,0.05544,Bajo,origen_movil
+68167,charala,2020,0.34056,0.51690,0.14254,Medio,origen_movil
+68169,charta,2020,0.41156,0.50675,0.08169,Medio,origen_movil
+68176,chima,2020,0.38054,0.51645,0.10301,Medio,origen_movil
+68179,chipata,2020,0.31578,0.53408,0.15014,Medio,origen_movil
+68190,cimitarra,2020,0.18159,0.45547,0.36294,Medio,origen_movil
+68207,concepcion,2020,0.79876,0.17979,0.02145,Bajo,origen_movil
+68209,confines,2020,0.73374,0.25033,0.01593,Bajo,origen_movil
+68211,contratacion,2020,0.26652,0.55354,0.17994,Medio,origen_movil
+68217,coromoro,2020,0.66369,0.32014,0.01618,Bajo,origen_movil
+68229,curiti,2020,0.29964,0.59161,0.10875,Medio,origen_movil
+68235,el carmen de chucuri,2020,0.00897,0.06446,0.92656,Alto,origen_movil
+68245,el guacamayo,2020,0.42900,0.47216,0.09883,Medio,origen_movil
+68250,el penon,2020,0.26495,0.50013,0.23492,Medio,origen_movil
+68255,el playon,2020,0.00878,0.05273,0.93850,Alto,origen_movil
+68264,encino,2020,0.71855,0.26426,0.01719,Bajo,origen_movil
+68266,enciso,2020,0.81369,0.17644,0.00987,Bajo,origen_movil
+68271,florian,2020,0.59974,0.36140,0.03886,Bajo,origen_movil
+68276,floridablanca,2020,0.58701,0.35530,0.05770,Bajo,origen_movil
+68296,galan,2020,0.18375,0.60583,0.21042,Medio,origen_movil
+68298,gambita,2020,0.41888,0.52632,0.05480,Medio,origen_movil
+68307,giron,2020,0.10047,0.30707,0.59245,Alto,origen_movil
+68318,guaca,2020,0.60897,0.32708,0.06395,Bajo,origen_movil
+68320,guadalupe,2020,0.75037,0.22268,0.02695,Bajo,origen_movil
+68322,guapota,2020,0.61701,0.32352,0.05947,Bajo,origen_movil
+68324,guavata,2020,0.65643,0.32072,0.02286,Bajo,origen_movil
+68327,guepsa,2020,0.69299,0.28074,0.02627,Bajo,origen_movil
+68344,hato,2020,0.17769,0.56426,0.25805,Medio,origen_movil
+68368,jesus maria,2020,0.58222,0.38951,0.02827,Bajo,origen_movil
+68370,jordan,2020,0.47827,0.32159,0.20014,Bajo,origen_movil
+68377,la belleza,2020,0.42524,0.49571,0.07905,Medio,origen_movil
+68385,landazuri,2020,0.21790,0.60831,0.17379,Medio,origen_movil
+68397,la paz,2020,0.23302,0.59220,0.17479,Medio,origen_movil
+68406,lebrija,2020,0.24898,0.51184,0.23918,Medio,origen_movil
+68418,los santos,2020,0.01687,0.04629,0.93684,Alto,origen_movil
+68425,macaravita,2020,0.78613,0.19398,0.01989,Bajo,origen_movil
+68432,malaga,2020,0.72053,0.23899,0.04047,Bajo,origen_movil
+68444,matanza,2020,0.53875,0.37305,0.08821,Bajo,origen_movil
+68464,mogotes,2020,0.65463,0.29994,0.04543,Bajo,origen_movil
+68468,molagavita,2020,0.71140,0.25447,0.03413,Bajo,origen_movil
+68498,ocamonte,2020,0.32592,0.53747,0.13661,Medio,origen_movil
+68500,oiba,2020,0.49897,0.42784,0.07319,Bajo,origen_movil
+68502,onzaga,2020,0.81251,0.17620,0.01128,Bajo,origen_movil
+68522,palmar,2020,0.75655,0.21225,0.03120,Bajo,origen_movil
+68524,palmas del socorro,2020,0.64839,0.27633,0.07528,Bajo,origen_movil
+68533,paramo,2020,0.36186,0.58407,0.05407,Medio,origen_movil
+68547,piedecuesta,2020,0.10226,0.37556,0.52219,Alto,origen_movil
+68549,pinchote,2020,0.37189,0.55350,0.07461,Medio,origen_movil
+68572,puente nacional,2020,0.36633,0.55986,0.07381,Medio,origen_movil
+68573,puerto parra,2020,0.15772,0.55808,0.28420,Medio,origen_movil
+68575,puerto wilches,2020,0.19085,0.56610,0.24306,Medio,origen_movil
+68615,rionegro,2020,0.14433,0.53324,0.32244,Medio,origen_movil
+68655,sabana de torres,2020,0.13697,0.50295,0.36008,Medio,origen_movil
+68669,san andres,2020,0.37716,0.44296,0.17988,Medio,origen_movil
+68673,san benito,2020,0.57632,0.37368,0.05000,Bajo,origen_movil
+68679,san gil,2020,0.25442,0.61416,0.13142,Medio,origen_movil
+68682,san joaquin,2020,0.67222,0.29421,0.03356,Bajo,origen_movil
+68684,san jose de miranda,2020,0.90160,0.07986,0.01854,Bajo,origen_movil
+68686,san miguel,2020,0.83347,0.15185,0.01468,Bajo,origen_movil
+68689,san vicente de chucuri,2020,0.09506,0.34415,0.56079,Alto,origen_movil
+68705,santa barbara,2020,0.61959,0.26562,0.11479,Bajo,origen_movil
+68720,santa helena del opon,2020,0.01119,0.05319,0.93562,Alto,origen_movil
+68745,simacota,2020,0.17650,0.55115,0.27235,Medio,origen_movil
+68755,socorro,2020,0.30286,0.57916,0.11798,Medio,origen_movil
+68770,suaita,2020,0.38444,0.53250,0.08305,Medio,origen_movil
+68773,sucre,2020,0.41509,0.44220,0.14271,Medio,origen_movil
+68780,surata,2020,0.33445,0.53849,0.12706,Medio,origen_movil
+68820,tona,2020,0.51025,0.35653,0.13322,Bajo,origen_movil
+68855,valle de san jose,2020,0.72223,0.25227,0.02549,Bajo,origen_movil
+68861,velez,2020,0.16603,0.50545,0.32852,Medio,origen_movil
+68867,vetas,2020,0.84479,0.14000,0.01522,Bajo,origen_movil
+68872,villanueva,2020,0.12867,0.40460,0.46673,Alto,origen_movil
+68895,zapatoca,2020,0.00498,0.02505,0.96997,Alto,origen_movil
+68001,bucaramanga,2021,0.22545,0.35340,0.42115,Alto,origen_movil
+68013,aguada,2021,0.74970,0.22503,0.02527,Bajo,origen_movil
+68020,albania,2021,0.25414,0.63006,0.11580,Medio,origen_movil
+68051,aratoca,2021,0.27177,0.63080,0.09743,Medio,origen_movil
+68077,barbosa,2021,0.45379,0.49027,0.05593,Medio,origen_movil
+68079,barichara,2021,0.29349,0.55400,0.15251,Medio,origen_movil
+68081,barrancabermeja,2021,0.21088,0.61927,0.16986,Medio,origen_movil
+68092,betulia,2021,0.02973,0.12162,0.84866,Alto,origen_movil
+68101,bolivar,2021,0.24046,0.66708,0.09247,Medio,origen_movil
+68121,cabrera,2021,0.78372,0.17849,0.03778,Bajo,origen_movil
+68132,california,2021,0.83856,0.14861,0.01282,Bajo,origen_movil
+68147,capitanejo,2021,0.88398,0.10953,0.00649,Bajo,origen_movil
+68152,carcasi,2021,0.89644,0.09556,0.00801,Bajo,origen_movil
+68160,cepita,2021,0.53490,0.28933,0.17577,Bajo,origen_movil
+68162,cerrito,2021,0.79230,0.16926,0.03844,Bajo,origen_movil
+68167,charala,2021,0.40638,0.50210,0.09152,Medio,origen_movil
+68169,charta,2021,0.41769,0.44259,0.13972,Medio,origen_movil
+68176,chima,2021,0.66884,0.28782,0.04334,Bajo,origen_movil
+68179,chipata,2021,0.31522,0.51436,0.17042,Medio,origen_movil
+68190,cimitarra,2021,0.23197,0.58545,0.18257,Medio,origen_movil
+68207,concepcion,2021,0.89044,0.09914,0.01041,Bajo,origen_movil
+68209,confines,2021,0.77277,0.20873,0.01849,Bajo,origen_movil
+68211,contratacion,2021,0.21055,0.58503,0.20443,Medio,origen_movil
+68217,coromoro,2021,0.70699,0.27295,0.02006,Bajo,origen_movil
+68229,curiti,2021,0.32237,0.60786,0.06977,Medio,origen_movil
+68235,el carmen de chucuri,2021,0.00322,0.03618,0.96060,Alto,origen_movil
+68245,el guacamayo,2021,0.43258,0.45348,0.11394,Medio,origen_movil
+68250,el penon,2021,0.29312,0.54826,0.15862,Medio,origen_movil
+68255,el playon,2021,0.00970,0.04473,0.94558,Alto,origen_movil
+68264,encino,2021,0.64531,0.26223,0.09246,Bajo,origen_movil
+68266,enciso,2021,0.88508,0.10536,0.00956,Bajo,origen_movil
+68271,florian,2021,0.63819,0.33067,0.03113,Bajo,origen_movil
+68276,floridablanca,2021,0.30596,0.56837,0.12566,Medio,origen_movil
+68296,galan,2021,0.35452,0.46445,0.18103,Medio,origen_movil
+68298,gambita,2021,0.59788,0.36578,0.03633,Bajo,origen_movil
+68307,giron,2021,0.12516,0.32481,0.55003,Alto,origen_movil
+68318,guaca,2021,0.62055,0.30864,0.07082,Bajo,origen_movil
+68320,guadalupe,2021,0.74223,0.23330,0.02446,Bajo,origen_movil
+68322,guapota,2021,0.66507,0.27562,0.05931,Bajo,origen_movil
+68324,guavata,2021,0.65407,0.32307,0.02286,Bajo,origen_movil
+68327,guepsa,2021,0.71108,0.26816,0.02076,Bajo,origen_movil
+68344,hato,2021,0.14149,0.43277,0.42573,Medio,origen_movil
+68368,jesus maria,2021,0.61155,0.36576,0.02269,Bajo,origen_movil
+68370,jordan,2021,0.18674,0.49903,0.31423,Medio,origen_movil
+68377,la belleza,2021,0.27045,0.65068,0.07887,Medio,origen_movil
+68385,landazuri,2021,0.23329,0.61762,0.14908,Medio,origen_movil
+68397,la paz,2021,0.30124,0.56781,0.13095,Medio,origen_movil
+68406,lebrija,2021,0.16560,0.53909,0.29530,Medio,origen_movil
+68418,los santos,2021,0.00470,0.03886,0.95645,Alto,origen_movil
+68425,macaravita,2021,0.90496,0.07186,0.02318,Bajo,origen_movil
+68432,malaga,2021,0.69678,0.26549,0.03773,Bajo,origen_movil
+68444,matanza,2021,0.61634,0.30615,0.07751,Bajo,origen_movil
+68464,mogotes,2021,0.63076,0.31865,0.05060,Bajo,origen_movil
+68468,molagavita,2021,0.70681,0.25199,0.04121,Bajo,origen_movil
+68498,ocamonte,2021,0.33429,0.61149,0.05422,Medio,origen_movil
+68500,oiba,2021,0.49477,0.44025,0.06499,Bajo,origen_movil
+68502,onzaga,2021,0.84572,0.14712,0.00717,Bajo,origen_movil
+68522,palmar,2021,0.81342,0.16420,0.02237,Bajo,origen_movil
+68524,palmas del socorro,2021,0.63324,0.30727,0.05949,Bajo,origen_movil
+68533,paramo,2021,0.77238,0.20934,0.01829,Bajo,origen_movil
+68547,piedecuesta,2021,0.27142,0.43561,0.29297,Medio,origen_movil
+68549,pinchote,2021,0.36966,0.58029,0.05005,Medio,origen_movil
+68572,puente nacional,2021,0.31807,0.62371,0.05822,Medio,origen_movil
+68573,puerto parra,2021,0.17293,0.61958,0.20749,Medio,origen_movil
+68575,puerto wilches,2021,0.16246,0.65184,0.18570,Medio,origen_movil
+68615,rionegro,2021,0.14903,0.53292,0.31805,Medio,origen_movil
+68655,sabana de torres,2021,0.14593,0.55831,0.29576,Medio,origen_movil
+68669,san andres,2021,0.51794,0.39683,0.08523,Bajo,origen_movil
+68673,san benito,2021,0.57406,0.37625,0.04969,Bajo,origen_movil
+68679,san gil,2021,0.40246,0.49560,0.10195,Medio,origen_movil
+68682,san joaquin,2021,0.68305,0.29099,0.02596,Bajo,origen_movil
+68684,san jose de miranda,2021,0.86851,0.12059,0.01090,Bajo,origen_movil
+68686,san miguel,2021,0.92597,0.06140,0.01264,Bajo,origen_movil
+68689,san vicente de chucuri,2021,0.05599,0.26337,0.68064,Alto,origen_movil
+68705,santa barbara,2021,0.61550,0.26606,0.11844,Bajo,origen_movil
+68720,santa helena del opon,2021,0.04711,0.13154,0.82135,Alto,origen_movil
+68745,simacota,2021,0.19468,0.58033,0.22499,Medio,origen_movil
+68755,socorro,2021,0.45006,0.46774,0.08220,Medio,origen_movil
+68770,suaita,2021,0.28561,0.62083,0.09356,Medio,origen_movil
+68773,sucre,2021,0.30959,0.63590,0.05451,Medio,origen_movil
+68780,surata,2021,0.28002,0.62246,0.09752,Medio,origen_movil
+68820,tona,2021,0.53428,0.35554,0.11017,Bajo,origen_movil
+68855,valle de san jose,2021,0.72192,0.24415,0.03394,Bajo,origen_movil
+68861,velez,2021,0.18439,0.57738,0.23823,Medio,origen_movil
+68867,vetas,2021,0.82842,0.15524,0.01634,Bajo,origen_movil
+68872,villanueva,2021,0.07931,0.23705,0.68363,Alto,origen_movil
+68895,zapatoca,2021,0.00427,0.02876,0.96697,Alto,origen_movil
+68001,bucaramanga,2022,0.17840,0.51621,0.30538,Medio,origen_movil
+68013,aguada,2022,0.76462,0.21334,0.02205,Bajo,origen_movil
+68020,albania,2022,0.41863,0.50834,0.07303,Medio,origen_movil
+68051,aratoca,2022,0.40469,0.51337,0.08194,Medio,origen_movil
+68077,barbosa,2022,0.42589,0.51172,0.06238,Medio,origen_movil
+68079,barichara,2022,0.33232,0.47860,0.18908,Medio,origen_movil
+68081,barrancabermeja,2022,0.19213,0.55835,0.24953,Medio,origen_movil
+68092,betulia,2022,0.07162,0.24042,0.68796,Alto,origen_movil
+68101,bolivar,2022,0.20245,0.66768,0.12987,Medio,origen_movil
+68121,cabrera,2022,0.75627,0.19952,0.04422,Bajo,origen_movil
+68132,california,2022,0.82486,0.16188,0.01326,Bajo,origen_movil
+68147,capitanejo,2022,0.89536,0.08791,0.01673,Bajo,origen_movil
+68152,carcasi,2022,0.88103,0.11076,0.00821,Bajo,origen_movil
+68160,cepita,2022,0.56760,0.31585,0.11654,Bajo,origen_movil
+68162,cerrito,2022,0.82587,0.14599,0.02814,Bajo,origen_movil
+68167,charala,2022,0.51277,0.43611,0.05112,Bajo,origen_movil
+68169,charta,2022,0.64413,0.29070,0.06516,Bajo,origen_movil
+68176,chima,2022,0.70826,0.25726,0.03448,Bajo,origen_movil
+68179,chipata,2022,0.26590,0.58101,0.15309,Medio,origen_movil
+68190,cimitarra,2022,0.17033,0.50981,0.31986,Medio,origen_movil
+68207,concepcion,2022,0.89385,0.09786,0.00829,Bajo,origen_movil
+68209,confines,2022,0.78910,0.18110,0.02980,Bajo,origen_movil
+68211,contratacion,2022,0.22008,0.58881,0.19111,Medio,origen_movil
+68217,coromoro,2022,0.76814,0.21270,0.01917,Bajo,origen_movil
+68229,curiti,2022,0.30178,0.57316,0.12506,Medio,origen_movil
+68235,el carmen de chucuri,2022,0.00332,0.03577,0.96091,Alto,origen_movil
+68245,el guacamayo,2022,0.61948,0.30292,0.07760,Bajo,origen_movil
+68250,el penon,2022,0.35417,0.53371,0.11212,Medio,origen_movil
+68255,el playon,2022,0.00409,0.03863,0.95728,Alto,origen_movil
+68264,encino,2022,0.71212,0.26365,0.02424,Bajo,origen_movil
+68266,enciso,2022,0.89081,0.08950,0.01969,Bajo,origen_movil
+68271,florian,2022,0.36833,0.54645,0.08522,Medio,origen_movil
+68276,floridablanca,2022,0.51823,0.41326,0.06851,Bajo,origen_movil
+68296,galan,2022,0.18302,0.52242,0.29456,Medio,origen_movil
+68298,gambita,2022,0.59604,0.36717,0.03680,Bajo,origen_movil
+68307,giron,2022,0.14157,0.43778,0.42065,Medio,origen_movil
+68318,guaca,2022,0.65335,0.28106,0.06559,Bajo,origen_movil
+68320,guadalupe,2022,0.79013,0.18445,0.02542,Bajo,origen_movil
+68322,guapota,2022,0.61149,0.33721,0.05130,Bajo,origen_movil
+68324,guavata,2022,0.42899,0.51321,0.05780,Medio,origen_movil
+68327,guepsa,2022,0.76076,0.22595,0.01329,Bajo,origen_movil
+68344,hato,2022,0.14955,0.48299,0.36746,Medio,origen_movil
+68368,jesus maria,2022,0.61582,0.36473,0.01945,Bajo,origen_movil
+68370,jordan,2022,0.13385,0.37305,0.49310,Alto,origen_movil
+68377,la belleza,2022,0.24090,0.67710,0.08200,Medio,origen_movil
+68385,landazuri,2022,0.21850,0.58140,0.20010,Medio,origen_movil
+68397,la paz,2022,0.24035,0.61612,0.14353,Medio,origen_movil
+68406,lebrija,2022,0.19747,0.57370,0.22883,Medio,origen_movil
+68418,los santos,2022,0.00234,0.03081,0.96685,Alto,origen_movil
+68425,macaravita,2022,0.70924,0.26246,0.02830,Bajo,origen_movil
+68432,malaga,2022,0.79937,0.18576,0.01488,Bajo,origen_movil
+68444,matanza,2022,0.62971,0.30403,0.06626,Bajo,origen_movil
+68464,mogotes,2022,0.46295,0.47013,0.06692,Medio,origen_movil
+68468,molagavita,2022,0.78215,0.19052,0.02733,Bajo,origen_movil
+68498,ocamonte,2022,0.54537,0.40539,0.04924,Bajo,origen_movil
+68500,oiba,2022,0.55450,0.40454,0.04096,Bajo,origen_movil
+68502,onzaga,2022,0.83937,0.14617,0.01446,Bajo,origen_movil
+68522,palmar,2022,0.81571,0.15943,0.02485,Bajo,origen_movil
+68524,palmas del socorro,2022,0.32717,0.55373,0.11909,Medio,origen_movil
+68533,paramo,2022,0.73715,0.23640,0.02645,Bajo,origen_movil
+68547,piedecuesta,2022,0.38750,0.41264,0.19986,Medio,origen_movil
+68549,pinchote,2022,0.48542,0.44760,0.06698,Bajo,origen_movil
+68572,puente nacional,2022,0.23903,0.53967,0.22130,Medio,origen_movil
+68573,puerto parra,2022,0.23058,0.57188,0.19754,Medio,origen_movil
+68575,puerto wilches,2022,0.21579,0.42737,0.35684,Medio,origen_movil
+68615,rionegro,2022,0.05382,0.23458,0.71159,Alto,origen_movil
+68655,sabana de torres,2022,0.15985,0.53601,0.30414,Medio,origen_movil
+68669,san andres,2022,0.58464,0.34201,0.07335,Bajo,origen_movil
+68673,san benito,2022,0.54598,0.39894,0.05508,Bajo,origen_movil
+68679,san gil,2022,0.47977,0.45991,0.06032,Bajo,origen_movil
+68682,san joaquin,2022,0.76372,0.21361,0.02267,Bajo,origen_movil
+68684,san jose de miranda,2022,0.86629,0.12037,0.01333,Bajo,origen_movil
+68686,san miguel,2022,0.88485,0.09410,0.02105,Bajo,origen_movil
+68689,san vicente de chucuri,2022,0.10717,0.38339,0.50943,Alto,origen_movil
+68705,santa barbara,2022,0.68835,0.24490,0.06674,Bajo,origen_movil
+68720,santa helena del opon,2022,0.00372,0.03276,0.96352,Alto,origen_movil
+68745,simacota,2022,0.21377,0.50960,0.27663,Medio,origen_movil
+68755,socorro,2022,0.27342,0.58084,0.14573,Medio,origen_movil
+68770,suaita,2022,0.31971,0.60930,0.07099,Medio,origen_movil
+68773,sucre,2022,0.28787,0.61546,0.09668,Medio,origen_movil
+68780,surata,2022,0.25911,0.62215,0.11874,Medio,origen_movil
+68820,tona,2022,0.59336,0.28476,0.12187,Bajo,origen_movil
+68855,valle de san jose,2022,0.68204,0.28219,0.03578,Bajo,origen_movil
+68861,velez,2022,0.11489,0.53371,0.35141,Medio,origen_movil
+68867,vetas,2022,0.84677,0.13302,0.02021,Bajo,origen_movil
+68872,villanueva,2022,0.04022,0.14770,0.81209,Alto,origen_movil
+68895,zapatoca,2022,0.00324,0.02111,0.97565,Alto,origen_movil
+68001,bucaramanga,2023,0.19202,0.56522,0.24276,Medio,modelo_final
+68013,aguada,2023,0.74366,0.23212,0.02422,Bajo,modelo_final
+68020,albania,2023,0.47524,0.47545,0.04931,Medio,modelo_final
+68051,aratoca,2023,0.28216,0.61246,0.10537,Medio,modelo_final
+68077,barbosa,2023,0.51962,0.44412,0.03626,Bajo,modelo_final
+68079,barichara,2023,0.46762,0.43069,0.10169,Bajo,modelo_final
+68081,barrancabermeja,2023,0.20529,0.56433,0.23038,Medio,modelo_final
+68092,betulia,2023,0.01504,0.10159,0.88337,Alto,modelo_final
+68101,bolivar,2023,0.20034,0.65786,0.14180,Medio,modelo_final
+68121,cabrera,2023,0.78352,0.18489,0.03158,Bajo,modelo_final
+68132,california,2023,0.84162,0.13871,0.01967,Bajo,modelo_final
+68147,capitanejo,2023,0.88150,0.10693,0.01157,Bajo,modelo_final
+68152,carcasi,2023,0.90053,0.09300,0.00647,Bajo,modelo_final
+68160,cepita,2023,0.60365,0.29024,0.10611,Bajo,modelo_final
+68162,cerrito,2023,0.78674,0.18299,0.03026,Bajo,modelo_final
+68167,charala,2023,0.28193,0.63734,0.08073,Medio,modelo_final
+68169,charta,2023,0.66635,0.28400,0.04965,Bajo,modelo_final
+68176,chima,2023,0.48132,0.44451,0.07417,Bajo,modelo_final
+68179,chipata,2023,0.35781,0.56754,0.07465,Medio,modelo_final
+68190,cimitarra,2023,0.16772,0.63335,0.19893,Medio,modelo_final
+68207,concepcion,2023,0.85127,0.13211,0.01662,Bajo,modelo_final
+68209,confines,2023,0.81113,0.17514,0.01373,Bajo,modelo_final
+68211,contratacion,2023,0.32624,0.59907,0.07469,Medio,modelo_final
+68217,coromoro,2023,0.78442,0.19998,0.01560,Bajo,modelo_final
+68229,curiti,2023,0.26269,0.64401,0.09331,Medio,modelo_final
+68235,el carmen de chucuri,2023,0.00350,0.03318,0.96332,Alto,modelo_final
+68245,el guacamayo,2023,0.65746,0.30430,0.03824,Bajo,modelo_final
+68250,el penon,2023,0.38712,0.52775,0.08513,Medio,modelo_final
+68255,el playon,2023,0.01805,0.07509,0.90686,Alto,modelo_final
+68264,encino,2023,0.50107,0.44948,0.04945,Bajo,modelo_final
+68266,enciso,2023,0.87306,0.11532,0.01162,Bajo,modelo_final
+68271,florian,2023,0.57410,0.38628,0.03962,Bajo,modelo_final
+68276,floridablanca,2023,0.59906,0.35586,0.04508,Bajo,modelo_final
+68296,galan,2023,0.21755,0.60169,0.18075,Medio,modelo_final
+68298,gambita,2023,0.61895,0.35015,0.03090,Bajo,modelo_final
+68307,giron,2023,0.09399,0.37738,0.52863,Alto,modelo_final
+68318,guaca,2023,0.67015,0.28736,0.04248,Bajo,modelo_final
+68320,guadalupe,2023,0.75163,0.23047,0.01790,Bajo,modelo_final
+68322,guapota,2023,0.52026,0.36451,0.11522,Bajo,modelo_final
+68324,guavata,2023,0.37737,0.57764,0.04500,Medio,modelo_final
+68327,guepsa,2023,0.75815,0.22886,0.01300,Bajo,modelo_final
+68344,hato,2023,0.16397,0.51807,0.31797,Medio,modelo_final
+68368,jesus maria,2023,0.67245,0.31181,0.01575,Bajo,modelo_final
+68370,jordan,2023,0.12247,0.37622,0.50131,Alto,modelo_final
+68377,la belleza,2023,0.44215,0.49844,0.05941,Medio,modelo_final
+68385,landazuri,2023,0.23360,0.62288,0.14353,Medio,modelo_final
+68397,la paz,2023,0.22763,0.67414,0.09824,Medio,modelo_final
+68406,lebrija,2023,0.19037,0.60104,0.20860,Medio,modelo_final
+68418,los santos,2023,0.00511,0.01844,0.97645,Alto,modelo_final
+68425,macaravita,2023,0.86017,0.12848,0.01135,Bajo,modelo_final
+68432,malaga,2023,0.82441,0.15261,0.02298,Bajo,modelo_final
+68444,matanza,2023,0.31442,0.58304,0.10254,Medio,modelo_final
+68464,mogotes,2023,0.57392,0.38978,0.03630,Bajo,modelo_final
+68468,molagavita,2023,0.73735,0.22943,0.03322,Bajo,modelo_final
+68498,ocamonte,2023,0.66394,0.30344,0.03261,Bajo,modelo_final
+68500,oiba,2023,0.55171,0.40152,0.04677,Bajo,modelo_final
+68502,onzaga,2023,0.81790,0.17226,0.00985,Bajo,modelo_final
+68522,palmar,2023,0.81397,0.16409,0.02194,Bajo,modelo_final
+68524,palmas del socorro,2023,0.56941,0.38216,0.04843,Bajo,modelo_final
+68533,paramo,2023,0.71580,0.26472,0.01948,Bajo,modelo_final
+68547,piedecuesta,2023,0.44510,0.36801,0.18689,Bajo,modelo_final
+68549,pinchote,2023,0.65578,0.31482,0.02940,Bajo,modelo_final
+68572,puente nacional,2023,0.19942,0.44880,0.35178,Medio,modelo_final
+68573,puerto parra,2023,0.15912,0.59475,0.24613,Medio,modelo_final
+68575,puerto wilches,2023,0.16995,0.57968,0.25037,Medio,modelo_final
+68615,rionegro,2023,0.06519,0.24222,0.69260,Alto,modelo_final
+68655,sabana de torres,2023,0.15140,0.50257,0.34603,Medio,modelo_final
+68669,san andres,2023,0.62212,0.33266,0.04523,Bajo,modelo_final
+68673,san benito,2023,0.33456,0.60123,0.06421,Medio,modelo_final
+68679,san gil,2023,0.50893,0.43635,0.05471,Bajo,modelo_final
+68682,san joaquin,2023,0.76801,0.21693,0.01506,Bajo,modelo_final
+68684,san jose de miranda,2023,0.90082,0.08499,0.01418,Bajo,modelo_final
+68686,san miguel,2023,0.86779,0.12410,0.00812,Bajo,modelo_final
+68689,san vicente de chucuri,2023,0.06136,0.30307,0.63557,Alto,modelo_final
+68705,santa barbara,2023,0.71421,0.24876,0.03703,Bajo,modelo_final
+68720,santa helena del opon,2023,0.02301,0.10755,0.86944,Alto,modelo_final
+68745,simacota,2023,0.20420,0.63232,0.16347,Medio,modelo_final
+68755,socorro,2023,0.29329,0.57661,0.13010,Medio,modelo_final
+68770,suaita,2023,0.38237,0.56141,0.05622,Medio,modelo_final
+68773,sucre,2023,0.27094,0.64987,0.07919,Medio,modelo_final
+68780,surata,2023,0.27656,0.62554,0.09790,Medio,modelo_final
+68820,tona,2023,0.60611,0.30249,0.09140,Bajo,modelo_final
+68855,valle de san jose,2023,0.36831,0.57082,0.06087,Medio,modelo_final
+68861,velez,2023,0.05852,0.31622,0.62527,Alto,modelo_final
+68867,vetas,2023,0.84517,0.14422,0.01061,Bajo,modelo_final
+68872,villanueva,2023,0.02670,0.10323,0.87006,Alto,modelo_final
+68895,zapatoca,2023,0.00341,0.02310,0.97350,Alto,modelo_final
+68001,bucaramanga,2024,0.31878,0.51730,0.16392,Medio,modelo_final
+68013,aguada,2024,0.78330,0.19732,0.01938,Bajo,modelo_final
+68020,albania,2024,0.24075,0.64734,0.11191,Medio,modelo_final
+68051,aratoca,2024,0.27517,0.57497,0.14986,Medio,modelo_final
+68077,barbosa,2024,0.47490,0.46960,0.05549,Bajo,modelo_final
+68079,barichara,2024,0.26170,0.59089,0.14742,Medio,modelo_final
+68081,barrancabermeja,2024,0.19677,0.59793,0.20530,Medio,modelo_final
+68092,betulia,2024,0.04461,0.16258,0.79280,Alto,modelo_final
+68101,bolivar,2024,0.20321,0.69210,0.10469,Medio,modelo_final
+68121,cabrera,2024,0.79018,0.17947,0.03034,Bajo,modelo_final
+68132,california,2024,0.84062,0.13994,0.01944,Bajo,modelo_final
+68147,capitanejo,2024,0.89709,0.08864,0.01427,Bajo,modelo_final
+68152,carcasi,2024,0.90011,0.09232,0.00757,Bajo,modelo_final
+68160,cepita,2024,0.59187,0.28198,0.12615,Bajo,modelo_final
+68162,cerrito,2024,0.79210,0.18239,0.02551,Bajo,modelo_final
+68167,charala,2024,0.32098,0.50638,0.17264,Medio,modelo_final
+68169,charta,2024,0.67003,0.29239,0.03757,Bajo,modelo_final
+68176,chima,2024,0.52150,0.38128,0.09723,Bajo,modelo_final
+68179,chipata,2024,0.28483,0.57259,0.14258,Medio,modelo_final
+68190,cimitarra,2024,0.20006,0.62022,0.17972,Medio,modelo_final
+68207,concepcion,2024,0.84688,0.13723,0.01590,Bajo,modelo_final
+68209,confines,2024,0.78294,0.19836,0.01870,Bajo,modelo_final
+68211,contratacion,2024,0.23462,0.59029,0.17509,Medio,modelo_final
+68217,coromoro,2024,0.69549,0.28777,0.01674,Bajo,modelo_final
+68229,curiti,2024,0.28283,0.54827,0.16890,Medio,modelo_final
+68235,el carmen de chucuri,2024,0.00350,0.03733,0.95917,Alto,modelo_final
+68245,el guacamayo,2024,0.64611,0.31511,0.03877,Bajo,modelo_final
+68250,el penon,2024,0.40096,0.51741,0.08164,Medio,modelo_final
+68255,el playon,2024,0.00305,0.02430,0.97265,Alto,modelo_final
+68264,encino,2024,0.64025,0.33375,0.02599,Bajo,modelo_final
+68266,enciso,2024,0.89845,0.08094,0.02061,Bajo,modelo_final
+68271,florian,2024,0.58493,0.37828,0.03679,Bajo,modelo_final
+68276,floridablanca,2024,0.60330,0.34984,0.04687,Bajo,modelo_final
+68296,galan,2024,0.21800,0.59752,0.18448,Medio,modelo_final
+68298,gambita,2024,0.60307,0.36745,0.02948,Bajo,modelo_final
+68307,giron,2024,0.11138,0.40110,0.48752,Alto,modelo_final
+68318,guaca,2024,0.68486,0.28152,0.03362,Bajo,modelo_final
+68320,guadalupe,2024,0.77926,0.20440,0.01633,Bajo,modelo_final
+68322,guapota,2024,0.64398,0.32106,0.03496,Bajo,modelo_final
+68324,guavata,2024,0.64653,0.33125,0.02222,Bajo,modelo_final
+68327,guepsa,2024,0.74114,0.24315,0.01571,Bajo,modelo_final
+68344,hato,2024,0.14263,0.50133,0.35604,Medio,modelo_final
+68368,jesus maria,2024,0.65108,0.33384,0.01508,Bajo,modelo_final
+68370,jordan,2024,0.11271,0.32355,0.56373,Alto,modelo_final
+68377,la belleza,2024,0.43716,0.50649,0.05636,Medio,modelo_final
+68385,landazuri,2024,0.26818,0.65513,0.07669,Medio,modelo_final
+68397,la paz,2024,0.19788,0.64537,0.15674,Medio,modelo_final
+68406,lebrija,2024,0.18437,0.58418,0.23145,Medio,modelo_final
+68418,los santos,2024,0.00950,0.03262,0.95788,Alto,modelo_final
+68425,macaravita,2024,0.87130,0.11690,0.01180,Bajo,modelo_final
+68432,malaga,2024,0.81551,0.15777,0.02672,Bajo,modelo_final
+68444,matanza,2024,0.32251,0.56484,0.11265,Medio,modelo_final
+68464,mogotes,2024,0.61297,0.34789,0.03915,Bajo,modelo_final
+68468,molagavita,2024,0.76361,0.21041,0.02599,Bajo,modelo_final
+68498,ocamonte,2024,0.56599,0.39612,0.03789,Bajo,modelo_final
+68500,oiba,2024,0.27694,0.64680,0.07626,Medio,modelo_final
+68502,onzaga,2024,0.84857,0.14352,0.00791,Bajo,modelo_final
+68522,palmar,2024,0.84133,0.13886,0.01981,Bajo,modelo_final
+68524,palmas del socorro,2024,0.66203,0.30133,0.03664,Bajo,modelo_final
+68533,paramo,2024,0.71944,0.26015,0.02040,Bajo,modelo_final
+68547,piedecuesta,2024,0.19189,0.39303,0.41508,Alto,modelo_final
+68549,pinchote,2024,0.71415,0.25982,0.02602,Bajo,modelo_final
+68572,puente nacional,2024,0.20310,0.52053,0.27637,Medio,modelo_final
+68573,puerto parra,2024,0.22151,0.62452,0.15397,Medio,modelo_final
+68575,puerto wilches,2024,0.16017,0.54519,0.29464,Medio,modelo_final
+68615,rionegro,2024,0.07964,0.31370,0.60666,Alto,modelo_final
+68655,sabana de torres,2024,0.16980,0.49858,0.33161,Medio,modelo_final
+68669,san andres,2024,0.61216,0.32263,0.06521,Bajo,modelo_final
+68673,san benito,2024,0.56495,0.39899,0.03606,Bajo,modelo_final
+68679,san gil,2024,0.25934,0.53367,0.20699,Medio,modelo_final
+68682,san joaquin,2024,0.74783,0.22962,0.02256,Bajo,modelo_final
+68684,san jose de miranda,2024,0.89476,0.08566,0.01958,Bajo,modelo_final
+68686,san miguel,2024,0.90072,0.08674,0.01254,Bajo,modelo_final
+68689,san vicente de chucuri,2024,0.09459,0.33861,0.56680,Alto,modelo_final
+68705,santa barbara,2024,0.68860,0.26012,0.05128,Bajo,modelo_final
+68720,santa helena del opon,2024,0.04799,0.18510,0.76692,Alto,modelo_final
+68745,simacota,2024,0.21098,0.63326,0.15577,Medio,modelo_final
+68755,socorro,2024,0.44552,0.49560,0.05888,Medio,modelo_final
+68770,suaita,2024,0.25914,0.62541,0.11545,Medio,modelo_final
+68773,sucre,2024,0.31166,0.55788,0.13046,Medio,modelo_final
+68780,surata,2024,0.54871,0.37479,0.07650,Bajo,modelo_final
+68820,tona,2024,0.36759,0.43665,0.19576,Medio,modelo_final
+68855,valle de san jose,2024,0.63456,0.33382,0.03161,Bajo,modelo_final
+68861,velez,2024,0.09304,0.38850,0.51846,Alto,modelo_final
+68867,vetas,2024,0.85854,0.12187,0.01959,Bajo,modelo_final
+68872,villanueva,2024,0.02128,0.08366,0.89506,Alto,modelo_final
+68895,zapatoca,2024,0.00456,0.04139,0.95404,Alto,modelo_final
+68001,bucaramanga,2025,0.37224,0.47556,0.15221,Medio,modelo_final
+68013,aguada,2025,0.77637,0.20471,0.01892,Bajo,modelo_final
+68020,albania,2025,0.25241,0.64800,0.09959,Medio,modelo_final
+68051,aratoca,2025,0.29877,0.59138,0.10985,Medio,modelo_final
+68077,barbosa,2025,0.48567,0.46796,0.04637,Bajo,modelo_final
+68079,barichara,2025,0.46733,0.43607,0.09659,Bajo,modelo_final
+68081,barrancabermeja,2025,0.20778,0.55922,0.23300,Medio,modelo_final
+68092,betulia,2025,0.03484,0.18811,0.77704,Alto,modelo_final
+68101,bolivar,2025,0.22225,0.67982,0.09792,Medio,modelo_final
+68121,cabrera,2025,0.79947,0.17465,0.02588,Bajo,modelo_final
+68132,california,2025,0.84043,0.14090,0.01867,Bajo,modelo_final
+68147,capitanejo,2025,0.89665,0.08869,0.01466,Bajo,modelo_final
+68152,carcasi,2025,0.82385,0.15882,0.01733,Bajo,modelo_final
+68160,cepita,2025,0.32220,0.37865,0.29915,Medio,modelo_final
+68162,cerrito,2025,0.78484,0.18314,0.03202,Bajo,modelo_final
+68167,charala,2025,0.40750,0.54066,0.05184,Medio,modelo_final
+68169,charta,2025,0.65599,0.29977,0.04423,Bajo,modelo_final
+68176,chima,2025,0.32698,0.58401,0.08901,Medio,modelo_final
+68179,chipata,2025,0.26550,0.54905,0.18545,Medio,modelo_final
+68190,cimitarra,2025,0.19089,0.63901,0.17010,Medio,modelo_final
+68207,concepcion,2025,0.87891,0.11071,0.01037,Bajo,modelo_final
+68209,confines,2025,0.72480,0.25451,0.02069,Bajo,modelo_final
+68211,contratacion,2025,0.32962,0.58220,0.08818,Medio,modelo_final
+68217,coromoro,2025,0.76793,0.21627,0.01580,Bajo,modelo_final
+68229,curiti,2025,0.48304,0.46081,0.05615,Bajo,modelo_final
+68235,el carmen de chucuri,2025,0.00423,0.03921,0.95657,Alto,modelo_final
+68245,el guacamayo,2025,0.68662,0.27993,0.03345,Bajo,modelo_final
+68250,el penon,2025,0.41447,0.51728,0.06825,Medio,modelo_final
+68255,el playon,2025,0.01022,0.04904,0.94074,Alto,modelo_final
+68264,encino,2025,0.51422,0.42971,0.05607,Bajo,modelo_final
+68266,enciso,2025,0.89722,0.08178,0.02100,Bajo,modelo_final
+68271,florian,2025,0.60619,0.36059,0.03322,Bajo,modelo_final
+68276,floridablanca,2025,0.28072,0.50258,0.21670,Medio,modelo_final
+68296,galan,2025,0.34301,0.51046,0.14653,Medio,modelo_final
+68298,gambita,2025,0.60529,0.36476,0.02995,Bajo,modelo_final
+68307,giron,2025,0.04378,0.21296,0.74327,Alto,modelo_final
+68318,guaca,2025,0.65206,0.29380,0.05415,Bajo,modelo_final
+68320,guadalupe,2025,0.78947,0.19260,0.01792,Bajo,modelo_final
+68322,guapota,2025,0.64815,0.30825,0.04360,Bajo,modelo_final
+68324,guavata,2025,0.64519,0.33613,0.01868,Bajo,modelo_final
+68327,guepsa,2025,0.76165,0.22424,0.01411,Bajo,modelo_final
+68344,hato,2025,0.15392,0.48363,0.36245,Medio,modelo_final
+68368,jesus maria,2025,0.67483,0.31141,0.01376,Bajo,modelo_final
+68370,jordan,2025,0.15149,0.41556,0.43294,Alto,modelo_final
+68377,la belleza,2025,0.26694,0.66047,0.07259,Medio,modelo_final
+68385,landazuri,2025,0.22441,0.52573,0.24985,Medio,modelo_final
+68397,la paz,2025,0.18458,0.64764,0.16778,Medio,modelo_final
+68406,lebrija,2025,0.19038,0.53923,0.27039,Medio,modelo_final
+68418,los santos,2025,0.00991,0.03143,0.95866,Alto,modelo_final
+68425,macaravita,2025,0.88997,0.10477,0.00526,Bajo,modelo_final
+68432,malaga,2025,0.82072,0.15383,0.02544,Bajo,modelo_final
+68444,matanza,2025,0.54464,0.38589,0.06948,Bajo,modelo_final
+68464,mogotes,2025,0.51462,0.43362,0.05176,Bajo,modelo_final
+68468,molagavita,2025,0.76384,0.21245,0.02372,Bajo,modelo_final
+68498,ocamonte,2025,0.31177,0.62338,0.06485,Medio,modelo_final
+68500,oiba,2025,0.49592,0.45198,0.05210,Bajo,modelo_final
+68502,onzaga,2025,0.83486,0.15763,0.00750,Bajo,modelo_final
+68522,palmar,2025,0.82530,0.15547,0.01923,Bajo,modelo_final
+68524,palmas del socorro,2025,0.68455,0.27976,0.03570,Bajo,modelo_final
+68533,paramo,2025,0.34850,0.60923,0.04228,Medio,modelo_final
+68547,piedecuesta,2025,0.12871,0.36862,0.50266,Alto,modelo_final
+68549,pinchote,2025,0.70614,0.26524,0.02863,Bajo,modelo_final
+68572,puente nacional,2025,0.19772,0.52523,0.27704,Medio,modelo_final
+68573,puerto parra,2025,0.18739,0.59347,0.21914,Medio,modelo_final
+68575,puerto wilches,2025,0.18000,0.51946,0.30054,Medio,modelo_final
+68615,rionegro,2025,0.04126,0.17943,0.77931,Alto,modelo_final
+68655,sabana de torres,2025,0.14556,0.49998,0.35446,Medio,modelo_final
+68669,san andres,2025,0.64251,0.30555,0.05194,Bajo,modelo_final
+68673,san benito,2025,0.51926,0.43039,0.05035,Bajo,modelo_final
+68679,san gil,2025,0.28613,0.54799,0.16588,Medio,modelo_final
+68682,san joaquin,2025,0.72541,0.25802,0.01657,Bajo,modelo_final
+68684,san jose de miranda,2025,0.89892,0.09482,0.00626,Bajo,modelo_final
+68686,san miguel,2025,0.89474,0.09921,0.00605,Bajo,modelo_final
+68689,san vicente de chucuri,2025,0.10492,0.34547,0.54961,Alto,modelo_final
+68705,santa barbara,2025,0.71373,0.23929,0.04698,Bajo,modelo_final
+68720,santa helena del opon,2025,0.00615,0.03152,0.96233,Alto,modelo_final
+68745,simacota,2025,0.15575,0.55545,0.28880,Medio,modelo_final
+68755,socorro,2025,0.47344,0.46109,0.06548,Bajo,modelo_final
+68770,suaita,2025,0.28822,0.59826,0.11353,Medio,modelo_final
+68773,sucre,2025,0.27004,0.62977,0.10019,Medio,modelo_final
+68780,surata,2025,0.54078,0.38955,0.06967,Bajo,modelo_final
+68820,tona,2025,0.56684,0.32625,0.10691,Bajo,modelo_final
+68855,valle de san jose,2025,0.68223,0.28206,0.03571,Bajo,modelo_final
+68861,velez,2025,0.10456,0.37395,0.52149,Alto,modelo_final
+68867,vetas,2025,0.85977,0.12337,0.01687,Bajo,modelo_final
+68872,villanueva,2025,0.08780,0.27804,0.63417,Alto,modelo_final
+68895,zapatoca,2025,0.00542,0.05266,0.94191,Alto,modelo_final

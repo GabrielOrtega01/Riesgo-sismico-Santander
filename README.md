@@ -19,12 +19,14 @@ publicarla).
 | Aplicación Streamlit (inicio explicativo, zonas, mapa, comparación, calidad de datos, fuentes, glosario) | Implementada y probada |
 | Población municipal (DANE, proyecciones 2005–2026) | Implementado y probado |
 | Panel municipio × año y diccionario de 23 variables | Implementado y probado |
-| Etiquetas (Básico / Medio / Avanzado) | Pendiente |
-| Clasificador supervisado | Pendiente |
-| Agente de aprendizaje por refuerzo y priorización | Pendiente |
+| Etiquetas de actividad (Bajo / Medio / Alto, año siguiente) | Implementado y probado |
+| Clasificador supervisado (Random Forest, validación temporal, línea base) | Implementado y probado |
+| Grupos territoriales (K-means, no supervisado) | Implementado y probado |
+| Agente de aprendizaje por refuerzo (Q-learning) y priorización | Implementado y probado |
+| Integración clasificador → agente en la aplicación | Implementado y probado |
 
-La aplicación no muestra resultados de clasificación ni de priorización hasta que existan los
-modelos entrenados.
+Resultados y límites en [docs/resultados.md](docs/resultados.md); índice de entrega en
+[docs/entrega.md](docs/entrega.md).
 
 ## Instalación
 

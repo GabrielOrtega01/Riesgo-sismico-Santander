@@ -5,14 +5,18 @@ PAGE_HOME = "🏠 Inicio"
 PAGE_ZONE = "📍 Explorar una zona"
 PAGE_MAP = "🗺️ Mapa de Santander"
 PAGE_COMPARE = "⚖️ Comparar zonas"
+PAGE_GROUPS = "🧩 Grupos territoriales"
 PAGE_CLASS = "🧠 Clasificación"
 PAGE_PRIO = "🎯 Priorización"
 PAGE_CATALOG = "📊 Calidad de los datos"
 PAGE_SOURCES = "📚 Fuentes y límites"
 PAGE_GLOSSARY = "❓ Glosario"
 
-PAGES = [PAGE_HOME, PAGE_ZONE, PAGE_MAP, PAGE_COMPARE, PAGE_CLASS, PAGE_PRIO,
+PAGES = [PAGE_HOME, PAGE_ZONE, PAGE_MAP, PAGE_COMPARE, PAGE_GROUPS, PAGE_CLASS, PAGE_PRIO,
          PAGE_CATALOG, PAGE_SOURCES, PAGE_GLOSSARY]
+
+TEAM = ["Gabriel Augusto Ortega Martínez", "Juan Jose Perucho Quintero"]
+MAG_OPTIONS = [2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0]
 
 PAGE_HINTS = {
     PAGE_ZONE: "Elige un municipio y mira su actividad sísmica, su amenaza oficial y su población.",
@@ -58,7 +62,10 @@ GLOSSARY = [
      "y Zapatoca."),
     ("Clasificación supervisada",
      "Un modelo de aprendizaje automático que aprende de datos históricos a asignar una categoría "
-     "(Básico, Medio o Avanzado) a cada municipio."),
+     "de actividad (Bajo, Medio o Alto) a cada municipio para el año siguiente."),
+    ("Aprendizaje no supervisado (grupos)",
+     "Técnica que agrupa los municipios por parecido sin usar etiquetas. Aquí se usa K-means para "
+     "encontrar grupos territoriales con perfiles sísmicos y de exposición similares."),
     ("Aprendizaje por refuerzo",
      "Un agente que aprende por ensayo y error qué decisiones dan mejores resultados. Aquí "
      "decidirá en qué orden conviene revisar las zonas."),

@@ -24,7 +24,7 @@ DEFAULT_MIN_MAGNITUDE = 2.5     # completo en todos los años (ver docs/fuentes_
 SHALLOW_KM = 30.0
 
 MODEL_ARTIFACTS = {
-    "Clasificador (Básico / Medio / Avanzado)": ROOT / "models" / "clasificador.joblib",
+    "Clasificador (Bajo / Medio / Alto)": ROOT / "models" / "clasificador.joblib",
     "Política aprendida del agente (RL)": ROOT / "models" / "politica_q.npz",
 }
 

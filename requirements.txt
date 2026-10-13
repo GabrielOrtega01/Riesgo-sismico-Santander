@@ -3,7 +3,7 @@
 
 pandas>=2.2          # carga, limpieza e integración de datos
 numpy>=1.26          # cálculo numérico, tabla Q del agente
-scikit-learn>=1.4    # clasificación supervisada y métricas
+scikit-learn==1.9.1    # fijada: el modelo guardado (joblib) depende de esta versión
 joblib>=1.3          # persistencia del modelo entrenado
 matplotlib>=3.8      # gráficas de evaluación y entrenamiento
 openpyxl>=3.1        # lectura de archivos Excel (.xlsx)

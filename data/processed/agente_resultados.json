@@ -1,0 +1,350 @@
+{
+  "configuracion": {
+    "presupuesto_K": 10,
+    "episodios": 12000,
+    "alpha": 0.1,
+    "gamma": 1.0,
+    "epsilon_inicial": 0.5,
+    "costo_revision": 0.01,
+    "semilla": 7,
+    "anios_entrenamiento": [
+      2012,
+      2020
+    ],
+    "anios_validacion": [
+      2021,
+      2022
+    ],
+    "anios_prueba": [
+      2023,
+      2024
+    ],
+    "estados_totales": 486,
+    "estados_visitados": 192
+  },
+  "discretizador": {
+    "activity_edges": [
+      0.0,
+      3.0
+    ],
+    "hazard_edges": [
+      0.22858633333333334,
+      0.24836
+    ],
+    "exposure_edges": [
+      3.63478,
+      3.9901866666666663
+    ]
+  },
+  "utilidad_validacion_sin_entrenar": 0.8997,
+  "curva_de_aprendizaje": [
+    {
+      "episodio": 500,
+      "epsilon": 0.3896,
+      "recompensa_media": 0.197,
+      "val_utilidad_top_k": 0.8935
+    },
+    {
+      "episodio": 1000,
+      "epsilon": 0.3034,
+      "recompensa_media": 0.27927,
+      "val_utilidad_top_k": 0.8922
+    },
+    {
+      "episodio": 1500,
+      "epsilon": 0.2363,
+      "recompensa_media": 0.35933,
+      "val_utilidad_top_k": 0.8922
+    },
+    {
+      "episodio": 2000,
+      "epsilon": 0.184,
+      "recompensa_media": 0.43866,
+      "val_utilidad_top_k": 0.8911
+    },
+    {
+      "episodio": 2500,
+      "epsilon": 0.1433,
+      "recompensa_media": 0.45684,
+      "val_utilidad_top_k": 0.0485
+    },
+    {
+      "episodio": 3000,
+      "epsilon": 0.1116,
+      "recompensa_media": 0.4527,
+      "val_utilidad_top_k": 0.8653
+    },
+    {
+      "episodio": 3500,
+      "epsilon": 0.0869,
+      "recompensa_media": 0.51965,
+      "val_utilidad_top_k": 0.8921
+    },
+    {
+      "episodio": 4000,
+      "epsilon": 0.0677,
+      "recompensa_media": 0.56938,
+      "val_utilidad_top_k": 0.8661
+    },
+    {
+      "episodio": 4500,
+      "epsilon": 0.0527,
+      "recompensa_media": 0.51428,
+      "val_utilidad_top_k": 0.871
+    },
+    {
+      "episodio": 5000,
+      "epsilon": 0.041,
+      "recompensa_media": 0.63271,
+      "val_utilidad_top_k": 0.8718
+    },
+    {
+      "episodio": 5500,
+      "epsilon": 0.032,
+      "recompensa_media": 0.66018,
+      "val_utilidad_top_k": 0.8653
+    },
+    {
+      "episodio": 6000,
+      "epsilon": 0.0249,
+      "recompensa_media": 0.70661,
+      "val_utilidad_top_k": 0.8911
+    },
+    {
+      "episodio": 6500,
+      "epsilon": 0.02,
+      "recompensa_media": 0.65314,
+      "val_utilidad_top_k": 0.8938
+    },
+    {
+      "episodio": 7000,
+      "epsilon": 0.02,
+      "recompensa_media": 0.60491,
+      "val_utilidad_top_k": 0.8592
+    },
+    {
+      "episodio": 7500,
+      "epsilon": 0.02,
+      "recompensa_media": 0.69141,
+      "val_utilidad_top_k": 0.9165
+    },
+    {
+      "episodio": 8000,
+      "epsilon": 0.02,
+      "recompensa_media": 0.73711,
+      "val_utilidad_top_k": 0.8935
+    },
+    {
+      "episodio": 8500,
+      "epsilon": 0.02,
+      "recompensa_media": 0.68318,
+      "val_utilidad_top_k": 0.8854
+    },
+    {
+      "episodio": 9000,
+      "epsilon": 0.02,
+      "recompensa_media": 0.67829,
+      "val_utilidad_top_k": 0.8612
+    },
+    {
+      "episodio": 9500,
+      "epsilon": 0.02,
+      "recompensa_media": 0.64448,
+      "val_utilidad_top_k": 0.9137
+    },
+    {
+      "episodio": 10000,
+      "epsilon": 0.02,
+      "recompensa_media": 0.70372,
+      "val_utilidad_top_k": 0.885
+    },
+    {
+      "episodio": 10500,
+      "epsilon": 0.02,
+      "recompensa_media": 0.71832,
+      "val_utilidad_top_k": 0.8856
+    },
+    {
+      "episodio": 11000,
+      "epsilon": 0.02,
+      "recompensa_media": 0.74151,
+      "val_utilidad_top_k": 0.8946
+    },
+    {
+      "episodio": 11500,
+      "epsilon": 0.02,
+      "recompensa_media": 0.70671,
+      "val_utilidad_top_k": 0.8699
+    },
+    {
+      "episodio": 12000,
+      "epsilon": 0.02,
+      "recompensa_media": 0.69087,
+      "val_utilidad_top_k": 0.8587
+    }
+  ],
+  "evaluacion": {
+    "validacion": {
+      "Agente de refuerzo (Q-learning)": {
+        "utilidad_media": 0.8587,
+        "cobertura_eventos_media": 0.8897,
+        "por_anio": {
+          "2021": 0.8451,
+          "2022": 0.8723
+        }
+      },
+      "Persistencia (actividad del año)": {
+        "utilidad_media": 0.8994,
+        "cobertura_eventos_media": 0.9434,
+        "por_anio": {
+          "2021": 0.8841,
+          "2022": 0.9148
+        }
+      },
+      "Historia (promedio anual previo)": {
+        "utilidad_media": 0.862,
+        "cobertura_eventos_media": 0.9036,
+        "por_anio": {
+          "2021": 0.8406,
+          "2022": 0.8834
+        }
+      },
+      "Solo clasificador (categoría esperada)": {
+        "utilidad_media": 0.8997,
+        "cobertura_eventos_media": 0.9439,
+        "por_anio": {
+          "2021": 0.8841,
+          "2022": 0.9152
+        }
+      },
+      "Aleatoria": {
+        "utilidad_media": 0.1113,
+        "cobertura_eventos_media": 0.1121,
+        "por_anio": {
+          "2021": 0.1216,
+          "2022": 0.101
+        }
+      },
+      "Óptimo (conoce el futuro; cota superior)": {
+        "utilidad_media": 0.9528
+      }
+    },
+    "prueba": {
+      "Agente de refuerzo (Q-learning)": {
+        "utilidad_media": 0.9262,
+        "cobertura_eventos_media": 0.9376,
+        "por_anio": {
+          "2023": 0.9391,
+          "2024": 0.9134
+        }
+      },
+      "Persistencia (actividad del año)": {
+        "utilidad_media": 0.9279,
+        "cobertura_eventos_media": 0.9559,
+        "por_anio": {
+          "2023": 0.9276,
+          "2024": 0.9281
+        }
+      },
+      "Historia (promedio anual previo)": {
+        "utilidad_media": 0.9041,
+        "cobertura_eventos_media": 0.9441,
+        "por_anio": {
+          "2023": 0.9189,
+          "2024": 0.8893
+        }
+      },
+      "Solo clasificador (categoría esperada)": {
+        "utilidad_media": 0.9088,
+        "cobertura_eventos_media": 0.9524,
+        "por_anio": {
+          "2023": 0.9276,
+          "2024": 0.89
+        }
+      },
+      "Aleatoria": {
+        "utilidad_media": 0.1109,
+        "cobertura_eventos_media": 0.1105,
+        "por_anio": {
+          "2023": 0.1242,
+          "2024": 0.0976
+        }
+      },
+      "Óptimo (conoce el futuro; cota superior)": {
+        "utilidad_media": 0.956
+      }
+    },
+    "validacion_y_prueba": {
+      "Agente de refuerzo (Q-learning)": {
+        "utilidad_media": 0.8925,
+        "cobertura_eventos_media": 0.9136,
+        "por_anio": {
+          "2021": 0.8451,
+          "2022": 0.8723,
+          "2023": 0.9391,
+          "2024": 0.9134
+        }
+      },
+      "Persistencia (actividad del año)": {
+        "utilidad_media": 0.9137,
+        "cobertura_eventos_media": 0.9497,
+        "por_anio": {
+          "2021": 0.8841,
+          "2022": 0.9148,
+          "2023": 0.9276,
+          "2024": 0.9281
+        }
+      },
+      "Historia (promedio anual previo)": {
+        "utilidad_media": 0.883,
+        "cobertura_eventos_media": 0.9239,
+        "por_anio": {
+          "2021": 0.8406,
+          "2022": 0.8834,
+          "2023": 0.9189,
+          "2024": 0.8893
+        }
+      },
+      "Solo clasificador (categoría esperada)": {
+        "utilidad_media": 0.9042,
+        "cobertura_eventos_media": 0.9481,
+        "por_anio": {
+          "2021": 0.8841,
+          "2022": 0.9152,
+          "2023": 0.9276,
+          "2024": 0.89
+        }
+      },
+      "Aleatoria": {
+        "utilidad_media": 0.1142,
+        "cobertura_eventos_media": 0.1147,
+        "por_anio": {
+          "2021": 0.1216,
+          "2022": 0.101,
+          "2023": 0.1168,
+          "2024": 0.1175
+        }
+      },
+      "Óptimo (conoce el futuro; cota superior)": {
+        "utilidad_media": 0.9544
+      }
+    }
+  },
+  "evaluacion_en_linea": {
+    "validacion": {
+      "Agente de refuerzo (política aprendida)": 0.849,
+      "Aleatoria (acciones válidas al azar)": 0.1108,
+      "Primeras K zonas presentadas": 0.1201,
+      "Regla fija: categoría predicha ≥ Medio": 0.2135,
+      "Regla fija: actividad del año alta": 0.8994
+    },
+    "prueba": {
+      "Agente de refuerzo (política aprendida)": 0.8971,
+      "Aleatoria (acciones válidas al azar)": 0.1081,
+      "Primeras K zonas presentadas": 0.1219,
+      "Regla fija: categoría predicha ≥ Medio": 0.2292,
+      "Regla fija: actividad del año alta": 0.8088
+    }
+  },
+  "agente_sin_entrenar_en_linea_validacion": 0.0
+}

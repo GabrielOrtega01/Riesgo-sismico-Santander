@@ -77,14 +77,44 @@ def test_zone_page_lists_87_municipalities_and_updates():
     assert "Habitantes" in m and m["Habitantes"] != "—"
 
 
-def test_classification_and_prioritization_are_pending_without_models():
+def test_home_shows_team_names(home):
+    text = " ".join(md.value for md in home.markdown)
+    for name in C.TEAM:
+        assert name in text
+
+
+def test_magnitude_slider_goes_up_to_7():
     at = _fresh()
-    _goto(at, C.PAGE_CLASS)
-    assert any("Aún no disponible" in i.value for i in at.info)
-    assert not any(k for k in _metrics(at))           # ningún número inventado
-    _goto(at, C.PAGE_PRIO)
-    assert any("Aún no disponible" in i.value for i in at.info)
-    assert not any(k for k in _metrics(at))
+    assert list(at.select_slider(key="min_mag").options)[-1] == "7.0"
+    at.select_slider(key="min_mag").set_value(7.0).run()
+    assert not at.exception
+    _goto(at, C.PAGE_ZONE)
+    assert "Sismos M ≥ 7" in _metrics(at)
+    assert _metrics(at)["Sismos M ≥ 7"] == "0"        # el mayor sismo del catálogo es 6,4
+
+
+def test_classification_page_shows_real_model_results():
+    at = _goto(_fresh(), C.PAGE_CLASS)
+    m = _metrics(at)
+    assert m["Exactitud en prueba"].endswith("%")
+    assert int(m["Municipios en categoría Alto"]) + int(m["Medio"]) + int(m["Bajo"]) == 87
+    at.selectbox(key="clase_anio").select(2024).run()
+    assert not at.exception
+
+
+def test_prioritization_page_lists_requested_number_of_zones():
+    at = _goto(_fresh(), C.PAGE_PRIO)
+    assert at.slider(key="prio_k").value == 10
+    at.slider(key="prio_k").set_value(5).run()
+    assert not at.exception
+    assert any("Lectura honesta" in w.value for w in at.warning)
+
+
+def test_groups_page_reports_k_and_members():
+    at = _goto(_fresh(), C.PAGE_GROUPS)
+    assert _metrics(at)["Grupos encontrados"] == "6"
+    at.selectbox(key="grupo_sel").select(2).run()
+    assert not at.exception
 
 
 def test_magnitude_threshold_changes_zone_labels():
