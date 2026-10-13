@@ -299,7 +299,7 @@ Respuestas en la lámina y ampliación:
 | ¿Por qué magnitud 2,5? | Es el umbral completo en todos los años; con 2,0, los años 2006 a 2008 no son comparables. |
 | ¿Por qué la mejora es modesta? | La actividad de un municipio se repite mucho de un año a otro; repetirla ya es una regla fuerte. |
 | ¿Qué aporta el agente? | Una política que combina categoría, actividad, amenaza y población. En prueba llega a 0,90 frente a 0,81 de la mejor regla fija; en validación, a 0,85 frente a 0,90. |
-| ¿Se puede reproducir? | Sí: fuentes con dirección y fecha, comandos en el repositorio y 115 pruebas automáticas. |
+| ¿Se puede reproducir? | Sí: fuentes con dirección y fecha, comandos en el repositorio y 117 pruebas automáticas. |
 
 **Preguntas adicionales posibles.**
 - *¿Por qué 2026 no está en el entrenamiento?* Es un año parcial (hasta el 13 de octubre); sus conteos no son comparables con años completos. Se muestra en la aplicación pero se excluye de los modelos.
@@ -317,7 +317,7 @@ Respuestas en la lámina y ampliación:
 
 ## 19 · Cierre — *Los dos* (30 s)
 
-**Qué decir.** *Juan Jose:* «Cumplimos los tres niveles: un clasificador supervisado, grupos territoriales no supervisados y un agente de refuerzo integrado con el clasificador.» *Gabriel:* «Con 23 variables, tres fuentes oficiales, 115 pruebas automáticas y una aplicación pública que pueden abrir ahora mismo. Muchas gracias; con gusto respondemos preguntas.»
+**Qué decir.** *Juan Jose:* «Cumplimos los tres niveles: un clasificador supervisado, grupos territoriales no supervisados y un agente de refuerzo integrado con el clasificador.» *Gabriel:* «Con 23 variables, tres fuentes oficiales, 117 pruebas automáticas y una aplicación pública que pueden abrir ahora mismo. Muchas gracias; con gusto respondemos preguntas.»
 
 **Datos de respaldo.** Repositorio: https://github.com/GabrielOrtega01/Riesgo-sismico-Santander · Entregables y fuentes citadas: `docs/entrega.md` · Resultados completos: `docs/resultados.md`.
 

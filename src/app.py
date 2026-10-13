@@ -314,17 +314,24 @@ def page_map() -> None:
         '<p class="lede">Cada punto es la cabecera de un municipio. Cuanto más grande y más '
         "oscuro, mayor es el valor del indicador elegido.</p>", unsafe_allow_html=True,
     )
-    label = st.selectbox("Indicador", list(da.MAP_METRICS), key="mapa_metrica")
+    c1, c2 = st.columns([3, 2])
+    label = c1.selectbox("Indicador", list(da.MAP_METRICS), key="mapa_metrica")
+    order = c2.radio("Mostrar en la lista", ["Mayor valor", "Menor valor"], horizontal=True,
+                     key="mapa_orden")
     metric = da.MAP_METRICS[label]
+    lowest = order == "Menor valor"
     pts = da.map_table(events, municipalities, population, metric, min_mag)
     left, right = st.columns([3, 2])
     with left, st.container(border=True):
         st.map(pts, latitude="lat", longitude="lon", size="size_m", color="color", zoom=7)
     with right, st.container(border=True):
-        st.markdown(f"**Los 10 municipios con mayor valor**  \n_{label}_")
-        top = pts.nlargest(10, "valor")[["nombre", "valor"]].rename(
+        st.markdown(f"**Los 10 municipios con {'menor' if lowest else 'mayor'} valor**  \n_{label}_")
+        top = da.extreme_zones(pts, 10, lowest=lowest).rename(
             columns={"nombre": "Municipio", "valor": "Valor"})
         st.dataframe(top, hide_index=True)
+        if lowest:
+            st.caption("Menos sismos registrados no significa menos amenaza: la amenaza oficial "
+                       "sigue siendo alta en todo Santander.")
     if metric == "pga_tr475":
         st.caption("La amenaza oficial varía poco entre municipios: todo Santander tiene amenaza alta.")
     elif metric in da.LOG_SCALE_METRICS:

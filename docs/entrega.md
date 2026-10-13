@@ -24,7 +24,7 @@ Aplicación (prevista): https://seismox.streamlit.app/
 | Dataset limpio (CSV) | `data/processed/eventos_santander_limpio.csv.gz` (184 722 eventos) y `data/processed/panel_municipio_anio.csv` (1 740 filas × variables) |
 | Diccionario con la justificación de cada variable | `docs/diccionario_variables.md` |
 | Fuente oficial citada (dirección, fecha y filtros) | ver «Fuentes» |
-| Código del análisis y del entrenamiento (repositorio reproducible) | `src/`, `README.md` (comandos), `tests/` (115 pruebas) |
+| Código del análisis y del entrenamiento (repositorio reproducible) | `src/`, `README.md` (comandos), `tests/` (117 pruebas) |
 | Modelo obligatorio con métricas y validación | `data/processed/clasificador_metricas.json`, `agente_resultados.json`, `docs/resultados.md` |
 | Prototipo / demostración | Aplicación Streamlit (`streamlit run src/app.py`) |
 | Presentación | `docs/presentacion.md` (guion de 10 minutos) |

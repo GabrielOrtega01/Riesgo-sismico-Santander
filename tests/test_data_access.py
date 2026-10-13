@@ -169,6 +169,22 @@ def test_map_table_population_uses_latest_year(events, geo_municipalities, popul
     assert t.set_index("municipio_key").loc["alfa", "valor"] == 1020
 
 
+def test_extreme_zones_returns_highest_and_lowest(events, geo_municipalities, population):
+    pts = da.map_table(events, geo_municipalities, population, "eventos", 2.5)
+    top = da.extreme_zones(pts, 2)
+    low = da.extreme_zones(pts, 2, lowest=True)
+    assert list(top["valor"]) == [3, 2]            # alfa 3, beta 2
+    assert list(low["valor"]) == [0, 2]            # gamma 0, beta 2
+    assert list(low.columns) == ["nombre", "valor"]
+    assert len(da.extreme_zones(pts, 10)) == 3     # nunca más filas que municipios
+
+
+def test_extreme_zones_breaks_ties_by_name():
+    pts = pd.DataFrame({"nombre": ["Zeta", "Alfa", "Medio"], "valor": [5.0, 5.0, 9.0]})
+    assert list(da.extreme_zones(pts, 2)["nombre"]) == ["Medio", "Alfa"]
+    assert list(da.extreme_zones(pts, 2, lowest=True)["nombre"]) == ["Alfa", "Zeta"]
+
+
 def test_model_status_lists_expected_artifacts(tmp_path, monkeypatch):
     fake = tmp_path / "clasificador.joblib"
     fake.write_bytes(b"x")

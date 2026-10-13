@@ -38,7 +38,7 @@ Atajos para la demostración: `?pagina=zona`, `mapa`, `comparar`, `grupos`, `cla
 - **¿Por qué magnitud 2,5?** Es el umbral completo en todos los años; con 2,0, los años 2006 a 2008 no son comparables.
 - **¿Por qué la mejora es modesta?** La actividad de un municipio se repite mucho de un año a otro; repetirla ya es una regla fuerte.
 - **¿Qué aporta el agente?** Una política que combina categoría, actividad, amenaza y población; en los años de prueba llega a 0,90 frente a 0,81 de la mejor regla fija; en validación, a 0,85 frente a 0,90.
-- **¿Se puede reproducir?** Sí: fuentes con dirección y fecha, comandos en el repositorio y 115 pruebas automáticas.
+- **¿Se puede reproducir?** Sí: fuentes con dirección y fecha, comandos en el repositorio y 117 pruebas automáticas.
 
 ## Plan B de la demostración
 

@@ -282,6 +282,12 @@ def map_table(
     return out
 
 
+def extreme_zones(points: pd.DataFrame, n: int = 10, lowest: bool = False) -> pd.DataFrame:
+    """Los `n` municipios con mayor (o menor) valor del indicador, con desempate por nombre."""
+    ordered = points.sort_values(["valor", "nombre"], ascending=[lowest, True])
+    return ordered.head(n)[["nombre", "valor"]].reset_index(drop=True)
+
+
 def model_status() -> list[dict]:
     """Estado de los artefactos entrenados que alimentan la clasificación y la priorización."""
     return [
