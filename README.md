@@ -13,7 +13,7 @@ mediante Machine Learning supervisado y aprendizaje por refuerzo. Proyecto acad�
 |---|---|
 | Datos: catálogo SGC, limpieza y completitud | Implementado y probado |
 | Segunda fuente: DIVIPOLA (DANE) y amenaza sísmica 2020 (SGC), integración | Implementado y probado |
-| Aplicación Streamlit (zonas, comparación, catálogo, fuentes) | Implementada y probada |
+| Aplicación Streamlit (inicio explicativo, zonas, mapa, comparación, calidad de datos, fuentes, glosario) | Implementada y probada |
 | Población municipal (DANE, proyecciones 2005–2026) | Implementado y probado |
 | Variables (≥ 20) y diccionario | Pendiente |
 | Clasificador supervisado | Pendiente |
@@ -58,6 +58,7 @@ streamlit run src/app.py
 1. Entrar a https://share.streamlit.io con la cuenta de GitHub y elegir **Create app**.
 2. Repositorio `GabrielOrtega01/Riesgo-sismico-Santander`, rama `main`, archivo principal `src/app.py`.
 3. En *Advanced settings*, elegir una versión de Python soportada por la plataforma (3.11 a 3.13).
+   Las 84 pruebas del proyecto se ejecutaron con éxito en Python 3.11.9 y 3.14.
 4. La aplicación lee solo archivos del repositorio; no requiere secretos ni acceso a internet.
 
 ## Pruebas

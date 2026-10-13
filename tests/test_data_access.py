@@ -85,6 +85,90 @@ def test_compare_zones_pivots_by_year(events):
     assert table.loc[2021, "beta"] == 2
 
 
+@pytest.fixture
+def population():
+    rows = []
+    for code, base in (("68001", 1000), ("68002", 400), ("68003", 50)):
+        for year in (2020, 2021, 2022):
+            total = base + 10 * (year - 2020)
+            rows.append({"cod_mpio": code, "anio": year, "poblacion_total": total,
+                         "pct_poblacion_cabecera": 80.0})
+    return pd.DataFrame(rows)
+
+
+@pytest.fixture
+def geo_municipalities(municipalities):
+    return municipalities.assign(lat_cabecera=[7.0, 6.0, 8.0], lon_cabecera=[-73.0, -73.5, -72.8])
+
+
+def test_add_population_merges_by_year_without_losing_rows(events, municipalities, population):
+    y = da.yearly_indicators(events, min_magnitude=2.5)
+    out = da.add_population(y, municipalities, population)
+    assert len(out) == len(y)
+    cell = out.set_index(["municipio_key", "anio"])
+    assert cell.loc[("alfa", 2021), "poblacion_total"] == 1010
+    # alfa 2020: 1 evento >= 2.5 (M 3,1) sobre 1000 habitantes
+    assert cell.loc[("alfa", 2020), "eventos_por_100mil"] == pytest.approx(1 / 1000 * 100_000)
+    assert "cod_mpio" not in out.columns
+
+
+def test_zone_population_defaults_to_latest_year(population):
+    last = da.zone_population(population, "68001")
+    assert (last["anio"], last["poblacion_total"]) == (2022, 1020)
+    year = da.zone_population(population, "68002", 2020)
+    assert year["poblacion_total"] == 400
+    assert da.zone_population(population, "99999")["poblacion_total"] is None
+
+
+def test_rank_zones_orders_by_events_and_handles_ties(events, municipalities):
+    r = da.rank_zones(events, municipalities, min_magnitude=2.5)
+    assert r.iloc[0]["municipio_key"] == "alfa" and r.iloc[0]["puesto"] == 1   # alfa tiene 2
+    by_key = r.set_index("municipio_key")["puesto"]
+    assert by_key["beta"] == 2                       # beta tiene 1
+    assert by_key["gamma"] == 3                      # gamma sin eventos
+    assert r["eventos_umbral"].sum() == 3
+
+
+def test_describe_zone_uses_only_real_figures(events, municipalities):
+    info = da.zone_summary(events, municipalities.iloc[0], min_magnitude=2.5)
+    text = da.describe_zone(info, rank=1, total_zones=3, min_magnitude=2.5)
+    assert "Alfa" in text and "3" in text and "puesto **1 de 3**" in text
+    assert "3.1" in text                              # magnitud máxima
+    empty = da.zone_summary(events, municipalities.iloc[2], min_magnitude=2.5)
+    assert "no hay sismos registrados" in da.describe_zone(empty, None, 3, 2.5)
+
+
+def test_map_table_scales_and_highlights(events, geo_municipalities, population):
+    t = da.map_table(events, geo_municipalities, population, "eventos_umbral", 2.5,
+                     highlight_key="beta")
+    assert len(t) == 3
+    assert set(t.columns) >= {"lat", "lon", "size_m", "color", "valor", "nombre"}
+    assert t.set_index("municipio_key").loc["alfa", "valor"] == 2
+    row = t.set_index("municipio_key").loc["beta"]
+    assert row["color"] == "#eb6834" and row["size_m"] == 14000
+    assert t["color"].str.match(r"^#[0-9a-f]{6}$").all()
+    with pytest.raises(ValueError, match="desconocido"):
+        da.map_table(events, geo_municipalities, population, "otra_cosa", 2.5)
+
+
+def test_map_table_uses_log_scale_for_counts_and_linear_for_hazard(events, geo_municipalities, population):
+    counts = da.map_table(events, geo_municipalities, population, "eventos", 2.5).set_index("municipio_key")
+    # alfa 3 eventos, beta 2, gamma 0: en escala log la distancia beta→gamma supera a la de alfa→beta
+    gap_low = counts.loc["beta", "size_m"] - counts.loc["gamma", "size_m"]
+    gap_high = counts.loc["alfa", "size_m"] - counts.loc["beta", "size_m"]
+    assert gap_low > gap_high > 0
+
+    hazard = da.map_table(events, geo_municipalities.assign(pga_tr475=[0.20, 0.25, 0.30]),
+                          population, "pga_tr475", 2.5).set_index("municipio_key")
+    # PGA 0,25 está a mitad de rango (0,20–0,30): norma 0,5 en escala lineal
+    assert hazard.loc["beta", "size_m"] == pytest.approx(2500 + 9000 * 0.5 ** 0.5)
+
+
+def test_map_table_population_uses_latest_year(events, geo_municipalities, population):
+    t = da.map_table(events, geo_municipalities, population, "poblacion", 2.5)
+    assert t.set_index("municipio_key").loc["alfa", "valor"] == 1020
+
+
 def test_model_status_lists_expected_artifacts(tmp_path, monkeypatch):
     fake = tmp_path / "clasificador.joblib"
     fake.write_bytes(b"x")

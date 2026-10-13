@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[2]
 EVENTS_PATH = ROOT / "data" / "processed" / "eventos_santander_limpio.csv.gz"
 MUNICIPALITIES_PATH = ROOT / "data" / "processed" / "municipios_santander.csv"
 MC_PATH = ROOT / "data" / "processed" / "mc_por_anio.csv"
+POPULATION_PATH = ROOT / "data" / "processed" / "poblacion_municipal_anual.csv"
 SOURCES_DOC_PATH = ROOT / "docs" / "fuentes_datos.md"
 
 DEFAULT_MIN_MAGNITUDE = 2.5     # completo en todos los años (ver docs/fuentes_datos.md)
@@ -52,6 +53,10 @@ def load_municipalities(path: str | Path = MUNICIPALITIES_PATH) -> pd.DataFrame:
 
 def load_mc_table(path: str | Path = MC_PATH) -> pd.DataFrame:
     return pd.read_csv(path)
+
+
+def load_population(path: str | Path = POPULATION_PATH) -> pd.DataFrame:
+    return pd.read_csv(path, dtype={"cod_mpio": str})
 
 
 def read_sources_doc(path: str | Path = SOURCES_DOC_PATH) -> str:
@@ -151,9 +156,135 @@ def compare_zones(yearly: pd.DataFrame, keys: list[str], metric: str) -> pd.Data
     return sub.pivot(index="anio", columns="municipio_key", values=metric).sort_index()
 
 
+def add_population(
+    yearly: pd.DataFrame,
+    municipalities: pd.DataFrame,
+    population: pd.DataFrame,
+    min_magnitude_label: str = "n_sobre_umbral",
+) -> pd.DataFrame:
+    """Añade población anual y eventos por 100 000 habitantes a la tabla municipio × año."""
+    code = municipalities.set_index("municipio_key")["cod_mpio"]
+    out = yearly.assign(cod_mpio=yearly["municipio_key"].map(code))
+    pop = population[["cod_mpio", "anio", "poblacion_total"]]
+    out = out.merge(pop, on=["cod_mpio", "anio"], how="left", validate="many_to_one")
+    out["eventos_por_100mil"] = out[min_magnitude_label] / out["poblacion_total"] * 100_000
+    return out.drop(columns="cod_mpio")
+
+
+def zone_population(population: pd.DataFrame, cod_mpio: str, year: int | None = None) -> dict:
+    """Población total y % en cabecera de un municipio (último año disponible por defecto)."""
+    rows = population[population["cod_mpio"] == cod_mpio]
+    if rows.empty:
+        return {"anio": None, "poblacion_total": None, "pct_cabecera": None}
+    row = rows.loc[rows["anio"].idxmax()] if year is None else rows[rows["anio"] == year].iloc[0]
+    return {
+        "anio": int(row["anio"]),
+        "poblacion_total": int(row["poblacion_total"]),
+        "pct_cabecera": float(row["pct_poblacion_cabecera"]),
+    }
+
+
+def rank_zones(events: pd.DataFrame, municipalities: pd.DataFrame, min_magnitude: float) -> pd.DataFrame:
+    """Posición de cada municipio por número de eventos M ≥ umbral (1 = más eventos)."""
+    counts = (
+        events.assign(_u=events["magnitude"] >= min_magnitude)
+        .groupby("municipio_key")["_u"].sum().astype(int).rename("eventos_umbral")
+    )
+    out = municipalities[["municipio_key", "nombre"]].merge(
+        counts, on="municipio_key", how="left"
+    ).fillna({"eventos_umbral": 0})
+    out["eventos_umbral"] = out["eventos_umbral"].astype(int)
+    out["puesto"] = out["eventos_umbral"].rank(method="min", ascending=False).astype(int)
+    return out.sort_values(["puesto", "nombre"]).reset_index(drop=True)
+
+
+def _spaced(n: int | float) -> str:
+    return f"{int(n):,}".replace(",", " ")
+
+
+def describe_zone(info: dict, rank: int | None, total_zones: int, min_magnitude: float) -> str:
+    """Resumen en lenguaje natural, construido solo con las cifras de la zona."""
+    name = info["nombre"]
+    if info["eventos"] == 0:
+        return f"En el catálogo no hay sismos registrados para **{name}**."
+    text = (
+        f"En **{name}** el catálogo registra **{_spaced(info['eventos'])}** sismos entre 2006 y 2026; "
+        f"**{_spaced(info['eventos_sobre_umbral'])}** tienen magnitud de {min_magnitude:g} o más."
+    )
+    if rank is not None and info["eventos_sobre_umbral"] > 0:
+        text += f" Es el puesto **{rank} de {total_zones}** municipios por número de esos eventos."
+    depth = info["profundidad_mediana"]
+    if depth is not None:
+        kind = "muy profundos" if depth >= 100 else "poco profundos" if depth < 30 else "de profundidad intermedia"
+        text += f" La mayoría son {kind}: la profundidad típica es de unos {depth:.0f} km."
+    if info["magnitud_max"] is not None:
+        text += f" El más fuerte registrado fue de magnitud {info['magnitud_max']:.1f}."
+    return text
+
+
+MAP_METRICS = {
+    "Sismos (magnitud mínima elegida)": "eventos_umbral",
+    "Sismos totales del catálogo": "eventos",
+    "Amenaza oficial (PGA, Tr = 475 años)": "pga_tr475",
+    "Población proyectada": "poblacion",
+}
+LOG_SCALE_METRICS = {"eventos_umbral", "eventos", "poblacion"}
+_MAP_LOW, _MAP_HIGH = "#cde2fb", "#0d366b"     # azul secuencial, claro → oscuro
+_MAP_HIGHLIGHT = "#eb6834"
+
+
+def _lerp(low: str, high: str, t: float) -> str:
+    t = min(max(float(t), 0.0), 1.0)
+    a = [int(low[i:i + 2], 16) for i in (1, 3, 5)]
+    b = [int(high[i:i + 2], 16) for i in (1, 3, 5)]
+    return "#" + "".join(f"{round(x + (y - x) * t):02x}" for x, y in zip(a, b))
+
+
+def map_table(
+    events: pd.DataFrame,
+    municipalities: pd.DataFrame,
+    population: pd.DataFrame,
+    metric: str,
+    min_magnitude: float,
+    highlight_key: str | None = None,
+) -> pd.DataFrame:
+    """Un punto por municipio (cabecera) con tamaño y color según el indicador elegido."""
+    if metric not in MAP_METRICS.values():
+        raise ValueError(f"Indicador desconocido: {metric}")
+    counts = (
+        events.assign(_u=events["magnitude"] >= min_magnitude)
+        .groupby("municipio_key").agg(eventos=("id", "size"), eventos_umbral=("_u", "sum"))
+    )
+    base = municipalities.merge(counts, left_on="municipio_key", right_index=True, how="left")
+    base[["eventos", "eventos_umbral"]] = base[["eventos", "eventos_umbral"]].fillna(0)
+    last = population.loc[population["anio"] == population["anio"].max(), ["cod_mpio", "poblacion_total"]]
+    base = base.merge(last.rename(columns={"poblacion_total": "poblacion"}), on="cod_mpio", how="left")
+
+    value = base[metric].astype(float)
+    # Los conteos y la población están muy concentrados (un municipio concentra > 50 % de los
+    # sismos): se dibujan en escala logarítmica para que el resto siga siendo distinguible.
+    scaled = np.log1p(value) if metric in LOG_SCALE_METRICS else value
+    span = scaled.max() - scaled.min()
+    norm = (scaled - scaled.min()) / span if span > 0 else pd.Series(0.5, index=value.index)
+    out = pd.DataFrame({
+        "nombre": base["nombre"],
+        "municipio_key": base["municipio_key"],
+        "lat": base["lat_cabecera"],
+        "lon": base["lon_cabecera"],
+        "valor": value,
+        "size_m": 2500 + 9000 * np.sqrt(norm),
+        "color": [_lerp(_MAP_LOW, _MAP_HIGH, t) for t in norm],
+    })
+    if highlight_key is not None:
+        mask = out["municipio_key"] == highlight_key
+        out.loc[mask, "color"] = _MAP_HIGHLIGHT
+        out.loc[mask, "size_m"] = 14000
+    return out
+
+
 def model_status() -> list[dict]:
     """Estado de los artefactos entrenados que alimentan la clasificación y la priorización."""
     return [
-        {"componente": name, "archivo": str(path.relative_to(ROOT)), "disponible": path.is_file()}
+        {"componente": name, "archivo": path.relative_to(ROOT).as_posix(), "disponible": path.is_file()}
         for name, path in MODEL_ARTIFACTS.items()
     ]
