@@ -1,5 +1,9 @@
 # Seismox · Riesgo sísmico de Santander
 
+integrantes 
+Juan Jose Perucho Quintero 
+Gabriel Augusto Ortega Martínez
+
 Análisis y priorización **exploratoria** de la actividad sísmica histórica de Santander (Colombia)
 mediante Machine Learning supervisado y aprendizaje por refuerzo. Proyecto académico (UTS).
 
