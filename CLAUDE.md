@@ -1,4 +1,7 @@
-# Riesgo sísmico de Santander
+# Riesgo sísmico de Santander (marca de la aplicación: **Seismox**)
+
+Nombre público para la exposición: **Seismox** · dirección prevista https://seismox.streamlit.app/
+(sujeta a disponibilidad del subdominio al desplegar).
 
 Proyecto universitario (UTS, semillero, nivel avanzado del reto). Análisis y **priorización
 exploratoria** de la actividad sísmica histórica de Santander, Colombia, combinando un
@@ -64,6 +67,7 @@ python -m src.data.preprocessing  # limpieza -> data/processed/eventos_santander
 python -m src.data.completeness   # Mc por año -> data/processed/mc_por_anio.csv
 python -m src.data.integration    # une catálogo + DIVIPOLA + amenaza -> municipios_santander.csv
 python -m src.data.population     # población municipal DANE -> poblacion_municipal_anual.csv
+python -m src.data.features       # panel municipio × año + docs/diccionario_variables.md
 python -m src.data.acquisition    # (una vez, con internet) descarga DIVIPOLA, amenaza y población a data/raw
 streamlit run src/app.py          # aplicación (los datos procesados deben existir)
 ```
@@ -101,7 +105,14 @@ streamlit run src/app.py          # aplicación (los datos procesados deben exis
    años completos; 2026 es parcial y se trata aparte). Umbral de magnitud: propuesta M ≥ 2,5 (completo en todos los años; ver
    `docs/fuentes_datos.md`). **El catálogo cambia de régimen en 2018** (tipo de magnitud, `nst`,
    valor b): la división temporal debe incluir ambos regímenes en entrenamiento.
-3. Rúbrica completa y fecha de entrega del reto.
+3. ~~Año 2026~~ **Decidido (2026-10-13): se excluye del entrenamiento y la evaluación** (parcial);
+   solo se muestra en la aplicación.
+4. ~~Variables~~ **Hechas (2026-10-13): 23 variables** en `docs/diccionario_variables.md` (fuente
+   única: `src/data/features.py`). Regla: una variable por par con |ρ| ≥ 0,90 (descartadas
+   `meses_activos_m25` y `frac_anios_activos_hist`). Tres variables siguen al año (⚠: `nst`,
+   errores de localización); se evalúan con y sin ellas (20 sin ellas). Filas modelables:
+   2009–2024 (3 años de historia mínima y etiqueta en t+1).
+5. Rúbrica completa y fecha de entrega del reto.
 
 ## Notas de dominio (por confirmar con los datos)
 

@@ -44,6 +44,7 @@ def test_home_explains_the_project_and_shows_real_figures(home):
     assert m["Municipios"] == "87"
     text = " ".join(md.value for md in home.markdown)
     assert "¿De qué trata?" in text and "¿Cómo funciona?" in text
+    assert "Seismox" in text and "Seismox" in " ".join(md.value for md in home.sidebar.markdown)
     assert any("No predice terremotos" in i.value for i in home.info)
 
 

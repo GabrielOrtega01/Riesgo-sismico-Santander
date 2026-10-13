@@ -20,8 +20,11 @@ from src.services import data_access as da
 from src.ui import content as C
 from src.ui import theme as T
 
+APP_NAME = "Seismox"
+APP_TAGLINE = "Riesgo sísmico de Santander"
+
 st.set_page_config(
-    page_title="Riesgo sísmico de Santander", page_icon="🌋", layout="wide",
+    page_title=f"{APP_NAME} · {APP_TAGLINE}", page_icon="🌋", layout="wide",
     initial_sidebar_state="expanded",
 )
 T.inject_css()
@@ -80,8 +83,8 @@ def go(page: str) -> None:
 st.session_state.setdefault("nav", C.PAGE_HOME)
 with st.sidebar:
     st.markdown(
-        '<div class="brand">🌋 Riesgo sísmico de Santander</div>'
-        '<div class="brand-sub">Exploración de la actividad sísmica histórica</div>',
+        f'<div class="brand">🌋 {APP_NAME}</div>'
+        f'<div class="brand-sub">{APP_TAGLINE} · actividad sísmica histórica</div>',
         unsafe_allow_html=True,
     )
     st.radio("Menú", C.PAGES, key="nav", label_visibility="collapsed")
@@ -111,7 +114,7 @@ def footer() -> None:
 # ============================================================================ INICIO
 def page_home() -> None:
     T.hero(
-        "Riesgo sísmico de Santander",
+        f"{APP_NAME} · {APP_TAGLINE}",
         "Explora más de 20 años de actividad sísmica en los 87 municipios de Santander, "
         "con datos oficiales del Servicio Geológico Colombiano y del DANE.",
     )
