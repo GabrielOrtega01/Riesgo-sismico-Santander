@@ -1,23 +1,38 @@
-# Guion de la presentación (10 min + 3 min de preguntas)
+# Guion de la presentación (10 minutos + 3 de preguntas)
 
-**Equipo:** Gabriel Augusto Ortega Martínez · Juan Jose Perucho Quintero · **Seismox** (Nivel Avanzado)
+**Equipo:** Bucara Hackers · Juan Jose Perucho Quintero · Gabriel Augusto Ortega Martínez
+**Proyecto:** Seismox · Nivel Avanzado · https://seismox.streamlit.app/
 
-| Min | Quién | Qué decir / mostrar |
-|---|---|---|
-| 0:00–1:00 | Gabriel | Problema: Santander registra miles de sismos al año, casi todos profundos y pequeños (nido de Bucaramanga). Pregunta: ¿cómo clasificar y priorizar zonas con datos oficiales? **Qué no es:** no predice terremotos ni es evaluación oficial. |
-| 1:00–2:30 | Gabriel | Datos: catálogo SGC (184 722 eventos, 2006–2026), amenaza sísmica 2020 (SGC), DIVIPOLA y población (DANE). 87 municipios integrados sin pérdidas. Hallazgo: el catálogo cambia de régimen en 2018 → usamos M ≥ 2,5. |
-| 2:30–3:30 | Gabriel | 23 variables (diccionario), panel municipio × año, **control de fuga temporal** (prueba automática). |
-| 3:30–5:00 | Juan Jose | **Básico:** clasificación Bajo/Medio/Alto del año siguiente. Validación temporal; Random Forest 75,3 % de exactitud vs 73,6 % de la persistencia: mejora **modesta**, lo decimos. Mostrar matriz de confusión en la app. |
-| 5:00–6:00 | Juan Jose | **Medio:** K-means (6 grupos, 20 variables), mapa territorial. Silueta baja (0,21): simplificación útil. |
-| 6:00–8:00 | Juan Jose | **Avanzado:** agente Q-learning. Estados, acciones, recompensa. Curva de aprendizaje; frente a referencias: supera a aleatoria (0,11 → ~0,9), competitivo con persistencia, no concluyente. |
-| 8:00–9:30 | Ambos | **Demostración en vivo en Seismox:** Inicio → Explorar una zona → Mapa → Clasificación (año 2025) → Priorización (top 10) → Fuentes y límites. |
-| 9:30–10:00 | Ambos | Cierre: lo que aprendimos, límites (vulnerabilidad no medida, actividad concentrada), qué sigue. |
+La presentación en láminas tiene 14 láminas con notas del orador. Orden de exposición: **primero
+Juan Jose, después Gabriel.**
 
-## Preguntas probables y respuestas
+| Lámina | Quién | Mensaje | Tiempo |
+|---|---|---|---|
+| 1 Portada | Juan Jose | «Somos Bucara Hackers y les vamos a presentar nuestro proyecto: Seismox» | 0:30 |
+| 2 El problema | Juan Jose | 184 722 sismos, 87 municipios, 95 % profundos; la pregunta | 0:45 |
+| 3 Datos oficiales | Juan Jose | SGC (catálogo y amenaza) y DANE; 87 municipios sin perder ningún sismo | 0:45 |
+| 4 Hallazgo | Juan Jose | El catálogo cambió en 2018; usamos magnitud ≥ 2,5 | 0:45 |
+| 5 Variables | Juan Jose | 23 variables, sin mirar al futuro (prueba automática) | 0:45 |
+| 6 Básico | Gabriel | Clasificador Bajo/Medio/Alto: 75,3 % frente a 73,6 % | 1:00 |
+| 7 Medio | Gabriel | K-means: 6 grupos territoriales | 0:45 |
+| 8 Avanzado | Gabriel | Agente: observa, decide, aprende | 1:00 |
+| 9 Resultados | Gabriel | De 0,11 al azar a 0,90; competitivo con las reglas simples y por qué | 1:00 |
+| 10 Demostración | Los dos | Juan Jose conduce la app y Gabriel comenta | 1:30 |
+| 11 Límites | Gabriel | Lo que Seismox no hace | 0:45 |
+| 12 Preguntas | Los dos | Respuestas preparadas | respaldo |
+| 13 Qué sigue | Juan Jose | Cuatro pasos, cada uno responde a un límite declarado | 0:30 |
+| 14 Cierre | Los dos | Tres niveles cumplidos; gracias | 0:30 |
 
-- **¿Predice terremotos?** No. Clasifica la actividad histórica esperada del año siguiente; evaluada fuera de muestra.
-- **¿Por qué la mejora es tan pequeña?** La actividad por municipio es muy persistente; la línea base de persistencia ya es fuerte. Lo reportamos sin maquillar.
-- **¿Qué pasó con el agente frente a la persistencia?** Queda a la par; con 4 años de evaluación la diferencia no es concluyente.
-- **¿Hay fuga de información?** División temporal, umbrales ajustados con entrenamiento, variables históricas solo con años previos y una prueba automática que lo verifica.
-- **¿Por qué M ≥ 2,5?** Es el umbral completo en todos los años; con 2,0 los años 2006–2008 no son comparables.
-- **¿Por qué las probabilidades del clasificador alimentan al agente?** Es la integración exigida; se usan probabilidades fuera de muestra (origen móvil).
+## Respuestas preparadas (lámina 12)
+
+- **¿Predice terremotos?** No. Clasifica la actividad histórica esperada del año siguiente, evaluada con años que no vio.
+- **¿Hay fuga de información?** No: división temporal, umbrales ajustados con datos de entrenamiento, variables solo con años previos y una prueba automática que lo verifica.
+- **¿Por qué magnitud 2,5?** Es el umbral completo en todos los años; con 2,0, los años 2006 a 2008 no son comparables.
+- **¿Por qué la mejora es modesta?** La actividad de un municipio se repite mucho de un año a otro; repetirla ya es una regla fuerte.
+- **¿Qué aporta el agente?** Una política que combina categoría, actividad, amenaza y población; en el protocolo secuencial llega a 0,90 frente a 0,81 de la mejor regla fija.
+- **¿Se puede reproducir?** Sí: fuentes con dirección y fecha, comandos en el repositorio y 115 pruebas automáticas.
+
+## Plan B de la demostración
+
+Si no hay internet o la página no carga: ejecutar localmente con `streamlit run src/app.py` desde la
+carpeta del proyecto (los datos y los modelos ya están en el repositorio).

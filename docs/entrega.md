@@ -1,6 +1,6 @@
 # Entrega · Hackathon CIAI UTSmart 2026 · Nivel Avanzado
 
-Equipo: Gabriel Augusto Ortega Martínez · Juan Jose Perucho Quintero
+Equipo **Bucara Hackers**: Juan Jose Perucho Quintero · Gabriel Augusto Ortega Martínez
 Repositorio: https://github.com/GabrielOrtega01/Riesgo-sismico-Santander
 Aplicación (prevista): https://seismox.streamlit.app/
 
