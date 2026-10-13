@@ -25,7 +25,7 @@ está marcado como **pendiente**.
 | `agency` | cat. | 0 | Constante (`SGC`): sin valor como variable. |
 | `rms` | num. | 0 | Rango 0–9,4. |
 | `gap` | num. | 1 | Grados, 24–352. |
-| `place` | texto | 0 | Formato `Municipio - Departamento, Colombia`. Se interpreta como localidad de referencia; **no verificado** si es el municipio que contiene el epicentro o el más cercano. |
+| `place` | texto | 0 | Formato `Municipio - Departamento, Colombia`. El municipio es la cabecera más cercana en el 89 % de los eventos (ver sección 4); no se puede distinguir "contiene" de "más cercano" sin polígonos. |
 | `local_time` | fecha | 0 | **Ver advertencia**: etiquetada `+00:00` pero equivale a UTC−5. |
 | `utc_time` | fecha | 0 | Usar esta. |
 | `magnitude` | num. | 0 | −1,3 a 6,4. |
@@ -119,13 +119,84 @@ Consecuencias para el diseño (propuestas, por confirmar):
 - `nst` y `mag_type` son indicadores de régimen de la red; si se usan como variables, hay que
   justificar que no codifican simplemente el año.
 
-## 2. Amenaza sísmica oficial (segunda fuente candidata)
+## 2. Amenaza sísmica oficial del SGC (segunda fuente) — incorporada
 
-**Pendiente.** `amenazasismica.sgc.gov.co` dio error SSL desde este equipo (2026-10-13). Otros
-puntos referenciados por el SGC: `srvags.sgc.gov.co/jsviewer/Amenaza_Sismica_2020`. Debe
-verificarse si ofrece datos descargables por municipio.
+**Acceso.** `amenazasismica.sgc.gov.co` **no es accesible**: Chrome muestra `ERR_CERT_DATE_INVALID`
+con HSTS (certificado vencido en el servidor del SGC) y el navegador integrado rechaza la
+navegación. No se elude la advertencia. El mismo estudio se publica en un visor ArcGIS que sí
+responde: `https://srvags.sgc.gov.co/jsviewer/Amenaza_Sismica_2020/`, respaldado por el servicio
+`https://srvags.sgc.gov.co/arcprod/rest/services/Amenaza_Sismica/Amenaza_Sismica/MapServer`
+("Amenaza Sismica 2020", capacidades Map, Query, Data; también WMS).
 
-## 3. DANE (población / división político-administrativa)
+**Contenido.** 22 capas **ráster** (no vectoriales): PGA [g], Sa(0,2) y Sa(1,0) para cinco periodos
+de retorno (31, 225, 475, 975 y 2 475 años), más "Intensidad Máxima Observada" e "Intensidad
+Sísmica Esperada". Las consultas por atributos no aplican; sí funciona `identify` (valor del píxel
+en un punto).
 
-**Pendiente.** Candidatos: proyecciones de población municipal, Censo 2018 y el código DIVIPOLA
-como clave oficial de municipio.
+**Muestreo de prueba (en memoria, 2026-10-13).** Valor de cada capa en la cabecera de los 87
+municipios (coordenadas DIVIPOLA): 87/87 sin nulos. PGA Tr=475: mín. 0,198 g, mediana 0,238 g,
+máx. 0,279 g (mayores: El Carmen de Chucurí, Sabana de Torres, El Playón; menores: Albania,
+Gámbita, Puente Nacional). Intensidad esperada: solo valores 6 y 7.
+
+**Limitaciones verificadas o por verificar:**
+1. Mapa **estático** (2020): no varía en el tiempo y no es "conocimiento previo" para 2006–2019.
+   El corte del catálogo con el que se calibró **no está verificado**; no es independiente de los
+   eventos que usamos.
+2. Se muestrea en la **cabecera municipal**, no el promedio del área del municipio.
+3. Rango estrecho: todo Santander está en amenaza alta; poca capacidad de discriminar.
+4. Las capas PGA/Sa de distintos periodos de retorno son casi colineales: cuentan como 1–2
+   variables, no como 5 (no inflar el mínimo de 20).
+5. **Excluir "Intensidad Máxima Observada"** como variable de entrada: resume efectos de sismos
+   pasados y puede filtrar información de los periodos que se evalúan.
+6. Licencia de uso del SGC: **no verificada**; citar la fuente.
+
+## 3. DANE — DIVIPOLA (división político-administrativa) — incorporada
+
+Conjunto "DIVIPOLA - Municipios Santander" en datos.gov.co (id `kyaq-ecfy`, DANE, licencia CC BY-SA 4.0):
+87 filas con `cod_mpio`, `nom_mpio`, `longitud`, `latitud` (decimal con coma).
+
+**Cruce con el catálogo verificado:** los 87 nombres normalizados del catálogo coinciden 1 a 1 con
+los 87 de DIVIPOLA (0 sin pareja en ambos sentidos). Eso confirma los dos alias supuestos:
+`El Carmen` → `El Carmen de Chucurí` y `Jordán Sube` → `Jordán` (las claves `el carmen` y
+`jordan sube` no existen en DIVIPOLA).
+
+**Pendiente:** población municipal (proyecciones DANE) como indicador de exposición; no se ha
+buscado ni verificado todavía.
+
+## 4. Integración de las fuentes (`python -m src.data.integration`)
+
+Archivos crudos descargados el 2026-10-13 con `python -m src.data.acquisition` (no sobrescribe):
+
+| Archivo | Fuente | Contenido |
+|---|---|---|
+| `data/raw/divipola_municipios_santander.csv` | DANE, datos.gov.co `kyaq-ecfy` | 87 filas, tal como se publica (coma decimal) |
+| `data/raw/sgc_amenaza_2020_cabeceras.csv` | SGC, MapServer `Amenaza_Sismica`, operación `identify` | 87 filas × 8 capas; incluye coordenadas usadas y `fecha_consulta_utc` |
+
+Salida: `data/processed/municipios_santander.csv` (una fila por municipio: código, nombre oficial,
+coordenadas, 8 valores de amenaza y n.º de eventos) y `data/processed/integracion_reporte.json`.
+
+Reglas de unión (validadas en código, ver `src/data/integration.py`):
+- catálogo → DIVIPOLA por `municipio_key` (muchos a uno);
+- DIVIPOLA → amenaza por `cod_mpio` (uno a uno).
+La unión falla si pierde o duplica filas, si hay códigos sin pareja o si falta algún valor.
+
+Resultado real:
+
+| Comprobación | Resultado |
+|---|---|
+| Municipios | 87 (DIVIPOLA = catálogo = amenaza) |
+| Eventos con municipio oficial | 184 722 de 184 722 (0 perdidos, 0 duplicados) |
+| Municipios sin eventos | 0; con menos de 30 eventos: 10 |
+| Compatibilidad geográfica | Para el 89,03 % de los eventos, el municipio de `place` es la cabecera DIVIPOLA más cercana al epicentro. Distancia a la cabecera propia: mediana 7,3 km, p90 12,5 km, máx. 87,5 km |
+| Compatibilidad temporal | Amenaza = mapa estático 2020; catálogo 2006–2026 |
+| Compatibilidad metodológica | Amenaza muestreada en la cabecera, no el área |
+
+Interpretación de `place`: es coherente con "municipio más cercano o que contiene el epicentro";
+sin polígonos municipales no se puede distinguir entre ambas. El 11 % restante puede deberse a
+municipios extensos con cabecera descentrada. No se afirma más.
+
+Redundancia entre capas de amenaza (correlación con PGA Tr=475): PGA Tr=225 0,995 · Tr=975 0,994
+· Sa(0,2) 0,997 · Tr=2 475 0,955 · Tr=31 0,928 · Sa(1,0) 0,870. En consecuencia se tratarán como
+**1–2 variables independientes**, no 8. La correlación entre PGA Tr=475 y log(1 + n.º de eventos)
+por municipio es 0,35: la amenaza oficial y la actividad histórica comparten información, pero
+no son lo mismo.

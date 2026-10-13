@@ -1,0 +1,52 @@
+{
+  "municipios": 87,
+  "eventos": 184722,
+  "eventos_con_municipio_oficial": 184722,
+  "municipios_sin_eventos": 0,
+  "municipios_con_menos_de_30_eventos": 10,
+  "compatibilidad_geografica": {
+    "eventos_evaluados": 184722,
+    "porcentaje_municipio_es_la_cabecera_mas_cercana": 89.03,
+    "distancia_a_cabecera_propia_km": {
+      "mediana": 7.3,
+      "p90": 12.5,
+      "maximo": 87.5
+    }
+  },
+  "compatibilidad_temporal": "La amenaza es un mapa estático de 2020 (sin dimensión temporal); el catálogo cubre 2006-2026. No hay variación temporal de amenaza dentro del análisis.",
+  "compatibilidad_metodologica": "Amenaza muestreada en la cabecera municipal (punto DIVIPOLA), no el promedio del área.",
+  "rango_amenaza": {
+    "pga_tr31": [
+      0.0446,
+      0.0693
+    ],
+    "pga_tr225": [
+      0.1411,
+      0.2034
+    ],
+    "pga_tr475": [
+      0.1979,
+      0.2787
+    ],
+    "pga_tr975": [
+      0.2642,
+      0.3671
+    ],
+    "pga_tr2475": [
+      0.3626,
+      0.5346
+    ],
+    "sa02_tr475": [
+      0.4205,
+      0.594
+    ],
+    "sa10_tr475": [
+      0.077,
+      0.1051
+    ],
+    "intensidad_esperada": [
+      6.0,
+      7.0
+    ]
+  }
+}
