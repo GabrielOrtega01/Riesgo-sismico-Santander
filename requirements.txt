@@ -1,0 +1,11 @@
+# Dependencias del proyecto "Riesgo sísmico de Santander".
+# Mínimas a propósito: se agrega una librería solo si una tarea concreta la exige.
+
+pandas>=2.2          # carga, limpieza e integración de datos
+numpy>=1.26          # cálculo numérico, tabla Q del agente
+scikit-learn>=1.4    # clasificación supervisada y métricas
+joblib>=1.3          # persistencia del modelo entrenado
+matplotlib>=3.8      # gráficas de evaluación y entrenamiento
+openpyxl>=3.1        # lectura de archivos Excel (.xlsx)
+streamlit>=1.35      # aplicación de demostración
+pytest>=8.0          # pruebas automatizadas

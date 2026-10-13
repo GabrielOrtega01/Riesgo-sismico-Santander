@@ -1,0 +1,21 @@
+# Entorno virtual y cachés de Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Archivos de sistema e IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Secretos y configuración local
+.env
+*.local
+
+# Artefactos regenerables (se reproducen con los scripts de entrenamiento)
+# Los datos crudos y procesados SÍ se versionan mientras sean pequeños; si
+# crecen, evaluarlo de nuevo.
