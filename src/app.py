@@ -110,7 +110,14 @@ def go(page: str) -> None:
 
 
 # ---- barra lateral (menú) -------------------------------------------------------------------
-st.session_state.setdefault("nav", C.PAGE_HOME)
+# Enlaces directos a una sección: ?pagina=zona | mapa | comparar | grupos | clasificacion | priorizacion …
+PAGE_KEYS = {
+    "inicio": C.PAGE_HOME, "zona": C.PAGE_ZONE, "mapa": C.PAGE_MAP, "comparar": C.PAGE_COMPARE,
+    "grupos": C.PAGE_GROUPS, "clasificacion": C.PAGE_CLASS, "priorizacion": C.PAGE_PRIO,
+    "calidad": C.PAGE_CATALOG, "fuentes": C.PAGE_SOURCES, "glosario": C.PAGE_GLOSSARY,
+}
+if "nav" not in st.session_state:
+    st.session_state["nav"] = PAGE_KEYS.get(str(st.query_params.get("pagina", "")).lower(), C.PAGE_HOME)
 with st.sidebar:
     st.markdown(
         f'<div class="brand">🌋 {APP_NAME}</div>'

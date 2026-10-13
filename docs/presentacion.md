@@ -3,8 +3,16 @@
 **Equipo:** Bucara Hackers · Juan Jose Perucho Quintero · Gabriel Augusto Ortega Martínez
 **Proyecto:** Seismox · Nivel Avanzado · https://seismox.streamlit.app/
 
-La presentación en láminas tiene 14 láminas con notas del orador. Orden de exposición: **primero
-Juan Jose, después Gabriel.**
+La presentación en láminas tiene 19 láminas con notas del orador, cinco de ellas con pantallazos de
+la aplicación (inicio, explorar una zona, clasificación, grupos territoriales y priorización).
+Orden de exposición: **primero Juan Jose (láminas 1 a 7), después Gabriel (8 a 14)**; la
+demostración (15) la hacen los dos, Gabriel presenta los límites (16), los dos responden (17),
+Juan Jose presenta lo que sigue (18) y cierran juntos (19). La tabla siguiente conserva el
+reparto por bloque; las láminas con pantallazos acompañan a la del tema correspondiente.
+
+Atajos para la demostración: `?pagina=zona`, `mapa`, `comparar`, `grupos`, `clasificacion`,
+`priorizacion`, `calidad`, `fuentes`, `glosario` abren esa sección directamente
+(por ejemplo `https://seismox.streamlit.app/?pagina=priorizacion`).
 
 | Lámina | Quién | Mensaje | Tiempo |
 |---|---|---|---|
