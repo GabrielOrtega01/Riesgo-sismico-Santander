@@ -337,6 +337,8 @@ def page_compare() -> None:
     keys = [municipalities.loc[municipalities["nombre"] == n, "municipio_key"].iloc[0] for n in picked]
     table = da.compare_zones(yearly, keys, metrics[metric_label])[keys].rename(columns=names)
     table.index = table.index.astype(str)
+    table.index.name = "Año"
+    table.columns.name = None
     with st.container(border=True):
         st.markdown(f"**{metric_label}**")
         st.line_chart(table, color=T.CATEGORICAL[: len(keys)])
