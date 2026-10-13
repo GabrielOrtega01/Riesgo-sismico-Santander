@@ -36,31 +36,51 @@ def fmt(n) -> str:
 
 # ---- datos (con caché) ---------------------------------------------------------------------
 
+def data_signature() -> tuple:
+    """Huella de los archivos de datos y modelos (nombre, fecha y tamaño).
+
+    Se pasa a las funciones con caché: si un despliegue cambia un archivo, la huella cambia y la
+    caché se invalida sola (sin ella, una tabla vieja podría sobrevivir en memoria al redespliegue).
+    """
+    paths = [da.EVENTS_PATH, da.MUNICIPALITIES_PATH, da.POPULATION_PATH, da.MC_PATH,
+             da.ROOT / "data" / "processed" / "panel_municipio_anio.csv",
+             da.ROOT / "data" / "processed" / "predicciones_clasificador.csv",
+             da.ROOT / "models" / "clasificador.joblib", da.ROOT / "models" / "politica_q.npz"]
+    sig = []
+    for p in paths:
+        stat = p.stat() if p.exists() else None
+        sig.append((p.name, stat.st_mtime_ns if stat else 0, stat.st_size if stat else 0))
+    return tuple(sig)
+
+
+SIG = data_signature()
+
+
 @st.cache_data(show_spinner="Cargando catálogo…")
-def get_events() -> pd.DataFrame:
+def get_events(sig: tuple) -> pd.DataFrame:
     return da.load_events()
 
 
 @st.cache_data
-def get_municipalities() -> pd.DataFrame:
+def get_municipalities(sig: tuple) -> pd.DataFrame:
     return da.load_municipalities()
 
 
 @st.cache_data
-def get_population() -> pd.DataFrame:
+def get_population(sig: tuple) -> pd.DataFrame:
     return da.load_population()
 
 
 @st.cache_data
-def get_yearly(min_magnitude: float) -> pd.DataFrame:
+def get_yearly(min_magnitude: float, sig: tuple) -> pd.DataFrame:
     return da.add_population(
-        da.yearly_indicators(get_events(), min_magnitude=min_magnitude),
-        get_municipalities(), get_population(),
+        da.yearly_indicators(get_events(sig), min_magnitude=min_magnitude),
+        get_municipalities(sig), get_population(sig),
     )
 
 
 @st.cache_resource(show_spinner="Cargando modelos…")
-def get_service():
+def get_service(sig: tuple):
     from src.services.risk_analysis import RiskAnalysisService
     try:
         return RiskAnalysisService()
@@ -69,9 +89,9 @@ def get_service():
 
 
 try:
-    events = get_events()
-    municipalities = get_municipalities()
-    population = get_population()
+    events = get_events(SIG)
+    municipalities = get_municipalities(SIG)
+    population = get_population(SIG)
 except FileNotFoundError as exc:
     st.error(
         f"Faltan datos procesados: {exc}\n\n"
@@ -80,7 +100,7 @@ except FileNotFoundError as exc:
     )
     st.stop()
 
-service = get_service()
+service = get_service(SIG)
 summary = da.catalog_summary(events)
 status = {s["componente"].split(" ")[0]: s["disponible"] for s in da.model_status()}
 
@@ -109,7 +129,7 @@ with st.sidebar:
         )
     st.caption("Proyecto académico · UTS\n\nDatos: SGC y DANE\n\nNo es una evaluación oficial del riesgo.")
 
-yearly = get_yearly(min_mag)
+yearly = get_yearly(min_mag, SIG)
 names = municipalities.set_index("municipio_key")["nombre"]
 ranking = da.rank_zones(events, municipalities, min_mag)
 
