@@ -38,7 +38,7 @@ MODEL_PATH = Path("models/clasificador.joblib")
 
 
 def _usable(df: pd.DataFrame) -> pd.DataFrame:
-    return df[df["anios_historia"] >= MIN_HISTORY_YEARS]
+    return df[df["años_historia"] >= MIN_HISTORY_YEARS]
 
 
 def _metrics(y_true, y_pred) -> dict:
@@ -63,20 +63,20 @@ def _fit(model_name: str, features: list[str], rows: pd.DataFrame):
 def run_experiment(panel: pd.DataFrame) -> dict:
     """Entrena y compara modelos y conjuntos de variables; devuelve resultados y el mejor modelo."""
     labeled0 = _usable(panel)
-    labeled0 = labeled0[labeled0["anio"] <= TRAIN_END]
+    labeled0 = labeled0[labeled0["año"] <= TRAIN_END]
     # umbrales ajustados solo con la actividad de los años de entrenamiento (t+1 ≤ 2021)
-    tmp = panel.sort_values(["cod_mpio", "anio"])
-    nxt_counts = tmp.groupby("cod_mpio")["n_m25_anio"].shift(-1)
-    nxt_mag = tmp.groupby("cod_mpio")["magnitud_max_anio"].shift(-1)
-    in_train = (tmp["anios_historia"] >= MIN_HISTORY_YEARS) & (tmp["anio"] <= TRAIN_END) & nxt_counts.notna()
+    tmp = panel.sort_values(["cod_mpio", "año"])
+    nxt_counts = tmp.groupby("cod_mpio")["n_m25_año"].shift(-1)
+    nxt_mag = tmp.groupby("cod_mpio")["magnitud_max_año"].shift(-1)
+    in_train = (tmp["años_historia"] >= MIN_HISTORY_YEARS) & (tmp["año"] <= TRAIN_END) & nxt_counts.notna()
     th = fit_thresholds(nxt_counts[in_train], nxt_mag[in_train])
     data = add_targets(panel, th)
     data = _usable(data)
     labeled = data[data["etiqueta"].notna()]
 
-    train = labeled[labeled["anio"] <= TRAIN_END]
-    val = labeled[labeled["anio"].isin(VAL_YEARS)]
-    test = labeled[labeled["anio"].isin(TEST_YEARS)]
+    train = labeled[labeled["año"] <= TRAIN_END]
+    val = labeled[labeled["año"].isin(VAL_YEARS)]
+    test = labeled[labeled["año"].isin(TEST_YEARS)]
 
     results = {"umbrales": th.as_dict(),
                "distribucion_etiquetas": {
@@ -115,13 +115,13 @@ def run_experiment(panel: pd.DataFrame) -> dict:
 
     # modelo final: reajuste con años ≤ 2022 y evaluación única en prueba
     feats = FEATURE_SETS[best_set]
-    final_rows = labeled[labeled["anio"] <= FINAL_TRAIN_END]
+    final_rows = labeled[labeled["año"] <= FINAL_TRAIN_END]
     final = _fit(best_model, feats, final_rows)
     test_pred = final.predict(test[feats])
     results["prueba"] = _metrics(test["etiqueta"], test_pred)
-    results["prueba_por_anio"] = {
+    results["prueba_por_año"] = {
         int(y): _metrics(g["etiqueta"], final.predict(g[feats]))["exactitud"]
-        for y, g in test.groupby("anio")
+        for y, g in test.groupby("año")
     }
     results["importancias"] = _importances(final, feats)
     return {"results": results, "model": final, "features": feats, "thresholds": th,
@@ -150,10 +150,10 @@ def rolling_predictions(data: pd.DataFrame, model_name: str, feats: list[str],
     """
     rows = []
     labeled = data[data["etiqueta"].notna()]
-    for t in sorted(data["anio"].unique()):
-        cur = data[data["anio"] == t]
+    for t in sorted(data["año"].unique()):
+        cur = data[data["año"] == t]
         if t >= ROLLING_START and t <= FINAL_TRAIN_END:
-            past = labeled[labeled["anio"] <= t - 1]
+            past = labeled[labeled["año"] <= t - 1]
             if past["etiqueta"].nunique() < 3 or len(past) < 100:
                 continue
             model = _fit(model_name, feats, past)
@@ -164,7 +164,7 @@ def rolling_predictions(data: pd.DataFrame, model_name: str, feats: list[str],
             continue
         proba = model.predict_proba(cur[feats])
         classes = list(model.classes_)
-        out = cur[["cod_mpio", "municipio_key", "anio"]].copy()
+        out = cur[["cod_mpio", "municipio_key", "año"]].copy()
         for c in CLASSES:
             out[f"p_{c}"] = proba[:, classes.index(c)] if c in classes else 0.0
         out["prediccion"] = [classes[i] for i in proba.argmax(axis=1)]
@@ -196,7 +196,7 @@ def predict_zone_year(bundle: dict, panel_rows: pd.DataFrame) -> pd.DataFrame:
     classes = list(bundle["model"].classes_)
     out = pd.DataFrame({"zona": panel_rows["municipio"].to_numpy(),
                         "cod_mpio": panel_rows["cod_mpio"].to_numpy(),
-                        "anio": panel_rows["anio"].to_numpy()})
+                        "año": panel_rows["año"].to_numpy()})
     for c in CLASSES:
         out[f"p_{c}"] = proba[:, classes.index(c)] if c in classes else 0.0
     out["categoria"] = [classes[i] for i in proba.argmax(axis=1)]

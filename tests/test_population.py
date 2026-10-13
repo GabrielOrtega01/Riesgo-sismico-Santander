@@ -50,14 +50,14 @@ def test_read_sheet_finds_header_filters_santander_and_normalizes(workbooks):
     assert set(df["cod_mpio"]) == {"68001", "68002"}                # sin Antioquia
     assert set(df["area"]) == {"cabecera", "rural", "total"}
     row = df[(df["cod_mpio"] == "68001") & (df["area"] == "total")].iloc[0]
-    assert row["poblacion"] == 1000 and row["anio"] == 2017
+    assert row["poblacion"] == 1000 and row["año"] == 2017
 
 
 def test_both_column_layouts_give_the_same_schema(workbooks):
     a, b = workbooks
     da_ = pop.read_dane_sheet(a, "NuevaMpal")
     db_ = pop.read_dane_sheet(b, "PobMunicipalxÁrea")
-    assert list(da_.columns) == list(db_.columns) == ["cod_mpio", "anio", "area", "poblacion"]
+    assert list(da_.columns) == list(db_.columns) == ["cod_mpio", "año", "area", "poblacion"]
     assert set(db_["cod_mpio"]) == {"68001", "68002"}
 
 
@@ -69,7 +69,7 @@ def test_build_table_is_wide_one_row_per_municipality_year(workbooks, monkeypatc
         pop.read_dane_sheet(a, "NuevaMpal"), pop.read_dane_sheet(b, "PobMunicipalxÁrea"),
     ])
     assert len(table) == 4
-    r = table[(table["cod_mpio"] == "68002") & (table["anio"] == 2018)].iloc[0]
+    r = table[(table["cod_mpio"] == "68002") & (table["año"] == 2018)].iloc[0]
     assert (r["poblacion_total"], r["poblacion_cabecera"], r["poblacion_rural"]) == (1000, 410, 590)
     assert r["pct_poblacion_cabecera"] == pytest.approx(41.0)
     assert r["serie"] == "2018-2042"
@@ -84,7 +84,7 @@ def test_validate_reports_coverage_and_series_jump(workbooks, monkeypatch):
     ])
     rep = pop.validate_population(table, {"68001", "68002", "68003"})
     assert rep["municipios"] == 2
-    assert rep["rejilla_completa_municipio_x_anio"] is True
+    assert rep["rejilla_completa_municipio_x_año"] is True
     assert rep["codigos_de_divipola_sin_poblacion"] == ["68003"]
     assert rep["codigos_sin_pareja_en_divipola"] == []
     assert rep["filas_total_distinto_de_cabecera_mas_rural"] == 0

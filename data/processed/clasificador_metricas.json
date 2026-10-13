@@ -462,22 +462,22 @@
     ],
     "n": 174
   },
-  "prueba_por_anio": {
+  "prueba_por_año": {
     "2023": 0.7931,
     "2024": 0.7126
   },
   "importancias": {
     "n_m25_hist_prom": 0.1692,
-    "n_m25_anio": 0.1388,
-    "magnitud_max_anio": 0.0857,
+    "n_m25_año": 0.1388,
+    "magnitud_max_año": 0.0857,
     "magnitud_max_hist": 0.0734,
     "pga_tr475": 0.0726,
     "sa10_sobre_pga": 0.064,
     "poblacion_log10": 0.0486,
     "faltante:pct_m30_sobre_m25": 0.0484,
-    "faltante:magnitud_media_m25_anio": 0.0396,
+    "faltante:magnitud_media_m25_año": 0.0396,
     "pct_m30_sobre_m25": 0.0294,
-    "profundidad_iqr_anio": 0.0273,
+    "profundidad_iqr_año": 0.0273,
     "n_m25_cambio_1a": 0.0242
   }
 }

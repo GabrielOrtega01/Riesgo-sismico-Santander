@@ -1,4 +1,4 @@
-cod_mpio,municipio_key,anio,p_Bajo,p_Medio,p_Alto,prediccion,origen
+cod_mpio,municipio_key,año,p_Bajo,p_Medio,p_Alto,prediccion,origen
 68001,bucaramanga,2012,0.20490,0.73060,0.06450,Medio,origen_movil
 68013,aguada,2012,0.91192,0.08514,0.00293,Bajo,origen_movil
 68020,albania,2012,0.42710,0.49445,0.07845,Medio,origen_movil

@@ -109,7 +109,7 @@ streamlit run src/app.py          # aplicación (los datos procesados deben exis
    solo se muestra en la aplicación.
 4. ~~Variables~~ **Hechas (2026-10-13): 23 variables** en `docs/diccionario_variables.md` (fuente
    única: `src/data/features.py`). Regla: una variable por par con |ρ| ≥ 0,90 (descartadas
-   `meses_activos_m25` y `frac_anios_activos_hist`). Tres variables siguen al año (⚠: `nst`,
+   `meses_activos_m25` y `frac_años_activos_hist`). Tres variables siguen al año (⚠: `nst`,
    errores de localización); se evalúan con y sin ellas (20 sin ellas). Filas modelables:
    2009–2024 (3 años de historia mínima y etiqueta en t+1).
 5. Rúbrica completa y fecha de entrega del reto.

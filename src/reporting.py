@@ -32,8 +32,9 @@ def render() -> str:
          f"{th['strong_magnitude']:.1f}. Umbrales ajustados solo con años de entrenamiento (≤ 2020).", "",
          "| Conjunto | Años (t) | Filas | Bajo | Medio | Alto |", "|---|---|---|---|---|---|"]
     years = {"entrenamiento": "2009–2020", "validacion": "2021–2022", "prueba": "2023–2024"}
+    shown = {"entrenamiento": "entrenamiento", "validacion": "validación", "prueba": "prueba"}
     for k, d in cm["distribucion_etiquetas"].items():
-        L.append(f"| {k} | {years[k]} | {cm['filas'][k]} | {d['Bajo']} | {d['Medio']} | {d['Alto']} |")
+        L.append(f"| {shown[k]} | {years[k]} | {cm['filas'][k]} | {d['Bajo']} | {d['Medio']} | {d['Alto']} |")
     L += ["", "### Comparación en validación (2021–2022)", "",
           "| Modelo | Variables | Exactitud | F1 macro |", "|---|---|---|---|"]
     for key, m in cm["validacion"].items():
@@ -71,8 +72,8 @@ def render() -> str:
     L += [f"Q-learning tabular · K = {c['presupuesto_K']} zonas · {c['episodios']:,} episodios · "
           f"α = {c['alpha']} · γ = {c['gamma']} · {c['estados_totales']} estados "
           f"({c['estados_visitados']} visitados) · costo de revisión {c['costo_revision']} · "
-          f"entrenamiento {c['anios_entrenamiento'][0]}–{c['anios_entrenamiento'][1]}, validación "
-          f"{c['anios_validacion']}, prueba {c['anios_prueba']}.", "",
+          f"entrenamiento {c['años_entrenamiento'][0]}–{c['años_entrenamiento'][1]}, validación "
+          f"{c['años_validacion']}, prueba {c['años_prueba']}.", "",
           "### Protocolo secuencial (utilidad capturada con presupuesto K)", "",
           "| Política | Validación | Prueba |", "|---|---|---|"]
     for name in ar["evaluacion_en_linea"]["prueba"]:

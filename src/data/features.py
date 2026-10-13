@@ -35,8 +35,8 @@ NEIGHBOR_KM = 50.0
 NEST_REFERENCE_KEY = "los santos"
 MIN_HISTORY_YEARS = 3            # filas con menos años de historia no se usan para modelar
 
-ID_COLUMNS = ["cod_mpio", "municipio_key", "municipio", "anio", "anios_historia"]
-FLAG_COLUMNS = ["tiene_eventos_anio", "tiene_eventos_m25_anio"]
+ID_COLUMNS = ["cod_mpio", "municipio_key", "municipio", "año", "años_historia"]
+FLAG_COLUMNS = ["tiene_eventos_año", "tiene_eventos_m25_año"]
 
 
 @dataclass(frozen=True)
@@ -63,35 +63,35 @@ DIV = "DIVIPOLA DANE"
 
 FEATURES: list[Feature] = [
     # ---- frecuencia y persistencia -------------------------------------------------------
-    Feature("n_m25_anio", "Frecuencia", "Sismos de magnitud ≥ 2,5 en el municipio durante el año t.",
+    Feature("n_m25_año", "Frecuencia", "Sismos de magnitud ≥ 2,5 en el municipio durante el año t.",
             CAT, "derivada", "conteo", "count(magnitude ≥ 2,5, año = t)", "sismos/año",
             "Sin faltantes: 0 si no hubo eventos.",
             "Nivel de actividad del año. El umbral 2,5 es completo en todos los años del catálogo (Mc).",
             "Conteos bajos por municipio: muchos años con 0.", True),
     Feature("n_m25_hist_prom", "Frecuencia", "Promedio anual de sismos M ≥ 2,5 en los años anteriores a t.",
-            CAT, "derivada", "numérica continua", "mean(n_m25_anio de los años < t)", "sismos/año",
+            CAT, "derivada", "numérica continua", "mean(n_m25_año de los años < t)", "sismos/año",
             "NaN en el primer año (sin historia).",
             "Nivel base de largo plazo: separa un año excepcional de un municipio habitualmente activo.",
             "Mezcla el régimen de red anterior y posterior a 2018.", True),
     Feature("n_m25_cambio_1a", "Frecuencia", "Cambio del conteo M ≥ 2,5 respecto al año anterior.",
-            CAT, "derivada", "numérica discreta", "n_m25_anio(t) − n_m25_anio(t−1)", "sismos/año",
+            CAT, "derivada", "numérica discreta", "n_m25_año(t) − n_m25_año(t−1)", "sismos/año",
             "NaN en el primer año.",
             "Tendencia reciente de la actividad, distinta de su nivel.",
             "Ruidosa cuando los conteos son pequeños."),
-    Feature("n_m25_vecinos_anio", "Frecuencia espacial",
+    Feature("n_m25_vecinos_año", "Frecuencia espacial",
             "Sismos M ≥ 2,5 del año t en otros municipios cuya cabecera está a ≤ 50 km.",
-            CAT + " + " + DIV, "derivada", "conteo", "Σ n_m25_anio(vecino), distancia entre cabeceras ≤ 50 km",
+            CAT + " + " + DIV, "derivada", "conteo", "Σ n_m25_año(vecino), distancia entre cabeceras ≤ 50 km",
             "sismos/año", "Sin faltantes: 0 si no hay vecinos activos.",
             "Contexto regional: la actividad cercana no queda capturada por el propio municipio.",
             "Usa la cabecera como punto del municipio; la etiqueta `place` es una referencia, "
             "no un polígono."),
     # ---- magnitud --------------------------------------------------------------------
-    Feature("magnitud_max_anio", "Magnitud", "Mayor magnitud registrada en el municipio durante el año t.",
+    Feature("magnitud_max_año", "Magnitud", "Mayor magnitud registrada en el municipio durante el año t.",
             CAT, "derivada", "numérica continua", "max(magnitude, año = t)", "magnitud",
             "NaN si no hubo eventos ese año.",
             "Severidad del evento más fuerte; el máximo es robusto a la incompletitud del catálogo.",
             "Mezcla tipos de magnitud (ML, MLr, MW) sin homogenizar."),
-    Feature("magnitud_media_m25_anio", "Magnitud", "Magnitud media de los sismos M ≥ 2,5 del año t.",
+    Feature("magnitud_media_m25_año", "Magnitud", "Magnitud media de los sismos M ≥ 2,5 del año t.",
             CAT, "derivada", "numérica continua", "mean(magnitude | magnitude ≥ 2,5, año = t)", "magnitud",
             "NaN si no hubo eventos M ≥ 2,5.",
             "Forma típica de la distribución, distinta de su extremo.",
@@ -107,46 +107,46 @@ FEATURES: list[Feature] = [
             "Proporción de eventos relativamente fuertes (cola de la distribución).",
             "Inestable con pocos eventos."),
     # ---- profundidad -----------------------------------------------------------------
-    Feature("profundidad_mediana_anio", "Profundidad", "Profundidad mediana de los sismos del año t.",
+    Feature("profundidad_mediana_año", "Profundidad", "Profundidad mediana de los sismos del año t.",
             CAT, "derivada", "numérica continua", "median(depth, año = t)", "km",
             "NaN si no hubo eventos.",
             "Separa la sismicidad profunda (nido de Bucaramanga) de la superficial.",
             "La profundidad tiene error (puede ser grande en eventos con pocas estaciones)."),
-    Feature("pct_superficial_anio", "Profundidad", "Porcentaje de sismos del año con profundidad < 30 km.",
+    Feature("pct_superficial_año", "Profundidad", "Porcentaje de sismos del año con profundidad < 30 km.",
             CAT, "derivada", "porcentaje", "100 · n(depth < 30) / n(total)", "%",
             "NaN si no hubo eventos.",
             "Los eventos superficiales son los que más importan para las construcciones.",
             "El umbral de 30 km es una convención del proyecto.", True),
-    Feature("profundidad_iqr_anio", "Profundidad", "Rango intercuartílico de la profundidad de los sismos del año.",
+    Feature("profundidad_iqr_año", "Profundidad", "Rango intercuartílico de la profundidad de los sismos del año.",
             CAT, "derivada", "numérica continua", "Q3(depth) − Q1(depth), año = t", "km",
             "NaN si no hubo eventos.",
             "Dispersión: detecta mezcla de poblaciones profundas y superficiales.",
             "Requiere varios eventos para ser estable."),
     # ---- calidad de la localización ------------------------------------------------------
-    Feature("nst_mediano_anio", "Calidad de localización", "Mediana del número de estaciones/fases por evento.",
+    Feature("nst_mediano_año", "Calidad de localización", "Mediana del número de estaciones/fases por evento.",
             CAT, "original", "conteo", "median(nst, año = t)", "estaciones",
             "NaN si no hubo eventos.",
             "Indicador de cobertura de la red en la zona; condiciona qué tan completo es el catálogo allí.",
             "Cambia de régimen hacia 2018 (ρ = 0,72 con el año): puede actuar como indicador de año. "
             "Se evalúa con y sin ella.", regime_proxy=True),
-    Feature("gap_mediano_anio", "Calidad de localización", "Mediana del hueco azimutal (gap) de las localizaciones.",
+    Feature("gap_mediano_año", "Calidad de localización", "Mediana del hueco azimutal (gap) de las localizaciones.",
             CAT, "original", "numérica continua", "median(gap, año = t)", "grados",
             "NaN si no hubo eventos.",
             "Un hueco grande indica estaciones mal distribuidas alrededor del epicentro.",
             "Un solo valor de gap por evento; no se ha validado frente a la geometría real de la red."),
-    Feature("error_horizontal_mediano_anio", "Calidad de localización",
+    Feature("error_horizontal_mediano_año", "Calidad de localización",
             "Mediana del error horizontal de la localización.", CAT, "derivada", "numérica continua",
             "median(√(latitude_error² + longitude_error²), año = t)", "km (supuesto)",
             "NaN si no hubo eventos o faltan ambos errores.",
             "Incertidumbre de la ubicación: afecta a qué municipio se asigna el evento.",
             "La unidad (km) se asume y no está verificada en la documentación del catálogo. "
             "Sigue al año (ρ = 0,73): se evalúa con y sin ella.", regime_proxy=True),
-    Feature("rms_mediano_anio", "Calidad de localización", "Mediana del residuo (RMS) del ajuste de localización.",
+    Feature("rms_mediano_año", "Calidad de localización", "Mediana del residuo (RMS) del ajuste de localización.",
             CAT, "original", "numérica continua", "median(rms, año = t)", "s",
             "NaN si no hubo eventos.",
             "Calidad del ajuste del modelo de velocidades a las llegadas observadas.",
             "Correlaciona con el número de estaciones."),
-    Feature("error_profundidad_mediano_anio", "Calidad de localización",
+    Feature("error_profundidad_mediano_año", "Calidad de localización",
             "Mediana del error de profundidad reportado.", CAT, "original", "numérica continua",
             "median(depth_error, año = t)", "km (supuesto)",
             "NaN si no hubo eventos o falta el error (263 casos en el catálogo).",
@@ -201,16 +201,16 @@ FEATURE_NAMES = [f.name for f in FEATURES]
 # Variables evaluadas y descartadas, con la evidencia que motivó el descarte.
 CORRELATION_DROP_THRESHOLD = 0.90
 DISCARDED = [
-    ("meses_activos_m25", "Redundante con `n_m25_anio` (ρ de Spearman = 0,998): en la mayoría de los "
+    ("meses_activos_m25", "Redundante con `n_m25_año` (ρ de Spearman = 0,998): en la mayoría de los "
      "municipios-año con eventos, cada sismo cae en un mes distinto.", "medida en el panel"),
-    ("frac_anios_activos_hist", "Redundante con `n_m25_hist_prom` (ρ = 0,953): ambas miden qué tan "
+    ("frac_años_activos_hist", "Redundante con `n_m25_hist_prom` (ρ = 0,953): ambas miden qué tan "
      "habitualmente es activo el municipio.", "medida en el panel"),
-    ("n_total_anio (todos los sismos del año)", "Su conteo depende de la red de detección (pasa de "
+    ("n_total_año (todos los sismos del año)", "Su conteo depende de la red de detección (pasa de "
      "≈2 400 a ≈16 000 eventos/año), no solo de la sismicidad; se usa M ≥ 2,5 en su lugar.",
      "documentada en fuentes_datos.md"),
-    ("energia_anual (suma de energía liberada)", "Casi determinada por la magnitud máxima del año; "
+    ("Energía anual (suma de la energía liberada)", "Casi determinada por la magnitud máxima del año; "
      "no aporta una dimensión nueva con los conteos tan bajos por municipio.", "criterio a priori, no medida"),
-    ("valor_b_anual", "Inestable con los pocos eventos por municipio y año.", "criterio a priori, no medida"),
+    ("Valor b anual", "Inestable con los pocos eventos por municipio y año.", "criterio a priori, no medida"),
     ("latitud / longitud de la cabecera", "Quedan resumidas por `distancia_los_santos_km`; las "
      "coordenadas crudas facilitarían identificar municipios y sobreajustar.", "criterio a priori"),
 ]
@@ -220,33 +220,33 @@ DISCARDED = [
 
 def _yearly_aggregates(ev: pd.DataFrame, min_magnitude: float) -> pd.DataFrame:
     ev = ev.assign(
-        anio=ev["utc_time"].dt.year,
+        año=ev["utc_time"].dt.year,
         err_h=np.hypot(ev["latitude_error"], ev["longitude_error"]),
         superficial=ev["depth"] < SHALLOW_KM,
     )
-    g = ev.groupby(["municipio_key", "anio"])
+    g = ev.groupby(["municipio_key", "año"])
     allagg = g.agg(
         n_total=("id", "size"),
-        magnitud_max_anio=("magnitude", "max"),
-        profundidad_mediana_anio=("depth", "median"),
-        pct_superficial_anio=("superficial", "mean"),
-        nst_mediano_anio=("nst", "median"),
-        gap_mediano_anio=("gap", "median"),
-        rms_mediano_anio=("rms", "median"),
-        error_horizontal_mediano_anio=("err_h", "median"),
-        error_profundidad_mediano_anio=("depth_error", "median"),
+        magnitud_max_año=("magnitude", "max"),
+        profundidad_mediana_año=("depth", "median"),
+        pct_superficial_año=("superficial", "mean"),
+        nst_mediano_año=("nst", "median"),
+        gap_mediano_año=("gap", "median"),
+        rms_mediano_año=("rms", "median"),
+        error_horizontal_mediano_año=("err_h", "median"),
+        error_profundidad_mediano_año=("depth_error", "median"),
     )
-    allagg["pct_superficial_anio"] *= 100
+    allagg["pct_superficial_año"] *= 100
     q = g["depth"].quantile([0.25, 0.75]).unstack()
-    allagg["profundidad_iqr_anio"] = q[0.75] - q[0.25]
+    allagg["profundidad_iqr_año"] = q[0.75] - q[0.25]
 
     m25 = ev[ev["magnitude"] >= min_magnitude]
-    g25 = m25.groupby(["municipio_key", "anio"])
+    g25 = m25.groupby(["municipio_key", "año"])
     a25 = g25.agg(
-        n_m25_anio=("id", "size"),
-        magnitud_media_m25_anio=("magnitude", "mean"),
+        n_m25_año=("id", "size"),
+        magnitud_media_m25_año=("magnitude", "mean"),
     )
-    strong = ev[ev["magnitude"] >= STRONG_MAGNITUDE].groupby(["municipio_key", "anio"]).size().rename("n_m30")
+    strong = ev[ev["magnitude"] >= STRONG_MAGNITUDE].groupby(["municipio_key", "año"]).size().rename("n_m30")
     return allagg.join(a25, how="outer").join(strong, how="outer")
 
 
@@ -268,35 +268,35 @@ def build_feature_panel(
     keys = muni["municipio_key"].tolist()
 
     agg = _yearly_aggregates(ev, min_magnitude)
-    grid = pd.MultiIndex.from_product([keys, years], names=["municipio_key", "anio"])
+    grid = pd.MultiIndex.from_product([keys, years], names=["municipio_key", "año"])
     panel = agg.reindex(grid).reset_index()
-    for col in ("n_total", "n_m25_anio", "n_m30"):
+    for col in ("n_total", "n_m25_año", "n_m30"):
         panel[col] = panel[col].fillna(0).astype(int)
 
-    panel["tiene_eventos_anio"] = panel["n_total"] > 0
-    panel["tiene_eventos_m25_anio"] = panel["n_m25_anio"] > 0
+    panel["tiene_eventos_año"] = panel["n_total"] > 0
+    panel["tiene_eventos_m25_año"] = panel["n_m25_año"] > 0
     panel["pct_m30_sobre_m25"] = np.where(
-        panel["n_m25_anio"] > 0, 100 * panel["n_m30"] / panel["n_m25_anio"].replace(0, np.nan), np.nan
+        panel["n_m25_año"] > 0, 100 * panel["n_m30"] / panel["n_m25_año"].replace(0, np.nan), np.nan
     )
 
     # ---- históricas: solo años estrictamente anteriores ----
-    panel = panel.sort_values(["municipio_key", "anio"]).reset_index(drop=True)
+    panel = panel.sort_values(["municipio_key", "año"]).reset_index(drop=True)
     grp = panel.groupby("municipio_key", sort=False)
-    panel["n_m25_hist_prom"] = grp["n_m25_anio"].transform(lambda s: s.expanding().mean().shift(1))
-    panel["magnitud_max_hist"] = grp["magnitud_max_anio"].transform(lambda s: s.expanding().max().shift(1))
-    panel["n_m25_cambio_1a"] = grp["n_m25_anio"].diff()
-    panel["anios_historia"] = panel["anio"] - first_year
+    panel["n_m25_hist_prom"] = grp["n_m25_año"].transform(lambda s: s.expanding().mean().shift(1))
+    panel["magnitud_max_hist"] = grp["magnitud_max_año"].transform(lambda s: s.expanding().max().shift(1))
+    panel["n_m25_cambio_1a"] = grp["n_m25_año"].diff()
+    panel["años_historia"] = panel["año"] - first_year
 
     # ---- vecinos a ≤ 50 km (misma año) ----
     lat, lon = muni["lat_cabecera"].to_numpy(), muni["lon_cabecera"].to_numpy()
     dist = haversine_km(lat[:, None], lon[:, None], lat[None, :], lon[None, :])
     weights = ((dist <= NEIGHBOR_KM) & ~np.eye(len(muni), dtype=bool)).astype(float)
-    wide = panel.pivot(index="anio", columns="municipio_key", values="n_m25_anio")[keys]
+    wide = panel.pivot(index="año", columns="municipio_key", values="n_m25_año")[keys]
     neighbors = pd.DataFrame(wide.to_numpy() @ weights.T, index=wide.index, columns=keys)
-    panel["n_m25_vecinos_anio"] = [
-        neighbors.at[a, k] for a, k in zip(panel["anio"], panel["municipio_key"])
+    panel["n_m25_vecinos_año"] = [
+        neighbors.at[a, k] for a, k in zip(panel["año"], panel["municipio_key"])
     ]
-    panel["n_m25_vecinos_anio"] = panel["n_m25_vecinos_anio"].astype(int)
+    panel["n_m25_vecinos_año"] = panel["n_m25_vecinos_año"].astype(int)
 
     # ---- estáticas por municipio ----
     static = muni.set_index("municipio_key")
@@ -316,16 +316,16 @@ def build_feature_panel(
     panel["municipio"] = panel["municipio_key"].map(static["municipio_oficial"])
 
     # ---- población (con 2005 para el crecimiento) ----
-    pop = population.sort_values(["cod_mpio", "anio"]).copy()
+    pop = population.sort_values(["cod_mpio", "año"]).copy()
     pop["poblacion_log10"] = np.log10(pop["poblacion_total"])
     pop["crecimiento_poblacion_pct"] = pop.groupby("cod_mpio")["poblacion_total"].pct_change() * 100
     panel = panel.merge(
-        pop[["cod_mpio", "anio", "poblacion_log10", "pct_poblacion_cabecera", "crecimiento_poblacion_pct"]],
-        on=["cod_mpio", "anio"], how="left", validate="one_to_one",
+        pop[["cod_mpio", "año", "poblacion_log10", "pct_poblacion_cabecera", "crecimiento_poblacion_pct"]],
+        on=["cod_mpio", "año"], how="left", validate="one_to_one",
     )
 
     return panel[ID_COLUMNS + FEATURE_NAMES + FLAG_COLUMNS].sort_values(
-        ["cod_mpio", "anio"]
+        ["cod_mpio", "año"]
     ).reset_index(drop=True)
 
 
@@ -333,7 +333,7 @@ def build_feature_panel(
 
 def panel_report(panel: pd.DataFrame, correlation_threshold: float = 0.85) -> dict:
     """Faltantes, redundancia (Spearman) y dependencia del año de cada variable."""
-    usable = panel[panel["anios_historia"] >= MIN_HISTORY_YEARS]
+    usable = panel[panel["años_historia"] >= MIN_HISTORY_YEARS]
     X = usable[FEATURE_NAMES]
     corr = X.corr(method="spearman")
 
@@ -346,22 +346,22 @@ def panel_report(panel: pd.DataFrame, correlation_threshold: float = 0.85) -> di
     pairs.sort(key=lambda p: -abs(p["spearman"]))
 
     year_corr = {
-        f: round(float(usable[f].corr(usable["anio"], method="spearman")), 3) for f in FEATURE_NAMES
+        f: round(float(usable[f].corr(usable["año"], method="spearman")), 3) for f in FEATURE_NAMES
     }
     return {
         "filas_panel": int(len(panel)),
         "municipios": int(panel["cod_mpio"].nunique()),
-        "anios": [int(panel["anio"].min()), int(panel["anio"].max())],
+        "años": [int(panel["año"].min()), int(panel["año"].max())],
         "filas_utilizables_para_modelar": int(len(usable)),
-        "anios_utilizables": [int(usable["anio"].min()), int(usable["anio"].max())],
+        "años_utilizables": [int(usable["año"].min()), int(usable["año"].max())],
         "n_variables": len(FEATURE_NAMES),
         "porcentaje_faltante_por_variable": {
             f: round(float(X[f].isna().mean() * 100), 1) for f in FEATURE_NAMES
         },
         "pares_con_correlacion_alta": pairs,
         "umbral_correlacion": correlation_threshold,
-        "correlacion_con_el_anio": year_corr,
-        "variables_dependientes_del_anio_abs_gt_0_5": sorted(
+        "correlacion_con_el_año": year_corr,
+        "variables_dependientes_del_año_abs_gt_0_5": sorted(
             f for f, r in year_corr.items() if pd.notna(r) and abs(r) > 0.5
         ),
     }
@@ -370,7 +370,7 @@ def panel_report(panel: pd.DataFrame, correlation_threshold: float = 0.85) -> di
 def render_dictionary(report: dict | None = None) -> str:
     """Documento Markdown del diccionario, generado desde `FEATURES`."""
     miss = (report or {}).get("porcentaje_faltante_por_variable", {})
-    rho = (report or {}).get("correlacion_con_el_anio", {})
+    rho = (report or {}).get("correlacion_con_el_año", {})
     groups: dict[str, list[Feature]] = {}
     for f in FEATURES:
         groups.setdefault(f.group, []).append(f)
@@ -402,9 +402,9 @@ def render_dictionary(report: dict | None = None) -> str:
     if report:
         lines += [
             f"Filas del panel: {report['filas_panel']} ({report['municipios']} municipios × "
-            f"{report['anios'][1] - report['anios'][0] + 1} años). Utilizables para modelar (≥ "
+            f"{report['años'][1] - report['años'][0] + 1} años). Utilizables para modelar (≥ "
             f"{MIN_HISTORY_YEARS} años de historia): {report['filas_utilizables_para_modelar']} "
-            f"({report['anios_utilizables'][0]}–{report['anios_utilizables'][1]}).",
+            f"({report['años_utilizables'][0]}–{report['años_utilizables'][1]}).",
             "",
         ]
 
@@ -486,7 +486,7 @@ def main(argv: list[str] | None = None) -> None:
     print(f"Diccionario → {args.doc}")
     print(json.dumps({k: report[k] for k in (
         "filas_utilizables_para_modelar", "pares_con_correlacion_alta",
-        "variables_dependientes_del_anio_abs_gt_0_5")}, ensure_ascii=False, indent=2))
+        "variables_dependientes_del_año_abs_gt_0_5")}, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":

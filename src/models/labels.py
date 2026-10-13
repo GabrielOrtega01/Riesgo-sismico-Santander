@@ -58,11 +58,11 @@ def add_targets(panel: pd.DataFrame, th: ActivityThresholds) -> pd.DataFrame:
 
     La etiqueta queda vacía cuando el año t+1 no existe en el panel (último año).
     """
-    out = panel.sort_values(["cod_mpio", "anio"]).copy()
+    out = panel.sort_values(["cod_mpio", "año"]).copy()
     grp = out.groupby("cod_mpio", sort=False)
-    out["conteo_siguiente"] = grp["n_m25_anio"].shift(-1)
-    out["magnitud_max_siguiente"] = grp["magnitud_max_anio"].shift(-1)
-    out["actividad_actual"] = classify_activity(out["n_m25_anio"], out["magnitud_max_anio"], th)
+    out["conteo_siguiente"] = grp["n_m25_año"].shift(-1)
+    out["magnitud_max_siguiente"] = grp["magnitud_max_año"].shift(-1)
+    out["actividad_actual"] = classify_activity(out["n_m25_año"], out["magnitud_max_año"], th)
     nxt = classify_activity(out["conteo_siguiente"], out["magnitud_max_siguiente"], th)
     out["etiqueta"] = np.where(out["conteo_siguiente"].isna(), None, nxt)
     return out.reset_index(drop=True)

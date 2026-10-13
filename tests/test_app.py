@@ -98,7 +98,7 @@ def test_classification_page_shows_real_model_results():
     m = _metrics(at)
     assert m["Exactitud en prueba"].endswith("%")
     assert int(m["Municipios en categoría Alto"]) + int(m["Medio"]) + int(m["Bajo"]) == 87
-    at.selectbox(key="clase_anio").select(2024).run()
+    at.selectbox(key="clase_año").select(2024).run()
     assert not at.exception
 
 

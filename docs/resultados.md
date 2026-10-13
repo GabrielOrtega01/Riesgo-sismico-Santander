@@ -11,7 +11,7 @@ Todas las cifras proceden de datos reales del SGC y del DANE. El proyecto **no p
 | Conjunto | Años (t) | Filas | Bajo | Medio | Alto |
 |---|---|---|---|---|---|
 | entrenamiento | 2009–2020 | 1044 | 627 | 295 | 122 |
-| validacion | 2021–2022 | 174 | 99 | 51 | 24 |
+| validación | 2021–2022 | 174 | 99 | 51 | 24 |
 | prueba | 2023–2024 | 174 | 98 | 53 | 23 |
 
 ### Comparación en validación (2021–2022)

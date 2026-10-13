@@ -36,15 +36,15 @@ POLICY_PATH = Path("models/politica_q.npz")
 
 def build_dataset(panel: pd.DataFrame, preds: pd.DataFrame) -> pd.DataFrame:
     """Filas (zona, año t) con predicción del clasificador y el resultado observado de t+1."""
-    p = panel.sort_values(["cod_mpio", "anio"]).copy()
-    p["conteo_siguiente"] = p.groupby("cod_mpio")["n_m25_anio"].shift(-1)
+    p = panel.sort_values(["cod_mpio", "año"]).copy()
+    p["conteo_siguiente"] = p.groupby("cod_mpio")["n_m25_año"].shift(-1)
     p["poblacion"] = 10 ** p["poblacion_log10"]
-    d = p.merge(preds[["cod_mpio", "anio", "p_Bajo", "p_Medio", "p_Alto", "prediccion"]],
-                on=["cod_mpio", "anio"], how="inner", validate="one_to_one")
-    d = d.sort_values(["anio", "cod_mpio"]).reset_index(drop=True)
+    d = p.merge(preds[["cod_mpio", "año", "p_Bajo", "p_Medio", "p_Alto", "prediccion"]],
+                on=["cod_mpio", "año"], how="inner", validate="one_to_one")
+    d = d.sort_values(["año", "cod_mpio"]).reset_index(drop=True)
     util = np.full(len(d), np.nan)
     share = np.full(len(d), np.nan)
-    for year, idx in d.groupby("anio").groups.items():
+    for year, idx in d.groupby("año").groups.items():
         sub = d.loc[idx]
         if sub["conteo_siguiente"].notna().all():
             util[idx] = zone_utilities(sub["conteo_siguiente"], sub["poblacion"])
@@ -64,13 +64,13 @@ def evaluate_ranking(zones: pd.DataFrame, scores: np.ndarray, k: int) -> dict:
 def evaluate_strategy(data: pd.DataFrame, years: list[int], strategy, k: int, repeats: int = 1) -> dict:
     util, cov = [], []
     for y in years:
-        zones = data[data["anio"] == y].reset_index(drop=True)
+        zones = data[data["año"] == y].reset_index(drop=True)
         rs = [evaluate_ranking(zones, strategy.scores(zones), k) for _ in range(repeats)]
         util.append(np.mean([r["utilidad"] for r in rs]))
         cov.append(np.mean([r["cobertura_eventos"] for r in rs]))
     return {"utilidad_media": round(float(np.mean(util)), 4),
             "cobertura_eventos_media": round(float(np.mean(cov)), 4),
-            "por_anio": {int(y): round(float(u), 4) for y, u in zip(years, util)}}
+            "por_año": {int(y): round(float(u), 4) for y, u in zip(years, util)}}
 
 
 def online_evaluation(env: ReviewEnv, agent: QLearningAgent, years: list[int], orders: int = 300,
@@ -122,18 +122,18 @@ def online_evaluation(env: ReviewEnv, agent: QLearningAgent, years: list[int], o
 
 def oracle_utility(data: pd.DataFrame, years: list[int], k: int) -> float:
     return round(float(np.mean([
-        np.sort(data.loc[data["anio"] == y, "utilidad"].to_numpy())[::-1][:k].sum() for y in years])), 4)
+        np.sort(data.loc[data["año"] == y, "utilidad"].to_numpy())[::-1][:k].sum() for y in years])), 4)
 
 
 def run(panel: pd.DataFrame, preds: pd.DataFrame, episodes: int = EPISODES, budget: int = BUDGET,
         seed: int = SEED) -> dict:
     data = build_dataset(panel, preds)
     labeled = data[data["utilidad"].notna()]
-    disc = Discretizer.fit(labeled[labeled["anio"].isin(TRAIN_YEARS)])
+    disc = Discretizer.fit(labeled[labeled["año"].isin(TRAIN_YEARS)])
 
-    years = sorted(labeled["anio"].unique())
-    zone_states = {y: disc.zone_states(labeled[labeled["anio"] == y]) for y in years}
-    utilities = {y: labeled.loc[labeled["anio"] == y, "utilidad"].to_numpy() for y in years}
+    years = sorted(labeled["año"].unique())
+    zone_states = {y: disc.zone_states(labeled[labeled["año"] == y]) for y in years}
+    utilities = {y: labeled.loc[labeled["año"] == y, "utilidad"].to_numpy() for y in years}
     env = ReviewEnv(zone_states, utilities, budget=budget, cost=REVIEW_COST)
 
     agent = QLearningAgent(env.n_states, seed=seed)
@@ -166,8 +166,8 @@ def run(panel: pd.DataFrame, preds: pd.DataFrame, episodes: int = EPISODES, budg
         "configuracion": {"presupuesto_K": budget, "episodios": episodes, "alpha": agent.alpha,
                           "gamma": agent.gamma, "epsilon_inicial": agent.eps_start,
                           "costo_revision": REVIEW_COST, "semilla": seed,
-                          "anios_entrenamiento": [TRAIN_YEARS[0], TRAIN_YEARS[-1]],
-                          "anios_validacion": VAL_YEARS, "anios_prueba": TEST_YEARS,
+                          "años_entrenamiento": [TRAIN_YEARS[0], TRAIN_YEARS[-1]],
+                          "años_validacion": VAL_YEARS, "años_prueba": TEST_YEARS,
                           "estados_totales": int(env.n_states), "estados_visitados": visited},
         "discretizador": disc.to_dict(),
         "utilidad_validacion_sin_entrenar": base["utilidad_media"],
@@ -182,7 +182,7 @@ def run(panel: pd.DataFrame, preds: pd.DataFrame, episodes: int = EPISODES, budg
 def save(bundle: dict, out_dir: str | Path = "data/processed") -> None:
     out = Path(out_dir)
     bundle["agent"].save(POLICY_PATH, bundle["disc"], bundle["budget"],
-                         meta={"anios_entrenamiento": [TRAIN_YEARS[0], TRAIN_YEARS[-1]]})
+                         meta={"años_entrenamiento": [TRAIN_YEARS[0], TRAIN_YEARS[-1]]})
     with open(out / "agente_resultados.json", "w", encoding="utf-8") as fh:
         json.dump(bundle["results"], fh, ensure_ascii=False, indent=2)
         fh.write("\n")

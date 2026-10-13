@@ -7,15 +7,15 @@
     "epsilon_inicial": 0.5,
     "costo_revision": 0.01,
     "semilla": 7,
-    "anios_entrenamiento": [
+    "años_entrenamiento": [
       2012,
       2020
     ],
-    "anios_validacion": [
+    "años_validacion": [
       2021,
       2022
     ],
-    "anios_prueba": [
+    "años_prueba": [
       2023,
       2024
     ],
@@ -188,7 +188,7 @@
       "Agente de refuerzo (Q-learning)": {
         "utilidad_media": 0.8587,
         "cobertura_eventos_media": 0.8897,
-        "por_anio": {
+        "por_año": {
           "2021": 0.8451,
           "2022": 0.8723
         }
@@ -196,7 +196,7 @@
       "Persistencia (actividad del año)": {
         "utilidad_media": 0.8994,
         "cobertura_eventos_media": 0.9434,
-        "por_anio": {
+        "por_año": {
           "2021": 0.8841,
           "2022": 0.9148
         }
@@ -204,7 +204,7 @@
       "Historia (promedio anual previo)": {
         "utilidad_media": 0.862,
         "cobertura_eventos_media": 0.9036,
-        "por_anio": {
+        "por_año": {
           "2021": 0.8406,
           "2022": 0.8834
         }
@@ -212,7 +212,7 @@
       "Solo clasificador (categoría esperada)": {
         "utilidad_media": 0.8997,
         "cobertura_eventos_media": 0.9439,
-        "por_anio": {
+        "por_año": {
           "2021": 0.8841,
           "2022": 0.9152
         }
@@ -220,7 +220,7 @@
       "Aleatoria": {
         "utilidad_media": 0.1113,
         "cobertura_eventos_media": 0.1121,
-        "por_anio": {
+        "por_año": {
           "2021": 0.1216,
           "2022": 0.101
         }
@@ -233,7 +233,7 @@
       "Agente de refuerzo (Q-learning)": {
         "utilidad_media": 0.9262,
         "cobertura_eventos_media": 0.9376,
-        "por_anio": {
+        "por_año": {
           "2023": 0.9391,
           "2024": 0.9134
         }
@@ -241,7 +241,7 @@
       "Persistencia (actividad del año)": {
         "utilidad_media": 0.9279,
         "cobertura_eventos_media": 0.9559,
-        "por_anio": {
+        "por_año": {
           "2023": 0.9276,
           "2024": 0.9281
         }
@@ -249,7 +249,7 @@
       "Historia (promedio anual previo)": {
         "utilidad_media": 0.9041,
         "cobertura_eventos_media": 0.9441,
-        "por_anio": {
+        "por_año": {
           "2023": 0.9189,
           "2024": 0.8893
         }
@@ -257,7 +257,7 @@
       "Solo clasificador (categoría esperada)": {
         "utilidad_media": 0.9088,
         "cobertura_eventos_media": 0.9524,
-        "por_anio": {
+        "por_año": {
           "2023": 0.9276,
           "2024": 0.89
         }
@@ -265,7 +265,7 @@
       "Aleatoria": {
         "utilidad_media": 0.1109,
         "cobertura_eventos_media": 0.1105,
-        "por_anio": {
+        "por_año": {
           "2023": 0.1242,
           "2024": 0.0976
         }
@@ -278,7 +278,7 @@
       "Agente de refuerzo (Q-learning)": {
         "utilidad_media": 0.8925,
         "cobertura_eventos_media": 0.9136,
-        "por_anio": {
+        "por_año": {
           "2021": 0.8451,
           "2022": 0.8723,
           "2023": 0.9391,
@@ -288,7 +288,7 @@
       "Persistencia (actividad del año)": {
         "utilidad_media": 0.9137,
         "cobertura_eventos_media": 0.9497,
-        "por_anio": {
+        "por_año": {
           "2021": 0.8841,
           "2022": 0.9148,
           "2023": 0.9276,
@@ -298,7 +298,7 @@
       "Historia (promedio anual previo)": {
         "utilidad_media": 0.883,
         "cobertura_eventos_media": 0.9239,
-        "por_anio": {
+        "por_año": {
           "2021": 0.8406,
           "2022": 0.8834,
           "2023": 0.9189,
@@ -308,7 +308,7 @@
       "Solo clasificador (categoría esperada)": {
         "utilidad_media": 0.9042,
         "cobertura_eventos_media": 0.9481,
-        "por_anio": {
+        "por_año": {
           "2021": 0.8841,
           "2022": 0.9152,
           "2023": 0.9276,
@@ -318,7 +318,7 @@
       "Aleatoria": {
         "utilidad_media": 0.1142,
         "cobertura_eventos_media": 0.1147,
-        "por_anio": {
+        "por_año": {
           "2021": 0.1216,
           "2022": 0.101,
           "2023": 0.1168,

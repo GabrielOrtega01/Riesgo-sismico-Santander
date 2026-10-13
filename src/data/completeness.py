@@ -58,7 +58,7 @@ def mc_by_year(
         enough = len(m) >= min_events
         mc = mc_maxc(m) if enough else float("nan")
         rows.append({
-            "anio": int(year),
+            "año": int(year),
             "n_eventos": int(len(m)),
             "mc_maxc": mc,
             "n_sobre_mc": int((m >= mc - 1e-9).sum()) if enough else np.nan,

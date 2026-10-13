@@ -40,11 +40,11 @@ class RiskAnalysisService:
     # ---- consultas ---------------------------------------------------------------------------
     @property
     def years(self) -> list[int]:
-        usable = self.panel[self.panel["anios_historia"] >= 3]
-        return sorted(int(y) for y in usable["anio"].unique())
+        usable = self.panel[self.panel["años_historia"] >= 3]
+        return sorted(int(y) for y in usable["año"].unique())
 
     def _rows(self, year: int) -> pd.DataFrame:
-        rows = self.panel[self.panel["anio"] == year]
+        rows = self.panel[self.panel["año"] == year]
         if rows.empty:
             raise ValueError(f"El año {year} no está en el panel")
         return rows.reset_index(drop=True)
@@ -72,7 +72,7 @@ class RiskAnalysisService:
         out["seleccionada"] = out["prioridad"] <= k
         out = out.merge(self.groups[["cod_mpio", "grupo"]], on="cod_mpio", how="left")
         return out[["prioridad", "seleccionada", "municipio", "cod_mpio", "prediccion", "p_Alto", "p_Medio",
-                    "p_Bajo", "puntaje_agente", "n_m25_anio", "pga_tr475", "poblacion_log10", "grupo"]]
+                    "p_Bajo", "puntaje_agente", "n_m25_año", "pga_tr475", "poblacion_log10", "grupo"]]
 
     # ---- métricas guardadas ---------------------------------------------------------------------
     def _json(self, name: str) -> dict:

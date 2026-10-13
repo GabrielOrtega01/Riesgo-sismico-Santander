@@ -21,14 +21,14 @@ from sklearn.preprocessing import StandardScaler
 from src.data.features import FEATURES, MIN_HISTORY_YEARS
 
 PROFILE_FEATURES = [f.name for f in FEATURES if not f.regime_proxy]
-LOG_FEATURES = ["n_m25_anio", "n_m25_hist_prom", "n_m25_vecinos_anio"]
+LOG_FEATURES = ["n_m25_año", "n_m25_hist_prom", "n_m25_vecinos_año"]
 K_RANGE = range(3, 7)      # k = 2 solo separa «activo / tranquilo»; se exige k ≥ 3 para interpretar
 RANDOM_STATE = 42
 
 
 def build_profiles(panel: pd.DataFrame) -> pd.DataFrame:
     """Una fila por municipio: promedio (2009–2025) de las variables independientes del año."""
-    usable = panel[panel["anios_historia"] >= MIN_HISTORY_YEARS]
+    usable = panel[panel["años_historia"] >= MIN_HISTORY_YEARS]
     profile = usable.groupby(["cod_mpio", "municipio"])[PROFILE_FEATURES].mean()
     return profile.reset_index()
 
@@ -51,8 +51,8 @@ def fit_groups(profile: pd.DataFrame, k: int | None = None) -> dict:
     chosen = k if k is not None else max(sil, key=sil.get)
     km = KMeans(n_clusters=chosen, n_init=10, random_state=RANDOM_STATE).fit(Z)
 
-    # grupos numerados de mayor a menor actividad media (n_m25_anio)
-    order = (profile.assign(g=km.labels_).groupby("g")["n_m25_anio"].mean()
+    # grupos numerados de mayor a menor actividad media (n_m25_año)
+    order = (profile.assign(g=km.labels_).groupby("g")["n_m25_año"].mean()
              .sort_values(ascending=False).index.tolist())
     remap = {old: new + 1 for new, old in enumerate(order)}
     groups = np.array([remap[g] for g in km.labels_])
@@ -77,12 +77,12 @@ def describe_group(summary: pd.DataFrame, group: int) -> str:
     row = summary.loc[group]
     overall = summary.mean()
     parts = []
-    if row["n_m25_anio"] >= overall["n_m25_anio"]:
-        parts.append(f"actividad alta ({row['n_m25_anio']:.1f} sismos M≥2,5/año en promedio)")
+    if row["n_m25_año"] >= overall["n_m25_año"]:
+        parts.append(f"actividad alta ({row['n_m25_año']:.1f} sismos M≥2,5/año en promedio)")
     else:
-        parts.append(f"actividad baja ({row['n_m25_anio']:.1f} sismos M≥2,5/año en promedio)")
+        parts.append(f"actividad baja ({row['n_m25_año']:.1f} sismos M≥2,5/año en promedio)")
     parts.append(f"PGA {row['pga_tr475']:.3f} g")
-    parts.append(f"{row['pct_superficial_anio']:.0f} % de sismos superficiales")
+    parts.append(f"{row['pct_superficial_año']:.0f} % de sismos superficiales")
     return "; ".join(parts)
 
 
@@ -98,7 +98,7 @@ def main() -> None:
         fh.write("\n")
     print("k =", res["k"], "| silueta =", res["silhouette"], "| por k:", res["silhouette_por_k"])
     print("tamaños:", res["tamanos"])
-    print(res["perfil_medio"][["n_m25_anio", "magnitud_max_hist", "pct_superficial_anio", "pga_tr475",
+    print(res["perfil_medio"][["n_m25_año", "magnitud_max_hist", "pct_superficial_año", "pga_tr475",
                                "poblacion_log10", "distancia_los_santos_km"]])
 
 

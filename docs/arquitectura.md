@@ -39,6 +39,6 @@ sin necesidad real.
 
 ## Contrato clasificador → agente
 
-Salida del clasificador (`predict_zone_year`): `zona`, `cod_mpio`, `anio`, `p_Bajo`, `p_Medio`,
+Salida del clasificador (`predict_zone_year`): `zona`, `cod_mpio`, `año`, `p_Bajo`, `p_Medio`,
 `p_Alto`, `categoria`. El agente consume `categoria` (discretizada en 3 niveles) junto con la
 actividad del año, la amenaza (PGA) y la exposición (población) del panel.

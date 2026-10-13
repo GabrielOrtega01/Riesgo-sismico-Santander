@@ -24,7 +24,7 @@ class PersistenceStrategy:
     name = "Persistencia (actividad del año)"
 
     def scores(self, zones: pd.DataFrame) -> np.ndarray:
-        return zones["n_m25_anio"].to_numpy(dtype=float) + 1e-6 * zones["n_m25_hist_prom"].fillna(0).to_numpy()
+        return zones["n_m25_año"].to_numpy(dtype=float) + 1e-6 * zones["n_m25_hist_prom"].fillna(0).to_numpy()
 
 
 class HistoryStrategy:

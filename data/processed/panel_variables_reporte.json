@@ -1,33 +1,33 @@
 {
   "filas_panel": 1740,
   "municipios": 87,
-  "anios": [
+  "años": [
     2006,
     2025
   ],
   "filas_utilizables_para_modelar": 1479,
-  "anios_utilizables": [
+  "años_utilizables": [
     2009,
     2025
   ],
   "n_variables": 23,
   "porcentaje_faltante_por_variable": {
-    "n_m25_anio": 0.0,
+    "n_m25_año": 0.0,
     "n_m25_hist_prom": 0.0,
     "n_m25_cambio_1a": 0.0,
-    "n_m25_vecinos_anio": 0.0,
-    "magnitud_max_anio": 8.4,
-    "magnitud_media_m25_anio": 58.8,
+    "n_m25_vecinos_año": 0.0,
+    "magnitud_max_año": 8.4,
+    "magnitud_media_m25_año": 58.8,
     "magnitud_max_hist": 0.1,
     "pct_m30_sobre_m25": 58.8,
-    "profundidad_mediana_anio": 8.4,
-    "pct_superficial_anio": 8.4,
-    "profundidad_iqr_anio": 8.4,
-    "nst_mediano_anio": 8.4,
-    "gap_mediano_anio": 8.4,
-    "error_horizontal_mediano_anio": 8.4,
-    "rms_mediano_anio": 8.4,
-    "error_profundidad_mediano_anio": 8.4,
+    "profundidad_mediana_año": 8.4,
+    "pct_superficial_año": 8.4,
+    "profundidad_iqr_año": 8.4,
+    "nst_mediano_año": 8.4,
+    "gap_mediano_año": 8.4,
+    "error_horizontal_mediano_año": 8.4,
+    "rms_mediano_año": 8.4,
+    "error_profundidad_mediano_año": 8.4,
     "pga_tr475": 0.0,
     "intensidad_esperada": 0.0,
     "sa10_sobre_pga": 0.0,
@@ -38,34 +38,34 @@
   },
   "pares_con_correlacion_alta": [
     {
-      "a": "magnitud_media_m25_anio",
+      "a": "magnitud_media_m25_año",
       "b": "pct_m30_sobre_m25",
       "spearman": 0.875
     },
     {
-      "a": "n_m25_anio",
-      "b": "magnitud_max_anio",
+      "a": "n_m25_año",
+      "b": "magnitud_max_año",
       "spearman": 0.873
     }
   ],
   "umbral_correlacion": 0.85,
-  "correlacion_con_el_anio": {
-    "n_m25_anio": -0.009,
+  "correlacion_con_el_año": {
+    "n_m25_año": -0.009,
     "n_m25_hist_prom": -0.032,
     "n_m25_cambio_1a": 0.012,
-    "n_m25_vecinos_anio": 0.056,
-    "magnitud_max_anio": -0.012,
-    "magnitud_media_m25_anio": -0.098,
+    "n_m25_vecinos_año": 0.056,
+    "magnitud_max_año": -0.012,
+    "magnitud_media_m25_año": -0.098,
     "magnitud_max_hist": 0.238,
     "pct_m30_sobre_m25": -0.078,
-    "profundidad_mediana_anio": -0.038,
-    "pct_superficial_anio": 0.107,
-    "profundidad_iqr_anio": 0.14,
-    "nst_mediano_anio": 0.721,
-    "gap_mediano_anio": -0.244,
-    "error_horizontal_mediano_anio": 0.726,
-    "rms_mediano_anio": 0.439,
-    "error_profundidad_mediano_anio": -0.646,
+    "profundidad_mediana_año": -0.038,
+    "pct_superficial_año": 0.107,
+    "profundidad_iqr_año": 0.14,
+    "nst_mediano_año": 0.721,
+    "gap_mediano_año": -0.244,
+    "error_horizontal_mediano_año": 0.726,
+    "rms_mediano_año": 0.439,
+    "error_profundidad_mediano_año": -0.646,
     "pga_tr475": 0.0,
     "intensidad_esperada": 0.0,
     "sa10_sobre_pga": 0.0,
@@ -74,9 +74,9 @@
     "pct_poblacion_cabecera": 0.124,
     "crecimiento_poblacion_pct": 0.399
   },
-  "variables_dependientes_del_anio_abs_gt_0_5": [
-    "error_horizontal_mediano_anio",
-    "error_profundidad_mediano_anio",
-    "nst_mediano_anio"
+  "variables_dependientes_del_año_abs_gt_0_5": [
+    "error_horizontal_mediano_año",
+    "error_profundidad_mediano_año",
+    "nst_mediano_año"
   ]
 }

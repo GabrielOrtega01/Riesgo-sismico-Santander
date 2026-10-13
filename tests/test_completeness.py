@@ -38,7 +38,7 @@ def test_mc_by_year_flags_small_samples_and_counts_above_mc():
         ["2010-06-01"] * len(big) + ["2011-06-01"] * len(small), utc=True
     )
     events = pd.DataFrame({"utc_time": times, "magnitude": np.concatenate([big, small])})
-    table = mc_by_year(events, min_events=200).set_index("anio")
+    table = mc_by_year(events, min_events=200).set_index("año")
 
     assert table.loc[2010, "n_eventos"] == 3000
     assert abs(table.loc[2010, "mc_maxc"] - 2.2) < 1e-9

@@ -1,11 +1,11 @@
 {
   "municipios": 87,
-  "anios": [
+  "años": [
     2005,
     2026
   ],
   "filas": 1914,
-  "rejilla_completa_municipio_x_anio": true,
+  "rejilla_completa_municipio_x_año": true,
   "codigos_sin_pareja_en_divipola": [],
   "codigos_de_divipola_sin_poblacion": [],
   "nulos": 0,

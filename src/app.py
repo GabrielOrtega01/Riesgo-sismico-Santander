@@ -213,7 +213,7 @@ def page_zone() -> None:
 
     meta = f"Código DANE {info['cod_mpio']}"
     if pop["poblacion_total"] is not None:
-        meta += f" · {fmt(pop['poblacion_total'])} habitantes ({pop['anio']}, proyección)"
+        meta += f" · {fmt(pop['poblacion_total'])} habitantes ({pop['año']}, proyección)"
     T.zone_header(info["nombre"], meta)
     st.markdown(
         da.describe_zone(info, int(rank_row["puesto"]), len(ranking), min_mag),
@@ -243,8 +243,8 @@ def page_zone() -> None:
               help="Porcentaje de sismos a menos de 30 km de profundidad.")
 
     one = yearly[yearly["municipio_key"] == muni["municipio_key"]].assign(
-        anio=lambda d: d["anio"].astype(str)
-    ).set_index("anio").rename_axis("Año")
+        año=lambda d: d["año"].astype(str)
+    ).set_index("año").rename_axis("Año")
     left, right = st.columns(2)
     with left, st.container(border=True):
         st.markdown(f"**Sismos por año** (magnitud ≥ {min_mag:g})")
@@ -393,10 +393,10 @@ def page_groups() -> None:
         st.markdown(f'<p class="footnote">{leg}</p>', unsafe_allow_html=True)
     with right, st.container(border=True):
         st.markdown("**Cómo son los grupos** (promedio 2009–2025)")
-        view = profiles[["n_m25_anio", "magnitud_max_hist", "pct_superficial_anio", "pga_tr475",
+        view = profiles[["n_m25_año", "magnitud_max_hist", "pct_superficial_año", "pga_tr475",
                          "poblacion_log10"]].rename(columns={
-            "n_m25_anio": "Sismos M≥2,5/año", "magnitud_max_hist": "Magnitud máx.",
-            "pct_superficial_anio": "% superficiales", "pga_tr475": "PGA (g)",
+            "n_m25_año": "Sismos M≥2,5/año", "magnitud_max_hist": "Magnitud máx.",
+            "pct_superficial_año": "% superficiales", "pga_tr475": "PGA (g)",
             "poblacion_log10": "log10 población"})
         view.index.name = "Grupo"
         st.dataframe(view.round(2))
@@ -430,7 +430,7 @@ def page_class() -> None:
 
     years = service.years
     year = st.selectbox("Año con información disponible (la categoría es para el año siguiente)",
-                        years, index=len(years) - 1, key="clase_anio")
+                        years, index=len(years) - 1, key="clase_año")
     table = service.classify(year)
     counts = table["categoria"].value_counts().reindex(["Bajo", "Medio", "Alto"], fill_value=0)
     c1, c2, c3 = st.columns(3)
@@ -508,7 +508,7 @@ def page_prio() -> None:
     ar = service.agent_results()
     years = service.years
     c1, c2 = st.columns([2, 1])
-    year = c1.selectbox("Año con información disponible", years, index=len(years) - 1, key="prio_anio")
+    year = c1.selectbox("Año con información disponible", years, index=len(years) - 1, key="prio_año")
     k = c2.slider("Zonas a priorizar (K)", 3, 20, service.budget, key="prio_k",
                   help="El agente se entrenó con K = 10; otros valores solo cambian el corte de la lista.")
     ranking = service.prioritize(year, k=k)
@@ -516,9 +516,9 @@ def page_prio() -> None:
     with st.container(border=True):
         st.markdown(f"**Las {k} zonas que el agente propone revisar primero** (información hasta {year})")
         st.dataframe(
-            top[["prioridad", "municipio", "prediccion", "p_Alto", "n_m25_anio", "pga_tr475", "grupo"]]
+            top[["prioridad", "municipio", "prediccion", "p_Alto", "n_m25_año", "pga_tr475", "grupo"]]
             .rename(columns={"prioridad": "Puesto", "municipio": "Municipio", "prediccion": "Categoría esperada",
-                             "p_Alto": "P(Alto)", "n_m25_anio": f"Sismos M≥2,5 en {year}",
+                             "p_Alto": "P(Alto)", "n_m25_año": f"Sismos M≥2,5 en {year}",
                              "pga_tr475": "PGA (g)", "grupo": "Grupo"}),
             hide_index=True)
     st.caption(
@@ -578,9 +578,9 @@ def page_prio() -> None:
             "(mitad parte de los sismos, mitad parte de la exposición afectada) menos un costo de "
             f"revisión de {cfg['costo_revision']}.\n"
             f"- **Algoritmo:** Q-learning tabular, {cfg['episodios']:,} episodios, α = {cfg['alpha']}, "
-            f"γ = {cfg['gamma']}, ε decreciente. Entrenado con {cfg['anios_entrenamiento'][0]}–"
-            f"{cfg['anios_entrenamiento'][1]}; validación {cfg['anios_validacion']}; prueba "
-            f"{cfg['anios_prueba']}.\n"
+            f"γ = {cfg['gamma']}, ε decreciente. Entrenado con {cfg['años_entrenamiento'][0]}–"
+            f"{cfg['años_entrenamiento'][1]}; validación {cfg['años_validacion']}; prueba "
+            f"{cfg['años_prueba']}.\n"
             "- **Sesgos:** la actividad está muy concentrada (Los Santos); la recompensa no mide "
             "vulnerabilidad de las construcciones."
         )
@@ -606,7 +606,7 @@ def page_catalog() -> None:
     with b, st.container(border=True):
         st.markdown("**Magnitud mínima que el catálogo registra completa (Mc)**")
         st.line_chart(
-            mc.assign(anio=mc["anio"].astype(str)).rename(columns={"anio": "Año", "mc_maxc": "Mc"})
+            mc.assign(año=mc["año"].astype(str)).rename(columns={"año": "Año", "mc_maxc": "Mc"})
             .set_index("Año")["Mc"], color=T.SERIES)
         st.caption("Por debajo de esa magnitud faltan eventos. Más bajo = mejor detección.")
     st.warning(
@@ -616,7 +616,7 @@ def page_catalog() -> None:
     )
     with st.expander("Ver la tabla por año"):
         st.dataframe(
-            mc.rename(columns={"anio": "Año", "n_eventos": "Sismos", "mc_maxc": "Mc",
+            mc.rename(columns={"año": "Año", "n_eventos": "Sismos", "mc_maxc": "Mc",
                                "n_sobre_mc": "Sobre Mc", "valor_b": "Valor b"}).round(2),
             hide_index=True,
         )

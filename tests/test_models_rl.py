@@ -29,11 +29,11 @@ def test_classify_activity_with_strong_event_escalation():
 
 def test_targets_look_one_year_ahead_and_last_year_is_unlabeled():
     panel = pd.DataFrame({
-        "cod_mpio": ["1"] * 3, "anio": [2020, 2021, 2022],
-        "n_m25_anio": [0, 5, 1], "magnitud_max_anio": [np.nan, 3.0, 2.6],
+        "cod_mpio": ["1"] * 3, "año": [2020, 2021, 2022],
+        "n_m25_año": [0, 5, 1], "magnitud_max_año": [np.nan, 3.0, 2.6],
     })
     th = L.ActivityThresholds(0, 3, 4.0)
-    out = L.add_targets(panel, th).set_index("anio")
+    out = L.add_targets(panel, th).set_index("año")
     assert out.loc[2020, "etiqueta"] == "Alto"            # 2021 tuvo 5 eventos
     assert out.loc[2021, "etiqueta"] == "Medio"           # 2022 tuvo 1
     assert pd.isna(out.loc[2022, "etiqueta"])
@@ -64,7 +64,7 @@ def test_rank_order_uses_tiebreak():
 
 
 def test_persistence_strategy_orders_by_current_activity():
-    zones = pd.DataFrame({"n_m25_anio": [1, 9, 4], "n_m25_hist_prom": [0.0, 0.0, 0.0]})
+    zones = pd.DataFrame({"n_m25_año": [1, 9, 4], "n_m25_hist_prom": [0.0, 0.0, 0.0]})
     assert rank_order(PersistenceStrategy().scores(zones)).tolist() == [1, 2, 0]
 
 

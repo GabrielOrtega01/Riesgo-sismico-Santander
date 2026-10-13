@@ -33,7 +33,7 @@ _AREA_MAP = {
 }
 _COLUMN_MAP = {
     "dp": "cod_dpto", "dpnom": "departamento", "mpio": "cod_mpio", "dpmp": "municipio",
-    "año": "anio", "área geográfica": "area", "población": "poblacion", "total": "poblacion",
+    "año": "año", "área geográfica": "area", "población": "poblacion", "total": "poblacion",
 }
 
 
@@ -53,60 +53,60 @@ def read_dane_sheet(path: str | Path, sheet_name: str) -> pd.DataFrame:
     df = raw.iloc[header + 1:].copy()
     df.columns = [str(c).strip().lower() for c in raw.iloc[header]]
     df = df.rename(columns=_COLUMN_MAP)
-    needed = {"cod_dpto", "cod_mpio", "anio", "area", "poblacion"}
+    needed = {"cod_dpto", "cod_mpio", "año", "area", "poblacion"}
     if not needed.issubset(df.columns):
         raise PopulationError(f"{Path(path).name}: faltan columnas {sorted(needed - set(df.columns))}")
 
-    df = df.dropna(subset=["cod_dpto", "cod_mpio", "anio", "area", "poblacion"])
+    df = df.dropna(subset=["cod_dpto", "cod_mpio", "año", "area", "poblacion"])
     df["cod_dpto"] = df["cod_dpto"].str.strip().str.zfill(2)
     df = df[df["cod_dpto"] == SANTANDER_DEPARTMENT_CODE].copy()
 
     df["cod_mpio"] = df["cod_mpio"].str.strip().str.zfill(5)
-    df["anio"] = pd.to_numeric(df["anio"], errors="coerce")
+    df["año"] = pd.to_numeric(df["año"], errors="coerce")
     df["poblacion"] = pd.to_numeric(df["poblacion"], errors="coerce")
     df["area"] = df["area"].str.strip().str.lower().map(_AREA_MAP)
-    unknown = df["area"].isna() | df["anio"].isna() | df["poblacion"].isna()
+    unknown = df["area"].isna() | df["año"].isna() | df["poblacion"].isna()
     if unknown.any():
         raise PopulationError(f"{Path(path).name}: {int(unknown.sum())} filas con área, año o población ilegible")
-    df["anio"] = df["anio"].astype(int)
+    df["año"] = df["año"].astype(int)
     df["poblacion"] = df["poblacion"].astype(int)
-    return df[["cod_mpio", "anio", "area", "poblacion"]]
+    return df[["cod_mpio", "año", "area", "poblacion"]]
 
 
 def build_population_table(frames: list[pd.DataFrame]) -> pd.DataFrame:
     """Une las series y devuelve una fila por municipio y año (cabecera, rural y total)."""
     long = pd.concat(frames, ignore_index=True)
-    long = long[(long["anio"] >= FIRST_YEAR) & (long["anio"] <= LAST_YEAR)]
-    if long.duplicated(["cod_mpio", "anio", "area"]).any():
+    long = long[(long["año"] >= FIRST_YEAR) & (long["año"] <= LAST_YEAR)]
+    if long.duplicated(["cod_mpio", "año", "area"]).any():
         raise PopulationError("Hay (municipio, año, área) repetidos entre las series")
 
-    wide = long.pivot(index=["cod_mpio", "anio"], columns="area", values="poblacion").reset_index()
+    wide = long.pivot(index=["cod_mpio", "año"], columns="area", values="poblacion").reset_index()
     wide.columns.name = None
     wide = wide.rename(columns={
         "total": "poblacion_total", "cabecera": "poblacion_cabecera", "rural": "poblacion_rural",
     })
     wide["pct_poblacion_cabecera"] = wide["poblacion_cabecera"] / wide["poblacion_total"] * 100
-    wide["serie"] = np.where(wide["anio"] <= 2017, "2005-2017", "2018-2042")
-    return wide.sort_values(["cod_mpio", "anio"]).reset_index(drop=True)
+    wide["serie"] = np.where(wide["año"] <= 2017, "2005-2017", "2018-2042")
+    return wide.sort_values(["cod_mpio", "año"]).reset_index(drop=True)
 
 
 def validate_population(table: pd.DataFrame, expected_codes: set[str]) -> dict:
     """Comprobaciones de cobertura, coherencia aritmética y continuidad entre series."""
     codes = set(table["cod_mpio"])
-    years = sorted(table["anio"].unique())
+    years = sorted(table["año"].unique())
     expected_years = list(range(FIRST_YEAR, LAST_YEAR + 1))
     grid_complete = len(table) == len(codes) * len(expected_years)
 
     parts = table["poblacion_cabecera"] + table["poblacion_rural"]
     diff = (table["poblacion_total"] - parts).abs()
 
-    pivot = table.pivot(index="cod_mpio", columns="anio", values="poblacion_total")
+    pivot = table.pivot(index="cod_mpio", columns="año", values="poblacion_total")
     jump = (pivot[2018] / pivot[2017] - 1) * 100 if {2017, 2018} <= set(pivot.columns) else None
     report = {
         "municipios": len(codes),
-        "anios": [int(years[0]), int(years[-1])],
+        "años": [int(years[0]), int(years[-1])],
         "filas": int(len(table)),
-        "rejilla_completa_municipio_x_anio": bool(grid_complete),
+        "rejilla_completa_municipio_x_año": bool(grid_complete),
         "codigos_sin_pareja_en_divipola": sorted(codes - expected_codes),
         "codigos_de_divipola_sin_poblacion": sorted(expected_codes - codes),
         "nulos": int(table[["poblacion_total", "poblacion_cabecera", "poblacion_rural"]].isna().sum().sum()),

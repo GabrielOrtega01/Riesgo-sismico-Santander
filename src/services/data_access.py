@@ -85,11 +85,11 @@ def yearly_indicators(
 ) -> pd.DataFrame:
     """Indicadores por municipio y año, con rejilla completa (años sin eventos = 0)."""
     df = events.assign(
-        anio=events["utc_time"].dt.year,
+        año=events["utc_time"].dt.year,
         sobre_umbral=events["magnitude"] >= min_magnitude,
         superficial=events["depth"] < shallow_km,
     )
-    agg = df.groupby(["municipio_key", "anio"]).agg(
+    agg = df.groupby(["municipio_key", "año"]).agg(
         n_eventos=("id", "size"),
         n_sobre_umbral=("sobre_umbral", "sum"),
         magnitud_max=("magnitude", "max"),
@@ -99,9 +99,9 @@ def yearly_indicators(
     )
     agg["pct_superficial"] *= 100
 
-    years = range(int(df["anio"].min()), int(df["anio"].max()) + 1)
+    years = range(int(df["año"].min()), int(df["año"].max()) + 1)
     grid = pd.MultiIndex.from_product(
-        [sorted(df["municipio_key"].dropna().unique()), years], names=["municipio_key", "anio"]
+        [sorted(df["municipio_key"].dropna().unique()), years], names=["municipio_key", "año"]
     )
     out = agg.reindex(grid)
     out[["n_eventos", "n_sobre_umbral"]] = out[["n_eventos", "n_sobre_umbral"]].fillna(0).astype(int)
@@ -153,7 +153,7 @@ def depth_histogram(events: pd.DataFrame, municipio_key: str, bin_km: int = 10) 
 def compare_zones(yearly: pd.DataFrame, keys: list[str], metric: str) -> pd.DataFrame:
     """Tabla año × municipio de una métrica, lista para graficar."""
     sub = yearly[yearly["municipio_key"].isin(keys)]
-    return sub.pivot(index="anio", columns="municipio_key", values=metric).sort_index()
+    return sub.pivot(index="año", columns="municipio_key", values=metric).sort_index()
 
 
 def add_population(
@@ -165,8 +165,8 @@ def add_population(
     """Añade población anual y eventos por 100 000 habitantes a la tabla municipio × año."""
     code = municipalities.set_index("municipio_key")["cod_mpio"]
     out = yearly.assign(cod_mpio=yearly["municipio_key"].map(code))
-    pop = population[["cod_mpio", "anio", "poblacion_total"]]
-    out = out.merge(pop, on=["cod_mpio", "anio"], how="left", validate="many_to_one")
+    pop = population[["cod_mpio", "año", "poblacion_total"]]
+    out = out.merge(pop, on=["cod_mpio", "año"], how="left", validate="many_to_one")
     out["eventos_por_100mil"] = out[min_magnitude_label] / out["poblacion_total"] * 100_000
     return out.drop(columns="cod_mpio")
 
@@ -175,10 +175,10 @@ def zone_population(population: pd.DataFrame, cod_mpio: str, year: int | None = 
     """Población total y % en cabecera de un municipio (último año disponible por defecto)."""
     rows = population[population["cod_mpio"] == cod_mpio]
     if rows.empty:
-        return {"anio": None, "poblacion_total": None, "pct_cabecera": None}
-    row = rows.loc[rows["anio"].idxmax()] if year is None else rows[rows["anio"] == year].iloc[0]
+        return {"año": None, "poblacion_total": None, "pct_cabecera": None}
+    row = rows.loc[rows["año"].idxmax()] if year is None else rows[rows["año"] == year].iloc[0]
     return {
-        "anio": int(row["anio"]),
+        "año": int(row["año"]),
         "poblacion_total": int(row["poblacion_total"]),
         "pct_cabecera": float(row["pct_poblacion_cabecera"]),
     }
@@ -257,7 +257,7 @@ def map_table(
     )
     base = municipalities.merge(counts, left_on="municipio_key", right_index=True, how="left")
     base[["eventos", "eventos_umbral"]] = base[["eventos", "eventos_umbral"]].fillna(0)
-    last = population.loc[population["anio"] == population["anio"].max(), ["cod_mpio", "poblacion_total"]]
+    last = population.loc[population["año"] == population["año"].max(), ["cod_mpio", "poblacion_total"]]
     base = base.merge(last.rename(columns={"poblacion_total": "poblacion"}), on="cod_mpio", how="left")
 
     value = base[metric].astype(float)

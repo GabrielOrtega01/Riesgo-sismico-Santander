@@ -41,14 +41,14 @@ class Discretizer:
             e = np.quantile(s.dropna(), qs)
             return float(e[0]), float(max(e[1], e[0] + 1e-9))
         return cls(
-            activity_edges=edges(train["n_m25_anio"], [0.55, 0.88]),
+            activity_edges=edges(train["n_m25_año"], [0.55, 0.88]),
             hazard_edges=edges(train["pga_tr475"], [1 / 3, 2 / 3]),
             exposure_edges=edges(train["poblacion_log10"], [1 / 3, 2 / 3]),
         )
 
     def zone_states(self, df: pd.DataFrame) -> np.ndarray:
         cat = df["prediccion"].map({c: i for i, c in enumerate(CLASSES)}).to_numpy()
-        act = np.digitize(df["n_m25_anio"].fillna(0), [self.activity_edges[0] + 1e-9, self.activity_edges[1] + 1e-9])
+        act = np.digitize(df["n_m25_año"].fillna(0), [self.activity_edges[0] + 1e-9, self.activity_edges[1] + 1e-9])
         haz = np.digitize(df["pga_tr475"], self.hazard_edges)
         exp = np.digitize(df["poblacion_log10"], self.exposure_edges)
         return (((cat * 3 + act) * 3 + haz) * 3 + exp).astype(int)

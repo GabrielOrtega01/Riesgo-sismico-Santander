@@ -51,7 +51,7 @@ def test_catalog_summary(events):
 def test_yearly_indicators_builds_complete_grid_with_zeros(events):
     y = da.yearly_indicators(events, min_magnitude=2.5)
     assert len(y) == 2 * 3                                  # 2 municipios × 2020..2022
-    cell = y.set_index(["municipio_key", "anio"])
+    cell = y.set_index(["municipio_key", "año"])
     assert cell.loc[("alfa", 2020), "n_eventos"] == 2
     assert cell.loc[("alfa", 2020), "n_sobre_umbral"] == 1   # solo la de M 3,1
     assert cell.loc[("beta", 2020), "n_eventos"] == 0       # año sin eventos = 0
@@ -91,7 +91,7 @@ def population():
     for code, base in (("68001", 1000), ("68002", 400), ("68003", 50)):
         for year in (2020, 2021, 2022):
             total = base + 10 * (year - 2020)
-            rows.append({"cod_mpio": code, "anio": year, "poblacion_total": total,
+            rows.append({"cod_mpio": code, "año": year, "poblacion_total": total,
                          "pct_poblacion_cabecera": 80.0})
     return pd.DataFrame(rows)
 
@@ -105,7 +105,7 @@ def test_add_population_merges_by_year_without_losing_rows(events, municipalitie
     y = da.yearly_indicators(events, min_magnitude=2.5)
     out = da.add_population(y, municipalities, population)
     assert len(out) == len(y)
-    cell = out.set_index(["municipio_key", "anio"])
+    cell = out.set_index(["municipio_key", "año"])
     assert cell.loc[("alfa", 2021), "poblacion_total"] == 1010
     # alfa 2020: 1 evento >= 2.5 (M 3,1) sobre 1000 habitantes
     assert cell.loc[("alfa", 2020), "eventos_por_100mil"] == pytest.approx(1 / 1000 * 100_000)
@@ -114,7 +114,7 @@ def test_add_population_merges_by_year_without_losing_rows(events, municipalitie
 
 def test_zone_population_defaults_to_latest_year(population):
     last = da.zone_population(population, "68001")
-    assert (last["anio"], last["poblacion_total"]) == (2022, 1020)
+    assert (last["año"], last["poblacion_total"]) == (2022, 1020)
     year = da.zone_population(population, "68002", 2020)
     assert year["poblacion_total"] == 400
     assert da.zone_population(population, "99999")["poblacion_total"] is None
