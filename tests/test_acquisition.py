@@ -67,8 +67,38 @@ def test_sample_hazard_fails_instead_of_writing_partial_data():
         acq.sample_hazard(div, identify=lambda lon, lat: dict(partial), pause_s=0)
 
 
-def test_main_refuses_to_overwrite_raw_files(tmp_path):
-    (tmp_path / acq.DIVIPOLA_FILE).write_text("x")
-    with pytest.raises(SystemExit, match="no se sobrescriben"):
-        acq.main(["--out", str(tmp_path)])
-    assert (tmp_path / acq.DIVIPOLA_FILE).read_text() == "x"
+XLSX_BYTES = b"PK\x03\x04" + b"contenido sintetico"
+
+
+def test_population_download_writes_files_and_skips_existing(tmp_path):
+    calls = []
+
+    def fake_fetch(url):
+        calls.append(url)
+        return XLSX_BYTES
+
+    first = acq.download_population_files(tmp_path, fetch_bytes=fake_fetch)
+    assert set(first) == set(acq.POPULATION_FILES)
+    assert all(state.startswith("descargado") for state in first.values())
+    assert len(calls) == 2
+    for name in acq.POPULATION_FILES:
+        assert (tmp_path / name).read_bytes() == XLSX_BYTES
+
+    second = acq.download_population_files(tmp_path, fetch_bytes=fake_fetch)
+    assert all("no se sobrescribe" in state for state in second.values())
+    assert len(calls) == 2                       # no volvió a descargar
+
+
+def test_population_download_never_overwrites_without_force(tmp_path):
+    name = next(iter(acq.POPULATION_FILES))
+    (tmp_path / name).write_bytes(b"original")
+    acq.download_population_files(tmp_path, fetch_bytes=lambda url: XLSX_BYTES)
+    assert (tmp_path / name).read_bytes() == b"original"
+    acq.download_population_files(tmp_path, force=True, fetch_bytes=lambda url: XLSX_BYTES)
+    assert (tmp_path / name).read_bytes() == XLSX_BYTES
+
+
+def test_population_download_rejects_non_xlsx_and_leaves_no_partial_file(tmp_path):
+    with pytest.raises(ValueError, match="xlsx"):
+        acq.download_population_files(tmp_path, fetch_bytes=lambda url: b"<html>error</html>")
+    assert list(tmp_path.iterdir()) == []

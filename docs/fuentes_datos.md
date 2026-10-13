@@ -160,8 +160,7 @@ los 87 de DIVIPOLA (0 sin pareja en ambos sentidos). Eso confirma los dos alias 
 `El Carmen` → `El Carmen de Chucurí` y `Jordán Sube` → `Jordán` (las claves `el carmen` y
 `jordan sube` no existen en DIVIPOLA).
 
-**Pendiente:** población municipal (proyecciones DANE) como indicador de exposición; no se ha
-buscado ni verificado todavía.
+La población municipal se documenta en la sección 5.
 
 ## 4. Integración de las fuentes (`python -m src.data.integration`)
 
@@ -200,3 +199,41 @@ Redundancia entre capas de amenaza (correlación con PGA Tr=475): PGA Tr=225 0,9
 **1–2 variables independientes**, no 8. La correlación entre PGA Tr=475 y log(1 + n.º de eventos)
 por municipio es 0,35: la amenaza oficial y la actividad histórica comparten información, pero
 no son lo mismo.
+
+## 5. Población municipal (DANE) — incorporada
+
+**Fuente:** proyecciones de población municipal por área geográfica, basadas en el Censo 2018,
+publicadas por el DANE en https://www.dane.gov.co/ (sección Proyecciones de población). Descargadas
+el 2026-10-13 con `python -m src.data.acquisition` (no sobrescribe):
+
+| Archivo (`data/raw/`) | Hoja usada | Cobertura | Tamaño | SHA256 (inicio) |
+|---|---|---|---|---|
+| `DCD-area-proypoblacion-Mun-2005-2017_VP.xlsx` | `NuevaMpal` | 2005–2017 | 1,53 MB | `0D7E6B896955F37E…` |
+| `PPED-AreaMun-2018-2042_VP.xlsx` | `PobMunicipalxÁrea` | 2018–2042 | 3,77 MB | `1EA83594AD308BEC…` |
+
+Formato largo (departamento, municipio, año, área, población); el orden de columnas difiere entre
+libros y el encabezado está en filas distintas, por lo que el lector detecta la fila `DP`.
+Áreas: `Cabecera Municipal`, `Centros Poblados y Rural Disperso` y `Total`.
+
+**Procesamiento** (`python -m src.data.population`): se filtra el departamento 68, se normaliza el
+área y se genera `data/processed/poblacion_municipal_anual.csv` (una fila por municipio y año,
+2005–2026) y `data/processed/poblacion_reporte.json`.
+
+Resultado real:
+
+| Comprobación | Resultado |
+|---|---|
+| Cobertura | 87 municipios × 22 años = 1 914 filas, rejilla completa, 0 nulos |
+| Códigos frente a DIVIPOLA | 87 de 87, sin sobrantes en ningún sentido |
+| Coherencia aritmética | `total = cabecera + rural` en las 1 914 filas (diferencia máxima 0) |
+| Continuidad entre series (2017 → 2018) | Total Santander +1,75 %; por municipio de −2,7 % a +2,9 %; ningún municipio con salto > 10 % |
+
+**Limitaciones:**
+1. Son **proyecciones**, no conteos: los años posteriores al censo de 2018 (hasta 2026) son
+   estimaciones y se revisan en cada actualización del DANE.
+2. La población es un indicador de **exposición** (cuántas personas habitan una zona), no de
+   amenaza ni de vulnerabilidad estructural.
+3. Se usa el **total municipal**; no distingue la población realmente cercana a los epicentros.
+4. Sin información de viviendas, edificaciones ni calidad constructiva.
+5. Las dos series se construyeron en momentos distintos; aunque no hay saltos grandes en 2017–2018,
+   la continuidad es una verificación empírica, no una garantía metodológica.

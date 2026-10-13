@@ -8,6 +8,7 @@ que se pase `--force`. El resto del proyecto trabaja sin red, leyendo los archiv
 Fuentes:
 - DIVIPOLA - Municipios Santander (DANE), datos.gov.co, id kyaq-ecfy, licencia CC BY-SA 4.0.
 - Amenaza Sísmica 2020 (SGC): servicio ArcGIS MapServer, operación `identify` sobre rásteres.
+- Proyecciones de población municipal 2005-2042 (DANE, base CNPV 2018): dos libros Excel.
 """
 from __future__ import annotations
 
@@ -38,6 +39,13 @@ HAZARD_LAYERS = {
 }
 HAZARD_FILE = "sgc_amenaza_2020_cabeceras.csv"
 _MAP_EXTENT = "-74.6,5.6,-72.4,8.2"   # cubre Santander; solo parametriza la consulta identify
+
+# Proyecciones de población municipal del DANE (basadas en el CNPV 2018), con área.
+_DANE_POP = "https://www.dane.gov.co/files/censo2018/proyecciones-de-poblacion/Municipal/"
+POPULATION_FILES = {
+    "DCD-area-proypoblacion-Mun-2005-2017_VP.xlsx": _DANE_POP + "DCD-area-proypoblacion-Mun-2005-2017_VP.xlsx",
+    "PPED-AreaMun-2018-2042_VP.xlsx": _DANE_POP + "PPED-AreaMun-2018-2042_VP.xlsx",
+}
 
 GetJson = Callable[[str], object]
 
@@ -107,25 +115,68 @@ def sample_hazard(
     return pd.DataFrame(rows)
 
 
+def _get_bytes(url: str, timeout: int = 120) -> bytes:
+    with urllib.request.urlopen(url, timeout=timeout) as response:
+        return response.read()
+
+
+def download_population_files(
+    out_dir: str | Path,
+    force: bool = False,
+    fetch_bytes: Callable[[str], bytes] = _get_bytes,
+) -> dict[str, str]:
+    """Descarga las proyecciones de población del DANE (Excel) tal como se publican.
+
+    No sobrescribe archivos existentes salvo `force`. Verifica que el contenido sea un .xlsx
+    (un ZIP) antes de guardarlo y no deja archivos parciales. Devuelve {archivo: estado}.
+    """
+    out_dir = Path(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    status: dict[str, str] = {}
+    for name, url in POPULATION_FILES.items():
+        dest = out_dir / name
+        if dest.exists() and not force:
+            status[name] = "ya existe (no se sobrescribe)"
+            continue
+        content = fetch_bytes(url)
+        if not content.startswith(b"PK\x03\x04"):
+            raise ValueError(f"{name}: la respuesta no es un archivo .xlsx válido")
+        tmp = dest.with_suffix(dest.suffix + ".part")
+        tmp.write_bytes(content)
+        tmp.replace(dest)
+        status[name] = f"descargado ({len(content) / 1024 / 1024:.2f} MB)"
+    return status
+
+
 def main(argv: list[str] | None = None) -> None:
-    parser = argparse.ArgumentParser(description="Descarga DIVIPOLA y muestrea la amenaza del SGC.")
+    parser = argparse.ArgumentParser(
+        description="Descarga DIVIPOLA, muestrea la amenaza del SGC y baja la población del DANE."
+    )
     parser.add_argument("--out", default="data/raw")
     parser.add_argument("--force", action="store_true", help="Permite sobrescribir archivos crudos.")
     args = parser.parse_args(argv)
 
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    targets = [out / DIVIPOLA_FILE, out / HAZARD_FILE]
-    existing = [p.name for p in targets if p.exists()]
-    if existing and not args.force:
-        raise SystemExit(f"Ya existen {existing}. Los datos crudos no se sobrescriben (use --force).")
+    divipola_path, hazard_path = out / DIVIPOLA_FILE, out / HAZARD_FILE
 
-    divipola = fetch_divipola()
-    hazard = sample_hazard(divipola)
-    divipola.to_csv(targets[0], index=False)
-    hazard.to_csv(targets[1], index=False, float_format="%.6f")
-    print(f"DIVIPOLA: {len(divipola)} municipios -> {targets[0]}")
-    print(f"Amenaza:  {len(hazard)} municipios x {len(HAZARD_COLUMNS)} capas -> {targets[1]}")
+    if divipola_path.exists() and not args.force:
+        print(f"DIVIPOLA: ya existe, no se sobrescribe -> {divipola_path}")
+        divipola = pd.read_csv(divipola_path, dtype=str, keep_default_na=False)
+    else:
+        divipola = fetch_divipola()
+        divipola.to_csv(divipola_path, index=False)
+        print(f"DIVIPOLA: {len(divipola)} municipios -> {divipola_path}")
+
+    if hazard_path.exists() and not args.force:
+        print(f"Amenaza:  ya existe, no se sobrescribe -> {hazard_path}")
+    else:
+        hazard = sample_hazard(divipola)
+        hazard.to_csv(hazard_path, index=False, float_format="%.6f")
+        print(f"Amenaza:  {len(hazard)} municipios x {len(HAZARD_COLUMNS)} capas -> {hazard_path}")
+
+    for name, state in download_population_files(out, force=args.force).items():
+        print(f"Población: {name}: {state}")
 
 
 if __name__ == "__main__":

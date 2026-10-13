@@ -14,7 +14,7 @@ mediante Machine Learning supervisado y aprendizaje por refuerzo. Proyecto acad�
 | Datos: catálogo SGC, limpieza y completitud | Implementado y probado |
 | Segunda fuente: DIVIPOLA (DANE) y amenaza sísmica 2020 (SGC), integración | Implementado y probado |
 | Aplicación Streamlit (zonas, comparación, catálogo, fuentes) | Implementada y probada |
-| Población municipal (DANE) | Pendiente |
+| Población municipal (DANE, proyecciones 2005–2026) | Implementado y probado |
 | Variables (≥ 20) y diccionario | Pendiente |
 | Clasificador supervisado | Pendiente |
 | Agente de aprendizaje por refuerzo y priorización | Pendiente |
@@ -41,6 +41,7 @@ complementarias ya están en el repositorio. Para regenerar todo lo procesado:
 python -m src.data.preprocessing   # limpieza del catálogo
 python -m src.data.completeness    # magnitud de completitud por año
 python -m src.data.integration     # unión con DIVIPOLA y amenaza sísmica
+python -m src.data.population      # población municipal por año (DANE)
 ```
 
 El catálogo se obtiene de https://sgc.gov.co/catalogo (la exportación llega por correo).

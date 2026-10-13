@@ -63,7 +63,8 @@ pytest                            # ejecutar pruebas
 python -m src.data.preprocessing  # limpieza -> data/processed/eventos_santander_limpio.csv.gz
 python -m src.data.completeness   # Mc por año -> data/processed/mc_por_anio.csv
 python -m src.data.integration    # une catálogo + DIVIPOLA + amenaza -> municipios_santander.csv
-python -m src.data.acquisition    # (una vez, con internet) descarga DIVIPOLA y amenaza a data/raw
+python -m src.data.population     # población municipal DANE -> poblacion_municipal_anual.csv
+python -m src.data.acquisition    # (una vez, con internet) descarga DIVIPOLA, amenaza y población a data/raw
 streamlit run src/app.py          # aplicación (los datos procesados deben existir)
 ```
 
@@ -79,7 +80,10 @@ streamlit run src/app.py          # aplicación (los datos procesados deben exis
   Alternativa verificada: MapServer ArcGIS `srvags.sgc.gov.co/arcprod/rest/services/Amenaza_Sismica/`
   `Amenaza_Sismica/MapServer` (rásteres PGA/Sa; `identify` por punto funciona en los 87 municipios).
 - **DANE DIVIPOLA** (datos.gov.co `kyaq-ecfy`): 87 municipios con código y coordenadas; coincide
-  1 a 1 con los municipios normalizados del catálogo. Población municipal: no verificada.
+  1 a 1 con los municipios normalizados del catálogo.
+- **Población municipal DANE** (proyecciones base CNPV 2018, 2005–2026): descargada y procesada;
+  87 municipios × 22 años sin nulos, continua en 2017→2018. Salida:
+  `data/processed/poblacion_municipal_anual.csv`. Indicador de exposición, no de vulnerabilidad.
 - **Integración hecha** (2026-10-13): 184 722 eventos unidos a 87 municipios sin pérdidas ni
   duplicados. Salida: `data/processed/municipios_santander.csv` (clave `cod_mpio` / `municipio_key`).
 - Detalle y limitaciones en [docs/fuentes_datos.md](docs/fuentes_datos.md).
