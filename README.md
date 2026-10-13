@@ -9,12 +9,22 @@ mediante Machine Learning supervisado y aprendizaje por refuerzo. Proyecto acad�
 
 ## Estado
 
-En desarrollo. Etapa 1 (diagnóstico y planificación) completada; la estructura del repositorio
-está creada y los datos aún no se han descargado.
+| Componente | Estado |
+|---|---|
+| Datos: catálogo SGC, limpieza y completitud | Implementado y probado |
+| Segunda fuente: DIVIPOLA (DANE) y amenaza sísmica 2020 (SGC), integración | Implementado y probado |
+| Aplicación Streamlit (zonas, comparación, catálogo, fuentes) | Implementada y probada |
+| Población municipal (DANE) | Pendiente |
+| Variables (≥ 20) y diccionario | Pendiente |
+| Clasificador supervisado | Pendiente |
+| Agente de aprendizaje por refuerzo y priorización | Pendiente |
+
+La aplicación no muestra resultados de clasificación ni de priorización hasta que existan los
+modelos entrenados.
 
 ## Instalación
 
-Requiere Python 3.14 (probado con 3.14.5) en Windows.
+Probado con Python 3.14 en Windows.
 
 ```powershell
 py -3.14 -m venv .venv
@@ -22,10 +32,32 @@ py -3.14 -m venv .venv
 pip install -r requirements.txt
 ```
 
-## Datos
+## Reproducir los datos procesados
 
-La fuente principal es el catálogo del Servicio Geológico Colombiano (https://sgc.gov.co/catalogo).
-La exportación se recibe por correo y debe colocarse manualmente en `data/raw/` sin modificarla.
+El catálogo original (`data/raw/sgc_catalogo_santander_20060101_20261013.csv`) y las fuentes
+complementarias ya están en el repositorio. Para regenerar todo lo procesado:
+
+```powershell
+python -m src.data.preprocessing   # limpieza del catálogo
+python -m src.data.completeness    # magnitud de completitud por año
+python -m src.data.integration     # unión con DIVIPOLA y amenaza sísmica
+```
+
+El catálogo se obtiene de https://sgc.gov.co/catalogo (la exportación llega por correo).
+`python -m src.data.acquisition` vuelve a descargar DIVIPOLA y la amenaza (no sobrescribe datos
+crudos). Detalle y limitaciones de cada fuente en [docs/fuentes_datos.md](docs/fuentes_datos.md).
+
+## Aplicación
+
+```powershell
+streamlit run src/app.py
+```
+
+**Publicación en Streamlit Community Cloud** (la hace el propietario del repositorio):
+1. Entrar a https://share.streamlit.io con la cuenta de GitHub y elegir **Create app**.
+2. Repositorio `GabrielOrtega01/Riesgo-sismico-Santander`, rama `main`, archivo principal `src/app.py`.
+3. En *Advanced settings*, elegir una versión de Python soportada por la plataforma (3.11 a 3.13).
+4. La aplicación lee solo archivos del repositorio; no requiere secretos ni acceso a internet.
 
 ## Pruebas
 

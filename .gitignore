@@ -15,6 +15,7 @@ Thumbs.db
 # Secretos y configuración local
 .env
 *.local
+.claude/
 
 # Artefactos regenerables (se reproducen con los scripts de entrenamiento)
 # Los datos crudos y procesados SÍ se versionan mientras sean pequeños; si
